@@ -1,0 +1,46 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <CodeAnalysisRuleSet>..\..\Rules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <AdditionalFiles Include="..\..\stylecop.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommandLineParser" Version="2.8.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="6.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="6.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.3" />
+    <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.312" PrivateAssets="all">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\FishingMania.Common\FishingMania.Common.csproj" />
+    <ProjectReference Include="..\..\Data\FishingMania.Data.Common\FishingMania.Data.Common.csproj" />
+    <ProjectReference Include="..\..\Data\FishingMania.Data.Models\FishingMania.Data.Models.csproj" />
+    <ProjectReference Include="..\..\Data\FishingMania.Data\FishingMania.Data.csproj" />
+    <ProjectReference Include="..\..\Services\FishingMania.Services.Data\FishingMania.Services.Data.csproj" />
+    <ProjectReference Include="..\..\Services\FishingMania.Services.Mapping\FishingMania.Services.Mapping.csproj" />
+    <ProjectReference Include="..\..\Services\FishingMania.Services.Messaging\FishingMania.Services.Messaging.csproj" />
+    <ProjectReference Include="..\..\Services\FishingMania.Services\FishingMania.Services.csproj" />
+  </ItemGroup>
+
+</Project>

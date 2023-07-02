@@ -1,0 +1,89 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\css\\site.css",
+      "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\css\\site.min.css",
+      "PackagePath": "staticwebassets\\css\\site.min.css"
+    },
+    {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\js\\site.js",
+      "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\js\\site.min.js",
+      "PackagePath": "staticwebassets\\js\\site.min.js"
+    },
+    {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\lib\\bootstrap\\bootswatch.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\bootswatch.min.css"
+    },
+    {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
+    },
+    {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
+    },
+    {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\lib\\jquery-validation-unobtrusive\\dist\\jquery.validate.unobtrusive.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\dist\\jquery.validate.unobtrusive.js"
+    },
+    {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\lib\\jquery-validation-unobtrusive\\dist\\jquery.validate.unobtrusive.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\dist\\jquery.validate.unobtrusive.min.js"
+    },
+    {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
+    },
+    {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
+    },
+    {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
+    },
+    {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
+    },
+    {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\resources\\Logo.svg",
+      "PackagePath": "staticwebassets\\resources\\Logo.svg"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.FishingMania.Web.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.build.FishingMania.Web.props",
+      "PackagePath": "build\\FishingMania.Web.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildMultiTargeting.FishingMania.Web.props",
+      "PackagePath": "buildMultiTargeting\\FishingMania.Web.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildTransitive.FishingMania.Web.props",
+      "PackagePath": "buildTransitive\\FishingMania.Web.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

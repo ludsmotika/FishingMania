@@ -1,0 +1,12 @@
+C:\Users\danie\source\repos\FishingMania\Services\FishingMania.Services\bin\Debug\net6.0\FishingMania.Services.deps.json
+C:\Users\danie\source\repos\FishingMania\Services\FishingMania.Services\bin\Debug\net6.0\FishingMania.Services.dll
+C:\Users\danie\source\repos\FishingMania\Services\FishingMania.Services\bin\Debug\net6.0\FishingMania.Services.pdb
+C:\Users\danie\source\repos\FishingMania\Services\FishingMania.Services\obj\Debug\net6.0\FishingMania.Services.csproj.AssemblyReference.cache
+C:\Users\danie\source\repos\FishingMania\Services\FishingMania.Services\obj\Debug\net6.0\FishingMania.Services.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\danie\source\repos\FishingMania\Services\FishingMania.Services\obj\Debug\net6.0\FishingMania.Services.AssemblyInfoInputs.cache
+C:\Users\danie\source\repos\FishingMania\Services\FishingMania.Services\obj\Debug\net6.0\FishingMania.Services.AssemblyInfo.cs
+C:\Users\danie\source\repos\FishingMania\Services\FishingMania.Services\obj\Debug\net6.0\FishingMania.Services.csproj.CoreCompileInputs.cache
+C:\Users\danie\source\repos\FishingMania\Services\FishingMania.Services\obj\Debug\net6.0\FishingMania.Services.dll
+C:\Users\danie\source\repos\FishingMania\Services\FishingMania.Services\obj\Debug\net6.0\refint\FishingMania.Services.dll
+C:\Users\danie\source\repos\FishingMania\Services\FishingMania.Services\obj\Debug\net6.0\FishingMania.Services.pdb
+C:\Users\danie\source\repos\FishingMania\Services\FishingMania.Services\obj\Debug\net6.0\ref\FishingMania.Services.dll

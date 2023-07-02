@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\FishingMania.Web.Tests.props" />
+</Project>

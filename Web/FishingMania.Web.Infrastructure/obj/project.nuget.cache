@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "atVRDx+BH8V0NufknJ+qkn+0cue6K/tW7c3yarhHrxcnuBitYA4DCPF6Z8oWvsIhnD0gWYWcWwPgi2F3XTL6Ww==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web.Infrastructure\\FishingMania.Web.Infrastructure.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\danie\\.nuget\\packages\\stylecop.analyzers\\1.2.0-beta.312\\stylecop.analyzers.1.2.0-beta.312.nupkg.sha512",
+    "C:\\Users\\danie\\.nuget\\packages\\stylecop.analyzers.unstable\\1.2.0.312\\stylecop.analyzers.unstable.1.2.0.312.nupkg.sha512"
+  ],
+  "logs": []
+}

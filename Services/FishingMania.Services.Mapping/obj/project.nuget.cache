@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "NDr95qRaOiguoJnBY5Rk497nrxObLb+Hcyu20zJAgvLsEpCvWAT0kXBwY7HaTXM7NvnT/K5AeMnRQETRFm2E6g==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\danie\\source\\repos\\FishingMania\\Services\\FishingMania.Services.Mapping\\FishingMania.Services.Mapping.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\danie\\.nuget\\packages\\automapper\\11.0.1\\automapper.11.0.1.nupkg.sha512",
+    "C:\\Users\\danie\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
+    "C:\\Users\\danie\\.nuget\\packages\\stylecop.analyzers\\1.2.0-beta.312\\stylecop.analyzers.1.2.0-beta.312.nupkg.sha512",
+    "C:\\Users\\danie\\.nuget\\packages\\stylecop.analyzers.unstable\\1.2.0.312\\stylecop.analyzers.unstable.1.2.0.312.nupkg.sha512"
+  ],
+  "logs": []
+}

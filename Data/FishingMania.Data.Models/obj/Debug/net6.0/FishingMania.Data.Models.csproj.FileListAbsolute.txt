@@ -1,0 +1,15 @@
+C:\Users\danie\source\repos\FishingMania\Data\FishingMania.Data.Models\bin\Debug\net6.0\FishingMania.Data.Models.deps.json
+C:\Users\danie\source\repos\FishingMania\Data\FishingMania.Data.Models\bin\Debug\net6.0\FishingMania.Data.Models.dll
+C:\Users\danie\source\repos\FishingMania\Data\FishingMania.Data.Models\bin\Debug\net6.0\FishingMania.Data.Models.pdb
+C:\Users\danie\source\repos\FishingMania\Data\FishingMania.Data.Models\bin\Debug\net6.0\FishingMania.Data.Common.dll
+C:\Users\danie\source\repos\FishingMania\Data\FishingMania.Data.Models\bin\Debug\net6.0\FishingMania.Data.Common.pdb
+C:\Users\danie\source\repos\FishingMania\Data\FishingMania.Data.Models\obj\Debug\net6.0\FishingMania.Data.Models.csproj.AssemblyReference.cache
+C:\Users\danie\source\repos\FishingMania\Data\FishingMania.Data.Models\obj\Debug\net6.0\FishingMania.Data.Models.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\danie\source\repos\FishingMania\Data\FishingMania.Data.Models\obj\Debug\net6.0\FishingMania.Data.Models.AssemblyInfoInputs.cache
+C:\Users\danie\source\repos\FishingMania\Data\FishingMania.Data.Models\obj\Debug\net6.0\FishingMania.Data.Models.AssemblyInfo.cs
+C:\Users\danie\source\repos\FishingMania\Data\FishingMania.Data.Models\obj\Debug\net6.0\FishingMania.Data.Models.csproj.CoreCompileInputs.cache
+C:\Users\danie\source\repos\FishingMania\Data\FishingMania.Data.Models\obj\Debug\net6.0\FishingMania.Data.Models.csproj.CopyComplete
+C:\Users\danie\source\repos\FishingMania\Data\FishingMania.Data.Models\obj\Debug\net6.0\FishingMania.Data.Models.dll
+C:\Users\danie\source\repos\FishingMania\Data\FishingMania.Data.Models\obj\Debug\net6.0\refint\FishingMania.Data.Models.dll
+C:\Users\danie\source\repos\FishingMania\Data\FishingMania.Data.Models\obj\Debug\net6.0\FishingMania.Data.Models.pdb
+C:\Users\danie\source\repos\FishingMania\Data\FishingMania.Data.Models\obj\Debug\net6.0\ref\FishingMania.Data.Models.dll

@@ -5,17 +5,14 @@
     using System.IO;
     using System.Threading.Tasks;
 
+    using CommandLine;
     using FishingMania.Data;
     using FishingMania.Data.Common;
     using FishingMania.Data.Common.Repositories;
     using FishingMania.Data.Models;
     using FishingMania.Data.Repositories;
     using FishingMania.Data.Seeding;
-    using FishingMania.Services.Data;
     using FishingMania.Services.Messaging;
-
-    using CommandLine;
-
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
@@ -52,9 +49,8 @@
         {
             var sw = Stopwatch.StartNew();
 
-            var settingsService = serviceProvider.GetService<ISettingsService>();
-            Console.WriteLine($"Count of settings: {settingsService.GetCount()}");
-
+            // var settingsService = serviceProvider.GetService<ISettingsService>();
+            // Console.WriteLine($"Count of settings: {settingsService.GetCount()}");
             Console.WriteLine(sw.Elapsed);
             return await Task.FromResult(0);
         }
@@ -81,7 +77,6 @@
 
             // Application services
             services.AddTransient<IEmailSender, NullMessageSender>();
-            services.AddTransient<ISettingsService, SettingsService>();
         }
     }
 }

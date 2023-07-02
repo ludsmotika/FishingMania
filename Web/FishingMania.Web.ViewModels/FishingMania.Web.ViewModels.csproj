@@ -23,4 +23,8 @@
     <ProjectReference Include="..\..\Services\FishingMania.Services.Mapping\FishingMania.Services.Mapping.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Administration\" />
+  </ItemGroup>
+
 </Project>

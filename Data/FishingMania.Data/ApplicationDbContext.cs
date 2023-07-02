@@ -3,6 +3,8 @@
     using System;
     using System.Linq;
     using System.Reflection;
+    using System.Reflection.Emit;
+    using System.Security.Claims;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -24,7 +26,15 @@
         {
         }
 
-        public DbSet<Setting> Settings { get; set; }
+        public DbSet<FishingSpot> FishingSpots { get; set; }
+
+        public DbSet<Catch> Catches { get; set; }
+
+        public DbSet<FishSpecies> FishSpecies { get; set; }
+
+        public DbSet<FishSpeciesFishingSpots> FishSpeciesFishingSpots { get; set; }
+
+        public DbSet<Image> Images { get; set; }
 
         public override int SaveChanges() => this.SaveChanges(true);
 
@@ -47,6 +57,13 @@
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            builder.Entity<FishSpeciesFishingSpots>()
+                   .HasKey(fs => new { fs.FishSpeciesId, fs.FishingSpotId });
+
+            builder.Entity<Catch>().Property(c => c.FishWeight).HasPrecision(12, 10);
+            builder.Entity<FishingSpot>().Property(fs => fs.Latitude).HasPrecision(12, 10);
+            builder.Entity<FishingSpot>().Property(fs => fs.Longitude).HasPrecision(12, 10);
+
             // Needed for Identity models configuration
             base.OnModelCreating(builder);
 

@@ -21,12 +21,8 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Data\FishingMania.Data.Common\FishingMania.Data.Common.csproj" />
     <ProjectReference Include="..\..\Data\FishingMania.Data.Models\FishingMania.Data.Models.csproj" />
+    <ProjectReference Include="..\..\Web\FishingMania.Web.ViewModels\FishingMania.Web.ViewModels.csproj" />
     <ProjectReference Include="..\FishingMania.Services.Mapping\FishingMania.Services.Mapping.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Contracts\" />
-    <Folder Include="Services\" />
   </ItemGroup>
 
 </Project>

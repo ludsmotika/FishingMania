@@ -78,3 +78,5 @@ C:\Users\danie\source\repos\FishingMania\Tests\Sandbox\obj\Debug\net6.0\refint\S
 C:\Users\danie\source\repos\FishingMania\Tests\Sandbox\obj\Debug\net6.0\Sandbox.pdb
 C:\Users\danie\source\repos\FishingMania\Tests\Sandbox\obj\Debug\net6.0\Sandbox.genruntimeconfig.cache
 C:\Users\danie\source\repos\FishingMania\Tests\Sandbox\obj\Debug\net6.0\ref\Sandbox.dll
+C:\Users\danie\source\repos\FishingMania\Tests\Sandbox\bin\Debug\net6.0\FishingMania.Web.ViewModels.dll
+C:\Users\danie\source\repos\FishingMania\Tests\Sandbox\bin\Debug\net6.0\FishingMania.Web.ViewModels.pdb

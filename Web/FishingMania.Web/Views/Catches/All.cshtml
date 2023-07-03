@@ -1,0 +1,18 @@
+﻿@using FishingMania.Web.ViewModels.Catch;
+@model List<CatchViewModel>
+@{
+    this.ViewData["Title"] = "Catches Page";
+}
+
+<div class="col-md-12 d-flex bg-primary rounded-pill">
+    <h1 class="text-white text-center m-5"><strong>All the catches</strong></h1>
+    <a class="btn my-auto ms-auto m-3 bg-white text-primary" asp-controller="Catches" asp-action="Mine">My catches</a>
+    <a class="btn my-auto m-3 bg-white text-primary" asp-controller="Catches" asp-action="Add">Add new catch</a>
+</div>
+
+<div class="d-flex">
+    @foreach (var currentCatch in Model)
+    {
+        <partial name="~/Views/Shared/Catches/_CatchPartialView.cshtml" for="@currentCatch" />
+    }
+</div>

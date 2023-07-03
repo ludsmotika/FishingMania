@@ -166,3 +166,5 @@ C:\Users\danie\source\repos\FishingMania\Tests\FishingMania.Services.Data.Tests\
 C:\Users\danie\source\repos\FishingMania\Tests\FishingMania.Services.Data.Tests\obj\Debug\net6.0\FishingMania.Services.Data.Tests.pdb
 C:\Users\danie\source\repos\FishingMania\Tests\FishingMania.Services.Data.Tests\obj\Debug\net6.0\FishingMania.Services.Data.Tests.genruntimeconfig.cache
 C:\Users\danie\source\repos\FishingMania\Tests\FishingMania.Services.Data.Tests\obj\Debug\net6.0\ref\FishingMania.Services.Data.Tests.dll
+C:\Users\danie\source\repos\FishingMania\Tests\FishingMania.Services.Data.Tests\bin\Debug\net6.0\FishingMania.Web.ViewModels.dll
+C:\Users\danie\source\repos\FishingMania\Tests\FishingMania.Services.Data.Tests\bin\Debug\net6.0\FishingMania.Web.ViewModels.pdb

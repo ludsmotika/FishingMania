@@ -218,6 +218,9 @@ namespace FishingMania.Data.Migrations
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
+                    b.Property<int>("FishingSpotType")
+                        .HasColumnType("int");
+
                     b.Property<int>("ImageId")
                         .HasColumnType("int");
 

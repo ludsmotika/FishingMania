@@ -445,6 +445,20 @@
         "runtime": {
           "bin/placeholder/FishingMania.Services.Mapping.dll": {}
         }
+      },
+      "FishingMania.Web.ViewModels/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "FishingMania.Data.Models": "1.0.0",
+          "FishingMania.Services.Mapping": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/FishingMania.Web.ViewModels.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/FishingMania.Web.ViewModels.dll": {}
+        }
       }
     }
   },
@@ -1122,6 +1136,11 @@
       "type": "project",
       "path": "../FishingMania.Services.Mapping/FishingMania.Services.Mapping.csproj",
       "msbuildProject": "../FishingMania.Services.Mapping/FishingMania.Services.Mapping.csproj"
+    },
+    "FishingMania.Web.ViewModels/1.0.0": {
+      "type": "project",
+      "path": "../../Web/FishingMania.Web.ViewModels/FishingMania.Web.ViewModels.csproj",
+      "msbuildProject": "../../Web/FishingMania.Web.ViewModels/FishingMania.Web.ViewModels.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -1129,6 +1148,7 @@
       "FishingMania.Data.Common >= 1.0.0",
       "FishingMania.Data.Models >= 1.0.0",
       "FishingMania.Services.Mapping >= 1.0.0",
+      "FishingMania.Web.ViewModels >= 1.0.0",
       "StyleCop.Analyzers >= 1.2.0-beta.312"
     ]
   },
@@ -1167,6 +1187,9 @@
             },
             "C:\\Users\\danie\\source\\repos\\FishingMania\\Services\\FishingMania.Services.Mapping\\FishingMania.Services.Mapping.csproj": {
               "projectPath": "C:\\Users\\danie\\source\\repos\\FishingMania\\Services\\FishingMania.Services.Mapping\\FishingMania.Services.Mapping.csproj"
+            },
+            "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web.ViewModels\\FishingMania.Web.ViewModels.csproj": {
+              "projectPath": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web.ViewModels\\FishingMania.Web.ViewModels.csproj"
             }
           }
         }

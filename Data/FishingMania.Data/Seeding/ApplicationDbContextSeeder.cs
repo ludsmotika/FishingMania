@@ -26,6 +26,10 @@
             var seeders = new List<ISeeder>
                           {
                               new RolesSeeder(),
+                              new ImageSeeder(),
+                              new FishSpeciesSeeder(),
+                              new FishingSpotsSeeder(),
+                              new CatchesSeeder(),
                           };
 
             foreach (var seeder in seeders)

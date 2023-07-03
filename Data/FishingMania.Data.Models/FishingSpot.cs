@@ -25,6 +25,9 @@
         public decimal Longitude { get; set; }
 
         [Required]
+        public FishingSpotType FishingSpotType { get; set; }
+
+        [Required]
         public int ImageId { get; set; }
 
         [Required]

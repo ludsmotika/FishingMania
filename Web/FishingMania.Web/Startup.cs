@@ -8,6 +8,8 @@
     using FishingMania.Data.Models;
     using FishingMania.Data.Repositories;
     using FishingMania.Data.Seeding;
+    using FishingMania.Services.Data.Contracts;
+    using FishingMania.Services.Data.Services;
     using FishingMania.Services.Mapping;
     using FishingMania.Services.Messaging;
     using FishingMania.Web.ViewModels;
@@ -63,6 +65,8 @@
 
             // Application services
             services.AddTransient<IEmailSender, NullMessageSender>();
+            services.AddTransient<IFishingSpotService, FishingSpotService>();
+            services.AddTransient<ICatchesService, CatchesService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

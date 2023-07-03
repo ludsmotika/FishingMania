@@ -4941,7 +4941,8 @@
         "dependencies": {
           "FishingMania.Data.Common": "1.0.0",
           "FishingMania.Data.Models": "1.0.0",
-          "FishingMania.Services.Mapping": "1.0.0"
+          "FishingMania.Services.Mapping": "1.0.0",
+          "FishingMania.Web.ViewModels": "1.0.0"
         },
         "compile": {
           "bin/placeholder/FishingMania.Services.Data.dll": {}

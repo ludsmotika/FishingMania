@@ -3002,7 +3002,8 @@
         "dependencies": {
           "FishingMania.Data.Common": "1.0.0",
           "FishingMania.Data.Models": "1.0.0",
-          "FishingMania.Services.Mapping": "1.0.0"
+          "FishingMania.Services.Mapping": "1.0.0",
+          "FishingMania.Web.ViewModels": "1.0.0"
         },
         "compile": {
           "bin/placeholder/FishingMania.Services.Data.dll": {}
@@ -3022,6 +3023,20 @@
         },
         "runtime": {
           "bin/placeholder/FishingMania.Services.Mapping.dll": {}
+        }
+      },
+      "FishingMania.Web.ViewModels/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "FishingMania.Data.Models": "1.0.0",
+          "FishingMania.Services.Mapping": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/FishingMania.Web.ViewModels.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/FishingMania.Web.ViewModels.dll": {}
         }
       }
     }
@@ -9188,6 +9203,11 @@
       "type": "project",
       "path": "../../Services/FishingMania.Services.Mapping/FishingMania.Services.Mapping.csproj",
       "msbuildProject": "../../Services/FishingMania.Services.Mapping/FishingMania.Services.Mapping.csproj"
+    },
+    "FishingMania.Web.ViewModels/1.0.0": {
+      "type": "project",
+      "path": "../../Web/FishingMania.Web.ViewModels/FishingMania.Web.ViewModels.csproj",
+      "msbuildProject": "../../Web/FishingMania.Web.ViewModels/FishingMania.Web.ViewModels.csproj"
     }
   },
   "projectFileDependencyGroups": {

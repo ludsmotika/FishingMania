@@ -1817,7 +1817,8 @@
         "dependencies": {
           "FishingMania.Data.Common": "1.0.0",
           "FishingMania.Data.Models": "1.0.0",
-          "FishingMania.Services.Mapping": "1.0.0"
+          "FishingMania.Services.Mapping": "1.0.0",
+          "FishingMania.Web.ViewModels": "1.0.0"
         },
         "runtime": {
           "FishingMania.Services.Data.dll": {}
@@ -1829,6 +1830,15 @@
         },
         "runtime": {
           "FishingMania.Services.Mapping.dll": {}
+        }
+      },
+      "FishingMania.Web.ViewModels/1.0.0": {
+        "dependencies": {
+          "FishingMania.Data.Models": "1.0.0",
+          "FishingMania.Services.Mapping": "1.0.0"
+        },
+        "runtime": {
+          "FishingMania.Web.ViewModels.dll": {}
         }
       }
     }
@@ -2950,6 +2960,11 @@
       "sha512": ""
     },
     "FishingMania.Services.Mapping/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "FishingMania.Web.ViewModels/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

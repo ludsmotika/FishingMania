@@ -1,6 +1,18 @@
 {
   "Files": [
     {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\css\\custom\\catches.css",
+      "PackagePath": "staticwebassets\\css\\custom\\catches.css"
+    },
+    {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\css\\custom\\spots.css",
+      "PackagePath": "staticwebassets\\css\\custom\\spots.css"
+    },
+    {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\css\\custom\\store.css",
+      "PackagePath": "staticwebassets\\css\\custom\\store.css"
+    },
+    {
       "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

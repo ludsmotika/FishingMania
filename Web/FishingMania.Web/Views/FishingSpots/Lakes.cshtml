@@ -1,0 +1,24 @@
+﻿@using FishingMania.Web.ViewModels.FishingSpot;
+@model List<FishingSpotViewModel>
+@{
+    this.ViewData["Title"] = "Lakes Page";
+}
+
+<div>
+    <h1 class="text-primary text-center m-5"><strong>Lakes to fish on!</strong></h1>
+    <div class="container col-md-12 my-5">
+        <img class="w-100 gradientify rounded-5" src="https://upload.wikimedia.org/wikipedia/commons/a/a1/B%C3%A1tovce-lake-panorama.jpg" />
+        <div class="card-img-overlay col-md-4 font-weight-bold rounded-5 ml-auto mr-5 my-5 bg-dark bg-opacity-75">
+            <p class="text-white m-5">
+                A lake is a naturally occurring, relatively large body of water localized in a basin surrounded by dry land.A lake generally has a slower-moving flow than the inflow or outflow stream(s) that serve to feed or drain it. Most lakes are freshwater and account for almost all the world's surface freshwater, but some are salt lakes with salinities even higher than that of seawater.
+            </p>
+        </div>
+    </div>
+
+    <div class="d-flex">
+        @foreach (var spot in Model)
+        {
+            <partial name="~/Views/Shared/FishingSpots/_FishingSpotPartialView.cshtml" for="@spot" />
+        }
+    </div>
+</div>

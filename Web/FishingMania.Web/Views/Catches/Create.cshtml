@@ -1,7 +1,7 @@
 ﻿@using FishingMania.Web.ViewModels.Catch;
 @model CatchFormViewModel
 
-<form method="post" enctype="multipart/form-data" class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6 text-center text-primary font-weight-bold">
+<form method="post" enctype="multipart/form-data" class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6 text-center text-primary font-weight-bold text-lg">
     <div class="form-group">
         <label asp-for="@Model.Description"></label>
         <input asp-for="@Model.Description" class="form-control" />
@@ -41,7 +41,7 @@
         </select>
         <span asp-validation-for="@Model.FishSpeciesId" class="text-danger"></span>
     </div>
-    <button type="submit" class="btn btn-primary col-md-4">Submit</button>
+    <button type="submit" class="btn bg-primary text-white col-md-4">Submit</button>
 </form>
 
 

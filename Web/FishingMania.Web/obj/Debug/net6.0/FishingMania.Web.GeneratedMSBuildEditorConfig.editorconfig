@@ -40,12 +40,32 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0Y2hlc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/danie/source/repos/FishingMania/Web/FishingMania.Web/Views/Catches/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0Y2hlc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/danie/source/repos/FishingMania/Web/FishingMania.Web/Views/Catches/Mine.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0Y2hlc1xNaW5lLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/danie/source/repos/FishingMania/Web/FishingMania.Web/Views/FishingSpots/All.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmlzaGluZ1Nwb3RzXEFsbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/danie/source/repos/FishingMania/Web/FishingMania.Web/Views/FishingSpots/Dams.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmlzaGluZ1Nwb3RzXERhbXMuY3NodG1s
+[C:/Users/danie/source/repos/FishingMania/Web/FishingMania.Web/Views/FishingSpots/Lakes.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmlzaGluZ1Nwb3RzXExha2VzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/danie/source/repos/FishingMania/Web/FishingMania.Web/Views/FishingSpots/Reservoirs.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmlzaGluZ1Nwb3RzXFJlc2Vydm9pcnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/danie/source/repos/FishingMania/Web/FishingMania.Web/Views/FishingSpots/Rivers.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmlzaGluZ1Nwb3RzXFJpdmVycy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/danie/source/repos/FishingMania/Web/FishingMania.Web/Views/FishingSpots/Swamps.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmlzaGluZ1Nwb3RzXFN3YW1wcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/danie/source/repos/FishingMania/Web/FishingMania.Web/Views/Home/Index.cshtml]

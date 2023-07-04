@@ -33,7 +33,7 @@
         [AllowAnonymous]
         public async Task<IActionResult> All()
         {
-            List<CatchViewModel> catches = await this.catchesService.GetAllCatches();
+            List<CatchViewModel> catches = await this.catchesService.GetAllCatchesAsync();
             return this.View(catches);
         }
 
@@ -72,6 +72,49 @@
                 model.FishingSpots = await this.fishingSpotService.AllForInputAsync();
                 model.FishSpecies = await this.fishSpeciesService.AllForInputAsync();
                 return this.View(model);
+            }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Mine()
+        {
+            try
+            {
+                ApplicationUser applicationUser = await this.userManager.GetUserAsync(this.User);
+
+                if (applicationUser == null)
+                {
+                    return this.RedirectToAction("All", "Catches");
+                }
+
+                List<CatchViewModel> catchesOfUser = await this.catchesService.GetCatchesByUserIdAsync(applicationUser.Id);
+                return this.View(catchesOfUser);
+            }
+            catch (Exception ex)
+            {
+                this.ModelState.AddModelError(string.Empty, ex.Message);
+                return this.RedirectToAction("All", "Catches");
+            }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Details(int id)
+        {
+            // Get the post from the service, bind it to view model and pass it to the view
+            try
+            {
+                CatchDetailsViewModel catchModel = await this.catchesService.GetCatchByIdAsync(id);
+
+                if (catchModel == null)
+                {
+                    return this.RedirectToAction("All", "Catches");
+                }
+
+                return this.View(catchModel);
+            }
+            catch (Exception)
+            {
+                throw;
             }
         }
     }

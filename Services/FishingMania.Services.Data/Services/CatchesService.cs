@@ -1,10 +1,10 @@
 ﻿namespace FishingMania.Services.Data.Services
 {
     using System.Collections.Generic;
+    using System.Linq;
+    using System.Reflection.Metadata;
     using System.Threading.Tasks;
-    using System.Xml.Xsl;
-    using AutoMapper.Configuration.Annotations;
-    using CloudinaryDotNet.Actions;
+
     using FishingMania.Data.Common.Repositories;
     using FishingMania.Data.Models;
     using FishingMania.Services.Data.Contracts;
@@ -16,11 +16,15 @@
     {
         private readonly IDeletableEntityRepository<Catch> catchesRepository;
         private readonly IImageService imageService;
+        private readonly IFishingSpotService fishingSpotService;
+        private readonly IFishSpeciesService fishSpeciesService;
 
-        public CatchesService(IDeletableEntityRepository<Catch> catchesRepository, IImageService imageService)
+        public CatchesService(IDeletableEntityRepository<Catch> catchesRepository, IImageService imageService, IFishingSpotService fishingSpotService, IFishSpeciesService fishSpeciesService)
         {
             this.catchesRepository = catchesRepository;
             this.imageService = imageService;
+            this.fishingSpotService = fishingSpotService;
+            this.fishSpeciesService = fishSpeciesService;
         }
 
         public async Task CreateAsync(CatchFormViewModel model, string userId)
@@ -42,9 +46,29 @@
             await this.catchesRepository.SaveChangesAsync();
         }
 
-        public async Task<List<CatchViewModel>> GetAllCatches()
+        public async Task<List<CatchViewModel>> GetAllCatchesAsync()
         {
             return await this.catchesRepository.AllAsNoTracking().To<CatchViewModel>().ToListAsync();
+        }
+
+        public async Task<CatchDetailsViewModel> GetCatchByIdAsync(int id)
+        {
+            CatchDetailsViewModel catchViewModel = await this.catchesRepository.All().Where(x => x.Id == id).Include(p => p.FishingSpot.Image).Include(p => p.FishSpecies.Image).To<CatchDetailsViewModel>().FirstOrDefaultAsync();
+
+            //FishingSpot fishingSpot = await this.fishingSpotService.GetFishingSpotByIdAsync(catchViewModel.FishingSpotId);
+            //FishSpecies fishSpecies = await this.fishSpeciesService.GetFishSpeciesByIdAsync(catchViewModel.FishSpeciesId);
+
+            //catchViewModel.FishingSpot = fishingSpot;
+            //catchViewModel.FishSpecies = fishSpecies;
+
+            // Fill the model with the nested data
+            return catchViewModel;
+
+        }
+
+        public async Task<List<CatchViewModel>> GetCatchesByUserIdAsync(string id)
+        {
+            return await this.catchesRepository.All().Where(c => c.ApplicationUserId == id).To<CatchViewModel>().ToListAsync();
         }
     }
 }

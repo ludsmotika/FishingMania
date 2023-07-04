@@ -9,6 +9,6 @@
     {
         Task<Image> AddByFile(IFormFile imageFile, string name);
 
-        Task<Image> AddByUrlAsync(string Url);
+        Task<Image> GetImageByIdAsync(int id);
     }
 }

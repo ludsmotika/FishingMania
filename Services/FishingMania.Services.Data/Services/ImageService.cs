@@ -46,22 +46,9 @@
             }
         }
 
-        public async Task<Image> AddByUrlAsync(string url)
+        public Task<Image> GetImageByIdAsync(int id)
         {
-            Image image = await this.GetByUrlAsync(url);
-            if (image != null)
-            {
-                return image;
-            }
-
-            image = new Image()
-            {
-                URL = url,
-            };
-
-            await this.imagesRepository.AddAsync(image);
-            await this.imagesRepository.SaveChangesAsync();
-            return await this.GetByUrlAsync(image.URL);
+            return this.imagesRepository.All().Where(i => i.Id == id).FirstOrDefaultAsync();
         }
 
         private async Task<Image> GetByUrlAsync(string url)

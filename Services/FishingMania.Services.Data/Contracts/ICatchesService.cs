@@ -7,8 +7,12 @@
 
     public interface ICatchesService
     {
-        Task<List<CatchViewModel>> GetAllCatches();
+        Task<List<CatchViewModel>> GetAllCatchesAsync();
+
+        Task<List<CatchViewModel>> GetCatchesByUserIdAsync(string id);
 
         Task CreateAsync(CatchFormViewModel model, string userId);
+
+        Task<CatchDetailsViewModel> GetCatchByIdAsync(int id);
     }
 }

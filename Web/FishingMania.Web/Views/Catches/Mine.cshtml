@@ -1,0 +1,28 @@
+﻿@using FishingMania.Web.ViewModels.Catch;
+@model List<CatchViewModel>
+@inject SignInManager<ApplicationUser> SignInManager
+@{
+    this.ViewData["Title"] = "My Catches Page";
+}
+
+<div class="col-md-12 d-flex bg-primary rounded-pill m-5">
+    <h1 class="text-white text-center m-5"><strong>Your personal catches</strong></h1>
+</div>
+
+<div class="row">
+    @if(Model.Count==0)
+    {
+        <div class="col-md-6 offset-3 text-center">
+            <h3 class="text-primary font-weight-bold my-3">You haven't uploaded any posts. If you want to become part of the fishing family you can make your first post right now</h3>
+            <a class="btn my-auto m-3 bg-primary text-white ms-auto my-5" asp-controller="Catches" asp-action="Create">Add new catch</a>
+        </div>
+    }
+    else
+    {
+        @foreach (var currentCatch in Model)
+        {
+            <partial name="~/Views/Shared/Catches/_CatchPartialView.cshtml" for="@currentCatch" />
+        }
+    }
+
+</div>

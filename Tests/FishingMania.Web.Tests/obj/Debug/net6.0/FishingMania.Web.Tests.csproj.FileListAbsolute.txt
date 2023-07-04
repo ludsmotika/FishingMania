@@ -664,3 +664,6 @@ C:\Users\danie\source\repos\FishingMania\Tests\FishingMania.Web.Tests\obj\Debug\
 C:\Users\danie\source\repos\FishingMania\Tests\FishingMania.Web.Tests\obj\Debug\net6.0\FishingMania.Web.Tests.pdb
 C:\Users\danie\source\repos\FishingMania\Tests\FishingMania.Web.Tests\obj\Debug\net6.0\FishingMania.Web.Tests.genruntimeconfig.cache
 C:\Users\danie\source\repos\FishingMania\Tests\FishingMania.Web.Tests\obj\Debug\net6.0\ref\FishingMania.Web.Tests.dll
+C:\Users\danie\source\repos\FishingMania\Tests\FishingMania.Web.Tests\bin\Debug\net6.0\CloudinaryDotNet.dll
+C:\Users\danie\source\repos\FishingMania\Tests\FishingMania.Web.Tests\bin\Debug\net6.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\danie\source\repos\FishingMania\Tests\FishingMania.Web.Tests\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll

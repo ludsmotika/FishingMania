@@ -1,7 +1,7 @@
 ﻿@using FishingMania.Web.ViewModels.Catch;
 @model CatchViewModel
 
-<div class="post col-md-3 m-5">
+<a asp-action="Details" asp-controller="Catches" asp-route-id="@Model.Id" class="post col-md-3 m-5 bg-primary-subtle bg-opacity-25 text-decoration-none text-primary font-weight-bold">
     <div class="post-image">
         <img src="@Model.Image.URL" alt="Fish Image">
         <div class="fish-weight">@Math.Round(Model.FishWeight,3) kg</div>
@@ -9,4 +9,4 @@
     <div class="post-description">
         <p>@Model.Description</p>
     </div>
-</div>
+</a>

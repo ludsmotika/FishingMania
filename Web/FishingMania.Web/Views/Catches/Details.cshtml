@@ -1,0 +1,28 @@
+﻿@using FishingMania.Web.ViewModels.Catch;
+@model CatchDetailsViewModel
+
+@*check if the current user is the owner of the post and make option for editing the post*@
+
+<div class="container my-5">
+    <div class="row bg-primary rounded-5 text-white display-6">
+        <div class="col-md-6 rounded-3">
+            <img src="@Model.Image.URL" alt="Fish Image" class="img-fluid rounded-5 w-100 my-4">
+            <div class="text-center bg-dark bg-opacity-75 font-weight-bold rounded-1">
+                <h2>@Model.Description</h2>
+            </div>
+        </div>
+        <div class="col-md-6 text-center bg-dark bg-opacity-75 font-weight-bold my-5 rounded-5">
+            <div class="mb-3">
+                <span class="font-weight-bold">Fish Weight:</span> @Math.Round(Model.FishWeight,3) kg.
+            </div>
+            <div class="mb-3">
+                <span class="font-weight-bold">Fish Species:</span>
+                <img class="col-md-6 rounded-5" src="@Model.FishSpecies.Image.URL" />
+            </div>
+            <div class="mb-3">
+                <span class="font-weight-bold">Fishing Spot:</span>
+                <img class="col-md-6 rounded-5" src="@Model.FishingSpot.Image.URL" />
+            </div>
+        </div>
+    </div>
+</div>

@@ -80,3 +80,15 @@ C:\Users\danie\source\repos\FishingMania\Tests\Sandbox\obj\Debug\net6.0\Sandbox.
 C:\Users\danie\source\repos\FishingMania\Tests\Sandbox\obj\Debug\net6.0\ref\Sandbox.dll
 C:\Users\danie\source\repos\FishingMania\Tests\Sandbox\bin\Debug\net6.0\FishingMania.Web.ViewModels.dll
 C:\Users\danie\source\repos\FishingMania\Tests\Sandbox\bin\Debug\net6.0\FishingMania.Web.ViewModels.pdb
+C:\Users\danie\source\repos\FishingMania\Tests\Sandbox\bin\Debug\net6.0\CloudinaryDotNet.dll
+C:\Users\danie\source\repos\FishingMania\Tests\Sandbox\bin\Debug\net6.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\danie\source\repos\FishingMania\Tests\Sandbox\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.Razor.Extensions.dll
+C:\Users\danie\source\repos\FishingMania\Tests\Sandbox\bin\Debug\net6.0\Microsoft.AspNetCore.Razor.Language.dll
+C:\Users\danie\source\repos\FishingMania\Tests\Sandbox\bin\Debug\net6.0\Microsoft.CodeAnalysis.dll
+C:\Users\danie\source\repos\FishingMania\Tests\Sandbox\bin\Debug\net6.0\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\danie\source\repos\FishingMania\Tests\Sandbox\bin\Debug\net6.0\Microsoft.CodeAnalysis.Razor.dll
+C:\Users\danie\source\repos\FishingMania\Tests\Sandbox\bin\Debug\net6.0\Microsoft.DotNet.PlatformAbstractions.dll
+C:\Users\danie\source\repos\FishingMania\Tests\Sandbox\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\danie\source\repos\FishingMania\Tests\Sandbox\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
+C:\Users\danie\source\repos\FishingMania\Tests\Sandbox\bin\Debug\net6.0\FishingMania.Web.Infrastructure.dll
+C:\Users\danie\source\repos\FishingMania\Tests\Sandbox\bin\Debug\net6.0\FishingMania.Web.Infrastructure.pdb

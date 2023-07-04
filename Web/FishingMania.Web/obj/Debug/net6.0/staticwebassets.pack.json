@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\css\\custom\\catches.css"
     },
     {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\css\\custom\\home.css",
+      "PackagePath": "staticwebassets\\css\\custom\\home.css"
+    },
+    {
       "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\css\\custom\\spots.css",
       "PackagePath": "staticwebassets\\css\\custom\\spots.css"
     },
@@ -23,6 +27,14 @@
     {
       "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\js\\jquery-override.js",
+      "PackagePath": "staticwebassets\\js\\jquery-override.js"
+    },
+    {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\js\\showPhotoWhenUploaded.js",
+      "PackagePath": "staticwebassets\\js\\showPhotoWhenUploaded.js"
     },
     {
       "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\js\\site.js",

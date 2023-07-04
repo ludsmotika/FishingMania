@@ -19,3 +19,7 @@ C:\Users\danie\source\repos\FishingMania\Services\FishingMania.Services.Data\obj
 C:\Users\danie\source\repos\FishingMania\Services\FishingMania.Services.Data\obj\Debug\net6.0\ref\FishingMania.Services.Data.dll
 C:\Users\danie\source\repos\FishingMania\Services\FishingMania.Services.Data\bin\Debug\net6.0\FishingMania.Web.ViewModels.dll
 C:\Users\danie\source\repos\FishingMania\Services\FishingMania.Services.Data\bin\Debug\net6.0\FishingMania.Web.ViewModels.pdb
+C:\Users\danie\source\repos\FishingMania\Services\FishingMania.Services.Data\bin\Debug\net6.0\FishingMania.Common.dll
+C:\Users\danie\source\repos\FishingMania\Services\FishingMania.Services.Data\bin\Debug\net6.0\FishingMania.Web.Infrastructure.dll
+C:\Users\danie\source\repos\FishingMania\Services\FishingMania.Services.Data\bin\Debug\net6.0\FishingMania.Common.pdb
+C:\Users\danie\source\repos\FishingMania\Services\FishingMania.Services.Data\bin\Debug\net6.0\FishingMania.Web.Infrastructure.pdb

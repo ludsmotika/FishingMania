@@ -8,5 +8,7 @@
     public interface ICatchesService
     {
         Task<List<CatchViewModel>> GetAllCatches();
+
+        Task CreateAsync(CatchFormViewModel model, string userId);
     }
 }

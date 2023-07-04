@@ -21,12 +21,22 @@
             this.fishingSpotsRepository = fishingSpotsRepository;
         }
 
-        public async Task<List<FishingSpotViewModel>> GetAllFishingSpots()
+        public async Task<List<FishingSpotDropdownViewModel>> AllForInputAsync()
+        {
+            List<FishingSpotDropdownViewModel> fishingSpots =
+                await this.fishingSpotsRepository.All()
+                                                 .Select(fs => new FishingSpotDropdownViewModel() { Id = fs.Id, Name = fs.Name })
+                                                 .ToListAsync();
+
+            return fishingSpots;
+        }
+
+        public async Task<List<FishingSpotViewModel>> GetAllFishingSpotsAsync()
         {
             return await this.fishingSpotsRepository.AllAsNoTracking().To<FishingSpotViewModel>().ToListAsync();
         }
 
-        public async Task<List<FishingSpotViewModel>> GetAllFishingSpotsByType(FishingSpotType type)
+        public async Task<List<FishingSpotViewModel>> GetAllFishingSpotsByTypeAsync(FishingSpotType type)
         {
             return await this.fishingSpotsRepository.AllAsNoTracking().Where(x => x.FishingSpotType == type).To<FishingSpotViewModel>().ToListAsync();
         }

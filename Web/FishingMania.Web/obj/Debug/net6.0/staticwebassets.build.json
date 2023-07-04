@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "4CA2MCJbR2UAJIL61kZKeX99SkUR4cAhHsRAeTN/LtY=",
+  "Hash": "1di0NSIE3JjsAAygHLp/FsajNcnAKYb5eYYHQk8g3eQ=",
   "Source": "FishingMania.Web",
   "BasePath": "_content/FishingMania.Web",
   "Mode": "Default",
@@ -1054,6 +1054,23 @@
       "OriginalItemSpec": "wwwroot\\css\\custom\\catches.css"
     },
     {
+      "Identity": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\css\\custom\\home.css",
+      "SourceId": "FishingMania.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\",
+      "BasePath": "_content/FishingMania.Web",
+      "RelativePath": "css/custom/home.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\custom\\home.css"
+    },
+    {
       "Identity": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\css\\custom\\spots.css",
       "SourceId": "FishingMania.Web",
       "SourceType": "Discovered",
@@ -1137,6 +1154,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\js\\jquery-override.js",
+      "SourceId": "FishingMania.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\",
+      "BasePath": "_content/FishingMania.Web",
+      "RelativePath": "js/jquery-override.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\jquery-override.js"
+    },
+    {
+      "Identity": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\js\\showPhotoWhenUploaded.js",
+      "SourceId": "FishingMania.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\",
+      "BasePath": "_content/FishingMania.Web",
+      "RelativePath": "js/showPhotoWhenUploaded.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\showPhotoWhenUploaded.js"
     },
     {
       "Identity": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\js\\site.js",

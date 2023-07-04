@@ -351,6 +351,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "CloudinaryDotNet": {
+              "target": "Package",
+              "version": "[1.20.0, )"
+            },
             "StyleCop.Analyzers": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers",
               "suppressParent": "All",
@@ -695,7 +699,11 @@
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\danie\\source\\repos\\FishingMania\\FishingMania.Common\\FishingMania.Common.csproj": {
+                "projectPath": "C:\\Users\\danie\\source\\repos\\FishingMania\\FishingMania.Common\\FishingMania.Common.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -708,6 +716,14 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Http.Features": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Mvc": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
             "StyleCop.Analyzers": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers",
               "suppressParent": "All",
@@ -764,6 +780,9 @@
               },
               "C:\\Users\\danie\\source\\repos\\FishingMania\\Services\\FishingMania.Services.Mapping\\FishingMania.Services.Mapping.csproj": {
                 "projectPath": "C:\\Users\\danie\\source\\repos\\FishingMania\\Services\\FishingMania.Services.Mapping\\FishingMania.Services.Mapping.csproj"
+              },
+              "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web.Infrastructure\\FishingMania.Web.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web.Infrastructure\\FishingMania.Web.Infrastructure.csproj"
               }
             }
           }
@@ -778,6 +797,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Http.Features": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
             "StyleCop.Analyzers": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers",
               "suppressParent": "All",

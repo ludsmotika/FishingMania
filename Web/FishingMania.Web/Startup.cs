@@ -1,7 +1,8 @@
 ﻿namespace FishingMania.Web
 {
+    using System.Configuration;
     using System.Reflection;
-
+    using CloudinaryDotNet;
     using FishingMania.Data;
     using FishingMania.Data.Common;
     using FishingMania.Data.Common.Repositories;
@@ -12,6 +13,7 @@
     using FishingMania.Services.Data.Services;
     using FishingMania.Services.Mapping;
     using FishingMania.Services.Messaging;
+    using FishingMania.Web.Infrastructure.ModelBinders;
     using FishingMania.Web.ViewModels;
 
     using Microsoft.AspNetCore.Builder;
@@ -52,7 +54,9 @@
                 options =>
                     {
                         options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
-                    }).AddRazorRuntimeCompilation();
+                    }).AddRazorRuntimeCompilation()
+                    .AddMvcOptions(options => options.ModelBinderProviders.Insert(0, new DecimalModelBinderProvider()));
+
             services.AddRazorPages();
             services.AddDatabaseDeveloperPageExceptionFilter();
 
@@ -67,6 +71,17 @@
             services.AddTransient<IEmailSender, NullMessageSender>();
             services.AddTransient<IFishingSpotService, FishingSpotService>();
             services.AddTransient<ICatchesService, CatchesService>();
+            services.AddTransient<IFishSpeciesService, FishSpeciesService>();
+            services.AddTransient<ICloudinaryService, CloudinaryService>();
+            services.AddTransient<IImageService, ImageService>();
+
+            // Cloudinary service
+            var cloudinarySettings = this.configuration.GetSection("CloudinarySettings");
+
+            Account account = new Account(cloudinarySettings["CloudName"], cloudinarySettings["ApiKey"], cloudinarySettings["ApiSecret"]);
+
+            Cloudinary cloudinary = new Cloudinary(account);
+            services.AddSingleton(cloudinary);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

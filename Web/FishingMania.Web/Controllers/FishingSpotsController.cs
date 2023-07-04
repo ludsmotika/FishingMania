@@ -22,14 +22,14 @@
         [AllowAnonymous]
         public async Task<IActionResult> All()
         {
-            List<FishingSpotViewModel> fishingSpots = await this.fishingSpotService.GetAllFishingSpots();
+            List<FishingSpotViewModel> fishingSpots = await this.fishingSpotService.GetAllFishingSpotsAsync();
             return this.View(fishingSpots);
         }
 
         [AllowAnonymous]
         public async Task<IActionResult> Dams()
         {
-            List<FishingSpotViewModel> fishingSpots = await this.fishingSpotService.GetAllFishingSpotsByType(FishingSpotType.Dam);
+            List<FishingSpotViewModel> fishingSpots = await this.fishingSpotService.GetAllFishingSpotsByTypeAsync(FishingSpotType.Dam);
             return this.View(fishingSpots);
         }
     }

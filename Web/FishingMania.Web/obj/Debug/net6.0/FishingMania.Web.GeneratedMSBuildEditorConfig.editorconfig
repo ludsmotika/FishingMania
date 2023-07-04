@@ -36,6 +36,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0Y2hlc1xBbGwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/danie/source/repos/FishingMania/Web/FishingMania.Web/Views/Catches/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0Y2hlc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/danie/source/repos/FishingMania/Web/FishingMania.Web/Views/FishingSpots/All.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmlzaGluZ1Nwb3RzXEFsbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -46,10 +50,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/danie/source/repos/FishingMania/Web/FishingMania.Web/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/danie/source/repos/FishingMania/Web/FishingMania.Web/Views/Home/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/danie/source/repos/FishingMania/Web/FishingMania.Web/Views/Shared/Catches/_CatchPartialView.cshtml]

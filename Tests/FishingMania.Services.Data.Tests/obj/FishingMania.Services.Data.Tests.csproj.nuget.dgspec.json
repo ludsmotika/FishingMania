@@ -351,6 +351,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "CloudinaryDotNet": {
+              "target": "Package",
+              "version": "[1.20.0, )"
+            },
             "StyleCop.Analyzers": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers",
               "suppressParent": "All",
@@ -537,6 +541,81 @@
         }
       }
     },
+    "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web.Infrastructure\\FishingMania.Web.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web.Infrastructure\\FishingMania.Web.Infrastructure.csproj",
+        "projectName": "FishingMania.Web.Infrastructure",
+        "projectPath": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web.Infrastructure\\FishingMania.Web.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\danie\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web.Infrastructure\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\danie\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\danie\\source\\repos\\FishingMania\\FishingMania.Common\\FishingMania.Common.csproj": {
+                "projectPath": "C:\\Users\\danie\\source\\repos\\FishingMania\\FishingMania.Common\\FishingMania.Common.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Http.Features": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Mvc": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "StyleCop.Analyzers": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.2.0-beta.312, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
     "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web.ViewModels\\FishingMania.Web.ViewModels.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -566,6 +645,9 @@
               },
               "C:\\Users\\danie\\source\\repos\\FishingMania\\Services\\FishingMania.Services.Mapping\\FishingMania.Services.Mapping.csproj": {
                 "projectPath": "C:\\Users\\danie\\source\\repos\\FishingMania\\Services\\FishingMania.Services.Mapping\\FishingMania.Services.Mapping.csproj"
+              },
+              "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web.Infrastructure\\FishingMania.Web.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web.Infrastructure\\FishingMania.Web.Infrastructure.csproj"
               }
             }
           }
@@ -580,6 +662,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Http.Features": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
             "StyleCop.Analyzers": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers",
               "suppressParent": "All",

@@ -17,3 +17,7 @@ C:\Users\danie\source\repos\FishingMania\Web\FishingMania.Web.ViewModels\obj\Deb
 C:\Users\danie\source\repos\FishingMania\Web\FishingMania.Web.ViewModels\obj\Debug\net6.0\refint\FishingMania.Web.ViewModels.dll
 C:\Users\danie\source\repos\FishingMania\Web\FishingMania.Web.ViewModels\obj\Debug\net6.0\FishingMania.Web.ViewModels.pdb
 C:\Users\danie\source\repos\FishingMania\Web\FishingMania.Web.ViewModels\obj\Debug\net6.0\ref\FishingMania.Web.ViewModels.dll
+C:\Users\danie\source\repos\FishingMania\Web\FishingMania.Web.ViewModels\bin\Debug\net6.0\FishingMania.Common.dll
+C:\Users\danie\source\repos\FishingMania\Web\FishingMania.Web.ViewModels\bin\Debug\net6.0\FishingMania.Web.Infrastructure.dll
+C:\Users\danie\source\repos\FishingMania\Web\FishingMania.Web.ViewModels\bin\Debug\net6.0\FishingMania.Web.Infrastructure.pdb
+C:\Users\danie\source\repos\FishingMania\Web\FishingMania.Web.ViewModels\bin\Debug\net6.0\FishingMania.Common.pdb

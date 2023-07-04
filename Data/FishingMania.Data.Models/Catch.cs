@@ -26,6 +26,7 @@
         public ApplicationUser ApplicationUser { get; set; }
 
         [Required]
+        [Range(typeof(decimal), MinFishWeight, MaxFishWeight)]
         public decimal FishWeight { get; set; }
 
         [Required]

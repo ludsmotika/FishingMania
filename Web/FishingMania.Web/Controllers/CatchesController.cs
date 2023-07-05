@@ -98,6 +98,7 @@
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public async Task<IActionResult> Details(int id)
         {
             // Get the post from the service, bind it to view model and pass it to the view

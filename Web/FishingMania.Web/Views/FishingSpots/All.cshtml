@@ -6,7 +6,7 @@
 
 <h1 class="text-primary text-center m-5"><strong>All fishing spots!</strong></h1>
 
-<div class="d-flex">
+<div class="d-flex col-md-12 row">
     @foreach (var spot in Model)
     {
         <partial name="~/Views/Shared/FishingSpots/_FishingSpotPartialView.cshtml" for="@spot"/>

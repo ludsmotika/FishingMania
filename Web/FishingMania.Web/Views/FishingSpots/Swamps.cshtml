@@ -7,7 +7,7 @@
 <div>
     <h1 class="text-primary text-center m-5"><strong>Swamps to fish on!</strong></h1>
     <div class="container col-md-12 my-5">
-        <img class="w-100 gradientify rounded-5" src="https://www.shutterbug.com/images/styles/960-wide/public/photopost/data/500/7695beaver_dam_panorama_copy1.jpg" />
+        <img class="w-100 gradientify rounded-5" src="~/img/other/swampPanorama.jpg" />
         <div class="card-img-overlay col-md-4 font-weight-bold rounded-5 ml-auto mr-5 my-5 bg-dark bg-opacity-75">
             <p class="text-white m-5">
                 A swamp is a forested wetland. Swamps are considered to be transition zones because both land and water play a role in creating this environment. Swamps vary in size and are located all around the world. The water of a swamp may be fresh water, brackish water, or seawater.
@@ -15,7 +15,7 @@
         </div>
     </div>
 
-    <div class="d-flex">
+    <div class="d-flex row">
         @foreach (var spot in Model)
         {
             <partial name="~/Views/Shared/FishingSpots/_FishingSpotPartialView.cshtml" for="@spot" />

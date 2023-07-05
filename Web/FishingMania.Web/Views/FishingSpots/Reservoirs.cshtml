@@ -7,7 +7,7 @@
 <div>
     <h1 class="text-primary text-center m-5"><strong>Reservoirs to fish on!</strong></h1>
     <div class="container col-md-12 my-5">
-        <img class="w-100 gradientify rounded-5" src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Hoover_Dam_Panorama.jpg" />
+        <img class="w-100 gradientify rounded-5" src="~/img/other/reservoirPanorama.jpg" />
         <div class="card-img-overlay col-md-4 font-weight-bold rounded-5 ml-auto mr-5 my-5 bg-dark bg-opacity-75">
             <p class="text-white m-5">
                 A reservoir is an enlarged lake behind a dam. Such a dam may be either artificial, built to store fresh water or it may be a natural formation. Reservoirs can be created in a number of ways, including controlling a watercourse that drains an existing body of water, interrupting a watercourse to form an embayment within it, through excavation, or building any number of retaining walls or levees.
@@ -15,7 +15,7 @@
         </div>
     </div>
 
-    <div class="d-flex">
+    <div class="d-flex row">
         @foreach (var spot in Model)
         {
             <partial name="~/Views/Shared/FishingSpots/_FishingSpotPartialView.cshtml" for="@spot" />

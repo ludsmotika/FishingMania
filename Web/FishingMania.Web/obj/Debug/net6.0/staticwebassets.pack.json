@@ -29,6 +29,174 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\img\\catches\\carpCatch.jpg",
+      "PackagePath": "staticwebassets\\img\\catches\\carpCatch.jpg"
+    },
+    {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\img\\catches\\pikeCatch.jpg",
+      "PackagePath": "staticwebassets\\img\\catches\\pikeCatch.jpg"
+    },
+    {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\img\\fishSpecies\\bass.jpg",
+      "PackagePath": "staticwebassets\\img\\fishSpecies\\bass.jpg"
+    },
+    {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\img\\fishSpecies\\carp.png",
+      "PackagePath": "staticwebassets\\img\\fishSpecies\\carp.png"
+    },
+    {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\img\\fishSpecies\\catfish.jpg",
+      "PackagePath": "staticwebassets\\img\\fishSpecies\\catfish.jpg"
+    },
+    {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\img\\fishSpecies\\chub.png",
+      "PackagePath": "staticwebassets\\img\\fishSpecies\\chub.png"
+    },
+    {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\img\\fishSpecies\\commonBleak.jpg",
+      "PackagePath": "staticwebassets\\img\\fishSpecies\\commonBleak.jpg"
+    },
+    {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\img\\fishSpecies\\commonNase.jpg",
+      "PackagePath": "staticwebassets\\img\\fishSpecies\\commonNase.jpg"
+    },
+    {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\img\\fishSpecies\\crucianCarp.jpg",
+      "PackagePath": "staticwebassets\\img\\fishSpecies\\crucianCarp.jpg"
+    },
+    {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\img\\fishSpecies\\garfish.jpg",
+      "PackagePath": "staticwebassets\\img\\fishSpecies\\garfish.jpg"
+    },
+    {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\img\\fishSpecies\\perch.jpg",
+      "PackagePath": "staticwebassets\\img\\fishSpecies\\perch.jpg"
+    },
+    {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\img\\fishSpecies\\pike.jpg",
+      "PackagePath": "staticwebassets\\img\\fishSpecies\\pike.jpg"
+    },
+    {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\img\\fishSpecies\\rudd.jpg",
+      "PackagePath": "staticwebassets\\img\\fishSpecies\\rudd.jpg"
+    },
+    {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\img\\fishSpecies\\silverCarp.jpg",
+      "PackagePath": "staticwebassets\\img\\fishSpecies\\silverCarp.jpg"
+    },
+    {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\img\\fishSpecies\\trout.jpg",
+      "PackagePath": "staticwebassets\\img\\fishSpecies\\trout.jpg"
+    },
+    {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\img\\fishSpecies\\whiteBarbel.png",
+      "PackagePath": "staticwebassets\\img\\fishSpecies\\whiteBarbel.png"
+    },
+    {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\img\\fishSpecies\\whiteCarp.png",
+      "PackagePath": "staticwebassets\\img\\fishSpecies\\whiteCarp.png"
+    },
+    {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\img\\fishingSpots\\akrutino.jpg",
+      "PackagePath": "staticwebassets\\img\\fishingSpots\\akrutino.jpg"
+    },
+    {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\img\\fishingSpots\\alepu.jpeg",
+      "PackagePath": "staticwebassets\\img\\fishingSpots\\alepu.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\img\\fishingSpots\\batak.jpg",
+      "PackagePath": "staticwebassets\\img\\fishingSpots\\batak.jpg"
+    },
+    {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\img\\fishingSpots\\dospad.jpg",
+      "PackagePath": "staticwebassets\\img\\fishingSpots\\dospad.jpg"
+    },
+    {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\img\\fishingSpots\\drenovDol.jpg",
+      "PackagePath": "staticwebassets\\img\\fishingSpots\\drenovDol.jpg"
+    },
+    {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\img\\fishingSpots\\dunav.jpg",
+      "PackagePath": "staticwebassets\\img\\fishingSpots\\dunav.jpg"
+    },
+    {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\img\\fishingSpots\\iskar.jpg",
+      "PackagePath": "staticwebassets\\img\\fishingSpots\\iskar.jpg"
+    },
+    {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\img\\fishingSpots\\kamchiq.jpg",
+      "PackagePath": "staticwebassets\\img\\fishingSpots\\kamchiq.jpg"
+    },
+    {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\img\\fishingSpots\\kleptuza.jpg",
+      "PackagePath": "staticwebassets\\img\\fishingSpots\\kleptuza.jpg"
+    },
+    {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\img\\fishingSpots\\ledenoto.jpg",
+      "PackagePath": "staticwebassets\\img\\fishingSpots\\ledenoto.jpg"
+    },
+    {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\img\\fishingSpots\\marica.jpg",
+      "PackagePath": "staticwebassets\\img\\fishingSpots\\marica.jpg"
+    },
+    {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\img\\fishingSpots\\orlovo.jpg",
+      "PackagePath": "staticwebassets\\img\\fishingSpots\\orlovo.jpg"
+    },
+    {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\img\\fishingSpots\\pancharevo.jpg",
+      "PackagePath": "staticwebassets\\img\\fishingSpots\\pancharevo.jpg"
+    },
+    {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\img\\fishingSpots\\popovo.jpg",
+      "PackagePath": "staticwebassets\\img\\fishingSpots\\popovo.jpg"
+    },
+    {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\img\\fishingSpots\\ropotamo.jpg",
+      "PackagePath": "staticwebassets\\img\\fishingSpots\\ropotamo.jpg"
+    },
+    {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\img\\fishingSpots\\sreburna.jpg",
+      "PackagePath": "staticwebassets\\img\\fishingSpots\\sreburna.jpg"
+    },
+    {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\img\\fishingSpots\\struma.jpg",
+      "PackagePath": "staticwebassets\\img\\fishingSpots\\struma.jpg"
+    },
+    {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\img\\other\\homePageCatchBackground.jpg",
+      "PackagePath": "staticwebassets\\img\\other\\homePageCatchBackground.jpg"
+    },
+    {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\img\\other\\homePageEagle.png",
+      "PackagePath": "staticwebassets\\img\\other\\homePageEagle.png"
+    },
+    {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\img\\other\\homePageShopBackgroundImage.png",
+      "PackagePath": "staticwebassets\\img\\other\\homePageShopBackgroundImage.png"
+    },
+    {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\img\\other\\homePageSpotBackground.jpg",
+      "PackagePath": "staticwebassets\\img\\other\\homePageSpotBackground.jpg"
+    },
+    {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\img\\other\\lakePanorama.jpg",
+      "PackagePath": "staticwebassets\\img\\other\\lakePanorama.jpg"
+    },
+    {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\img\\other\\reservoirPanorama.jpg",
+      "PackagePath": "staticwebassets\\img\\other\\reservoirPanorama.jpg"
+    },
+    {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\img\\other\\riverPanorama.jpg",
+      "PackagePath": "staticwebassets\\img\\other\\riverPanorama.jpg"
+    },
+    {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\img\\other\\swampPanorama.jpg",
+      "PackagePath": "staticwebassets\\img\\other\\swampPanorama.jpg"
+    },
+    {
       "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\js\\jquery-override.js",
       "PackagePath": "staticwebassets\\js\\jquery-override.js"
     },

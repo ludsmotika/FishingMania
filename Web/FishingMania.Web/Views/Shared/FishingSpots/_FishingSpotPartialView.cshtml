@@ -1,9 +1,9 @@
 ﻿@using FishingMania.Web.ViewModels.FishingSpot;
 @model FishingSpotViewModel
 
-<div class="place-card col-md-4">
-    <div class="place-image">
-        <img src="@Model.Image.URL" alt="Place Image">
+<div class="place-card col-md-4 my-5">
+    <div class="place-image" style="height:270px;">
+        <img src="@Model.Image.URL" class="w-100 h-100" alt="Place Image">
         <div class="place-details">
             <h3 class="place-name">@Model.Name</h3>
             <a class="btn btn-secondary text-primary">Details</a>

@@ -16,19 +16,44 @@
             }
 
             // FishSpecies photos
-            await dbContext.Images.AddAsync(new Image() { URL = "https://thumbs.dreamstime.com/b/northern-pike-isolated-over-white-background-50482311.jpg" });
-            await dbContext.Images.AddAsync(new Image() { URL = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1ZZfRyEyd8sQWcJBH93eNE2-YiC73xulGlpfEJrhtigJIHPEYJDLaxotctO6Mw6-TLNI&usqp=CAU" });
-            await dbContext.Images.AddAsync(new Image() { URL = "https://storage.googleapis.com/bol-cdn/2020/02/bass-largemouth.png" });
-            await dbContext.Images.AddAsync(new Image() { URL = "https://upload.wikimedia.org/wikipedia/commons/9/94/Ameiurus_melas_by_Duane_Raver.png" });
-            await dbContext.Images.AddAsync(new Image() { URL = "https://www.shutterstock.com/image-photo/freshwater-fish-isolated-on-white-260nw-1820924963.jpg" });
+            await dbContext.Images.AddAsync(new Image() { URL = "/img/fishSpecies/bass.jpg" });
+            await dbContext.Images.AddAsync(new Image() { URL = "/img/fishSpecies/carp.png" });
+            await dbContext.Images.AddAsync(new Image() { URL = "/img/fishSpecies/catfish.jpg" });
+            await dbContext.Images.AddAsync(new Image() { URL = "/img/fishSpecies/chub.png" });
+            await dbContext.Images.AddAsync(new Image() { URL = "/img/fishSpecies/commonBleak.jpg" });
+            await dbContext.Images.AddAsync(new Image() { URL = "/img/fishSpecies/commonNase.jpg" });
+            await dbContext.Images.AddAsync(new Image() { URL = "/img/fishSpecies/crusianCarp.jpg" });
+            await dbContext.Images.AddAsync(new Image() { URL = "/img/fishSpecies/garfish.jpg" });
+            await dbContext.Images.AddAsync(new Image() { URL = "/img/fishSpecies/perch.jpg" });
+            await dbContext.Images.AddAsync(new Image() { URL = "/img/fishSpecies/pike.jpg" });
+            await dbContext.Images.AddAsync(new Image() { URL = "/img/fishSpecies/rudd.jpg" });
+            await dbContext.Images.AddAsync(new Image() { URL = "/img/fishSpecies/silverCarp.jpg" });
+            await dbContext.Images.AddAsync(new Image() { URL = "/img/fishSpecies/trout.jpg" });
+            await dbContext.Images.AddAsync(new Image() { URL = "/img/fishSpecies/whiteBarbel.png" });
+            await dbContext.Images.AddAsync(new Image() { URL = "/img/fishSpecies/whiteCarp.png" });
 
             // Fishing spots photos
-            await dbContext.Images.AddAsync(new Image() { URL = "https://img.cms.bweb.bg/media/images/640x360/Nov2020/2112311280.webp" });
-            await dbContext.Images.AddAsync(new Image() { URL = "https://fishi.bg/wp-content/uploads/2023/05/yazovir-pancharevo.jpg" });
+            await dbContext.Images.AddAsync(new Image() { URL = "/img/fishingSpots/akrutino.jpg" });
+            await dbContext.Images.AddAsync(new Image() { URL = "/img/fishingSpots/alepu.jpeg" });
+            await dbContext.Images.AddAsync(new Image() { URL = "/img/fishingSpots/batak.jpg" });
+            await dbContext.Images.AddAsync(new Image() { URL = "/img/fishingSpots/dospad.jpg" });
+            await dbContext.Images.AddAsync(new Image() { URL = "/img/fishingSpots/drenovDol.jpg" });
+            await dbContext.Images.AddAsync(new Image() { URL = "/img/fishingSpots/dunav.jpg" });
+            await dbContext.Images.AddAsync(new Image() { URL = "/img/fishingSpots/iskar.jpg" });
+            await dbContext.Images.AddAsync(new Image() { URL = "/img/fishingSpots/kamchiq.jpg" });
+            await dbContext.Images.AddAsync(new Image() { URL = "/img/fishingSpots/kleptuza.jpg" });
+            await dbContext.Images.AddAsync(new Image() { URL = "/img/fishingSpots/ledenoto.jpg" });
+            await dbContext.Images.AddAsync(new Image() { URL = "/img/fishingSpots/marica.jpg" });
+            await dbContext.Images.AddAsync(new Image() { URL = "/img/fishingSpots/orlovo.jpg" });
+            await dbContext.Images.AddAsync(new Image() { URL = "/img/fishingSpots/pancharevo.jpg" });
+            await dbContext.Images.AddAsync(new Image() { URL = "/img/fishingSpots/popovo.jpg" });
+            await dbContext.Images.AddAsync(new Image() { URL = "/img/fishingSpots/ropotamo.jpg" });
+            await dbContext.Images.AddAsync(new Image() { URL = "/img/fishingSpots/sreburna.jpg" });
+            await dbContext.Images.AddAsync(new Image() { URL = "/img/fishingSpots/struma.jpg" });
 
             // Catches
-            await dbContext.Images.AddAsync(new Image() { URL = "https://cdn.mos.cms.futurecdn.net/xUaCjunfKid4mEniMtZNBj.jpg" });
-            await dbContext.Images.AddAsync(new Image() { URL = "https://www.westin-fishing.com/media/inrb5ffm/2.jpg?width=933&upscale=false&bgcolor=white" });
+            await dbContext.Images.AddAsync(new Image() { URL = "/img/catches/carpCatch.jpg" });
+            await dbContext.Images.AddAsync(new Image() { URL = "/img/catches/pikeCatch.jpg" });
 
             await dbContext.SaveChangesAsync();
         }

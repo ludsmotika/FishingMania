@@ -300,26 +300,9 @@ namespace FishingMania.Data.Migrations
                     b.Property<int>("FishingSpotId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("Id")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
-
                     b.HasKey("FishSpeciesId", "FishingSpotId");
 
                     b.HasIndex("FishingSpotId");
-
-                    b.HasIndex("IsDeleted");
 
                     b.ToTable("FishSpeciesFishingSpots");
                 });

@@ -6,7 +6,7 @@
         <img src="@Model.Image.URL" class="w-100 h-100" alt="Place Image">
         <div class="place-details">
             <h3 class="place-name">@Model.Name</h3>
-            <a class="btn btn-secondary text-primary">Details</a>
+            <a class="btn btn-secondary text-primary" asp-controller="FishingSpots" asp-action="Details" asp-route-id="@Model.Id">Details</a>
         </div>
     </div>
 </div>

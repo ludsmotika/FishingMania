@@ -53,5 +53,12 @@
             List<FishingSpotViewModel> fishingSpots = await this.fishingSpotService.GetAllFishingSpotsByTypeAsync(FishingSpotType.River);
             return this.View(fishingSpots);
         }
+
+        [AllowAnonymous]
+        public async Task<IActionResult> Details(int id)
+        {
+            FishingSpotDetailsViewModel spotModel = await this.fishingSpotService.GetSpotForDetailsById(id);
+            return this.View(spotModel);
+        }
     }
 }

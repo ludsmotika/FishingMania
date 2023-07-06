@@ -22,7 +22,7 @@
             await dbContext.Images.AddAsync(new Image() { URL = "/img/fishSpecies/chub.png" });
             await dbContext.Images.AddAsync(new Image() { URL = "/img/fishSpecies/commonBleak.jpg" });
             await dbContext.Images.AddAsync(new Image() { URL = "/img/fishSpecies/commonNase.jpg" });
-            await dbContext.Images.AddAsync(new Image() { URL = "/img/fishSpecies/crusianCarp.jpg" });
+            await dbContext.Images.AddAsync(new Image() { URL = "/img/fishSpecies/crucianCarp.jpg" });
             await dbContext.Images.AddAsync(new Image() { URL = "/img/fishSpecies/garfish.jpg" });
             await dbContext.Images.AddAsync(new Image() { URL = "/img/fishSpecies/perch.jpg" });
             await dbContext.Images.AddAsync(new Image() { URL = "/img/fishSpecies/pike.jpg" });

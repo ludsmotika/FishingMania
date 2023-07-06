@@ -1,0 +1,65 @@
+﻿@using FishingMania.Web.ViewModels.FishingSpot;
+@model FishingSpotDetailsViewModel
+
+<div class="container text-center">
+    <h2 class="bg-primary text-white rounded-pill mx-auto fs-1 my-5">@Model.Name</h2>
+    <div class="d-flex col-md-12 bg-primary text-white rounded-5">
+        <div class="col-md-6">
+            <img src="@Model.Image.URL" class="col-md-12 my-4 rounded-5" />
+            <h5>The common fish species you can catch on this spot</h5>
+            <div class="scrollable-div col-md-12 my-5 bg-primary text-white rounded-4">
+                <div class="scrollable-content d-flex">
+                    @foreach (var currentFishSpecies in Model.FishSpecies)
+                    {
+                        <div class="col-md-4 outline-0">
+                            <img src="@currentFishSpecies.Image.URL" class="col-md-12 rounded-5 my-4" />
+                            <h5>@currentFishSpecies.Name</h5>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <p class="my-5 mx-2 fs-6">@Model.Description</p>
+            <div id="mapdiv" class="col-md-12 m-5" style="height:300px;"></div>
+        </div>
+
+    </div>
+
+</div>
+
+
+<style>
+    .scrollable-div {
+        overflow-x: auto;
+    }
+
+    .scrollable-content {
+        white-space: nowrap;
+    }
+
+        .scrollable-content div {
+            display: inline-block;
+        }
+</style>
+
+<script src="https://openlayers.org/api/2.13.1/OpenLayers.js"></script>
+<script>
+    map = new OpenLayers.Map("mapdiv");
+    map.addLayer(new OpenLayers.Layer.OSM());
+
+    var lonLat = new OpenLayers.LonLat(@Model.Longitude, @Model.Latitude)
+        .transform(
+            new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
+            map.getProjectionObject() // to Spherical Mercator Projection
+        );
+
+    var zoom = 14;
+
+    var markers = new OpenLayers.Layer.Markers("Markers");
+    map.addLayer(markers);
+
+    markers.addMarker(new OpenLayers.Marker(lonLat));
+
+    map.setCenter(lonLat, zoom);
+</script>

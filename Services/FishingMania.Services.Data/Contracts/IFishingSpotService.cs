@@ -13,5 +13,7 @@
         Task<List<FishingSpotViewModel>> GetAllFishingSpotsByTypeAsync(FishingSpotType type);
 
         Task<List<FishingSpotDropdownViewModel>> AllForInputAsync();
+
+        Task<FishingSpotDetailsViewModel> GetSpotForDetailsById(int id);
     }
 }

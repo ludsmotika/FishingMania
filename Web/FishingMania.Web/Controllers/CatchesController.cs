@@ -8,6 +8,7 @@
     using FishingMania.Data.Models;
     using FishingMania.Services.Data.Contracts;
     using FishingMania.Web.ViewModels.Catch;
+    using FishingMania.Web.ViewModels.FishSpecies;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
@@ -41,8 +42,9 @@
         public async Task<IActionResult> Create()
         {
             var model = new CatchFormViewModel();
+
             model.FishingSpots = await this.fishingSpotService.AllForInputAsync();
-            model.FishSpecies = await this.fishSpeciesService.AllForInputAsync();
+            model.FishSpecies = new List<FishSpeciesDropdownViewModel>();
 
             return this.View(model);
         }
@@ -53,12 +55,19 @@
             if (!this.ModelState.IsValid)
             {
                 model.FishingSpots = await this.fishingSpotService.AllForInputAsync();
-                model.FishSpecies = await this.fishSpeciesService.AllForInputAsync();
+
                 return this.View(model);
             }
 
             try
             {
+                if (!await this.fishingSpotService.FishingSpotHasFishSpecies(model.FishSpeciesId, model.FishingSpotId))
+                {
+                    model.FishingSpots = await this.fishingSpotService.AllForInputAsync();
+
+                    return this.View(model);
+                }
+
                 ApplicationUser applicationUser = await this.userManager.GetUserAsync(this.User);
                 await this.catchesService.CreateAsync(model, applicationUser.Id);
 
@@ -70,7 +79,7 @@
                 this.ModelState.AddModelError(string.Empty, ex.Message);
 
                 model.FishingSpots = await this.fishingSpotService.AllForInputAsync();
-                model.FishSpecies = await this.fishSpeciesService.AllForInputAsync();
+
                 return this.View(model);
             }
         }
@@ -112,6 +121,19 @@
                 }
 
                 return this.View(catchModel);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            try
+            {
+                await this.catchesService.DeleteByIdAsync(id);
+                return this.RedirectToAction("Mine", "Catches");
             }
             catch (Exception)
             {

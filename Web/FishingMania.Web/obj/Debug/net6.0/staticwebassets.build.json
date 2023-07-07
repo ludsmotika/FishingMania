@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "B83keHlOJFmDvhSUArUFT+Jy4s4GfWmAGZgNgFY9/gw=",
+  "Hash": "jefrn7MEJ12F/aUyARGHxxWn7CaxRTWGNR6T+/khY2A=",
   "Source": "FishingMania.Web",
   "BasePath": "_content/FishingMania.Web",
   "Mode": "Default",
@@ -1868,6 +1868,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\other\\swampPanorama.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\js\\cascadeSelectFishSpecies.js",
+      "SourceId": "FishingMania.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\",
+      "BasePath": "_content/FishingMania.Web",
+      "RelativePath": "js/cascadeSelectFishSpecies.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\cascadeSelectFishSpecies.js"
     },
     {
       "Identity": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\js\\jquery-override.js",

@@ -7,6 +7,8 @@
 
     public class CatchDetailsViewModel : IMapFrom<Catch>
     {
+        public int Id { get; set; }
+
         public string Description { get; set; }
 
         public decimal FishWeight { get; set; }

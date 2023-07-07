@@ -1,5 +1,6 @@
 ﻿namespace FishingMania.Services.Data.Services
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Reflection.Metadata;
@@ -46,6 +47,20 @@
             await this.catchesRepository.SaveChangesAsync();
         }
 
+        public async Task DeleteByIdAsync(int id)
+        {
+            Catch catchToDel = await this.catchesRepository.All().Where(c => c.Id == id).FirstOrDefaultAsync();
+
+            if (catchToDel == null)
+            {
+                throw new ArgumentException();
+            }
+
+            this.catchesRepository.Delete(catchToDel);
+            await this.catchesRepository.SaveChangesAsync();
+
+        }
+
         public async Task<List<CatchViewModel>> GetAllCatchesAsync()
         {
             return await this.catchesRepository.AllAsNoTracking().To<CatchViewModel>().ToListAsync();
@@ -53,17 +68,7 @@
 
         public async Task<CatchDetailsViewModel> GetCatchByIdAsync(int id)
         {
-            CatchDetailsViewModel catchViewModel = await this.catchesRepository.All().Where(x => x.Id == id).Include(p => p.FishingSpot.Image).Include(p => p.FishSpecies.Image).To<CatchDetailsViewModel>().FirstOrDefaultAsync();
-
-            //FishingSpot fishingSpot = await this.fishingSpotService.GetFishingSpotByIdAsync(catchViewModel.FishingSpotId);
-            //FishSpecies fishSpecies = await this.fishSpeciesService.GetFishSpeciesByIdAsync(catchViewModel.FishSpeciesId);
-
-            //catchViewModel.FishingSpot = fishingSpot;
-            //catchViewModel.FishSpecies = fishSpecies;
-
-            // Fill the model with the nested data
-            return catchViewModel;
-
+            return await this.catchesRepository.All().Where(x => x.Id == id).Include(p => p.FishingSpot.Image).Include(p => p.FishSpecies.Image).To<CatchDetailsViewModel>().FirstOrDefaultAsync();
         }
 
         public async Task<List<CatchViewModel>> GetCatchesByUserIdAsync(string id)

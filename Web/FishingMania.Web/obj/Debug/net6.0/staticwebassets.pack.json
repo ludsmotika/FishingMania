@@ -197,6 +197,10 @@
       "PackagePath": "staticwebassets\\img\\other\\swampPanorama.jpg"
     },
     {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\js\\cascadeSelectFishSpecies.js",
+      "PackagePath": "staticwebassets\\js\\cascadeSelectFishSpecies.js"
+    },
+    {
       "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\js\\jquery-override.js",
       "PackagePath": "staticwebassets\\js\\jquery-override.js"
     },

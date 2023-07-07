@@ -1,11 +1,13 @@
 ﻿namespace FishingMania.Web.Controllers
 {
     using System.Collections.Generic;
+    using System.Linq;
     using System.Threading.Tasks;
 
     using FishingMania.Data.Models;
     using FishingMania.Services.Data.Contracts;
     using FishingMania.Web.ViewModels.FishingSpot;
+    using FishingMania.Web.ViewModels.FishSpecies;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 
@@ -60,5 +62,22 @@
             FishingSpotDetailsViewModel spotModel = await this.fishingSpotService.GetSpotForDetailsById(id);
             return this.View(spotModel);
         }
+
+        [AllowAnonymous]
+        [HttpGet]
+        public async Task<IActionResult> GetFishingSpotSpeciesOptions(int fishingSpotId)
+        {
+            List<FishSpeciesDropdownViewModel> childOptions = await this.fishingSpotService.GetFishSpeciesForSpotByIdAsync(fishingSpotId);
+
+            // Convert child options to a format suitable for JSON serialization
+            var jsonData = childOptions.Select(option => new
+            {
+                value = option.Id,
+                text = option.Name,
+            });
+
+            return this.Json(jsonData);
+        }
+
     }
 }

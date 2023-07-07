@@ -7,11 +7,11 @@
         <div class="col-md-6">
             <img src="@Model.Image.URL" class="col-md-12 my-4 rounded-5" />
             <h5>The common fish species you can catch on this spot</h5>
-            <div class="scrollable-div col-md-12 my-5 bg-primary text-white rounded-4">
-                <div class="scrollable-content d-flex">
+            <div class="scrollable-div col-md-12 mb-5 bg-primary text-white rounded-4 overflow-x-auto">
+                <div class="scrollable-content d-flex text-nowrap">
                     @foreach (var currentFishSpecies in Model.FishSpecies)
                     {
-                        <div class="col-md-4 outline-0">
+                        <div class="col-md-4 outline-0 d-inline-block">
                             <img src="@currentFishSpecies.Image.URL" class="col-md-12 rounded-5 my-4" />
                             <h5>@currentFishSpecies.Name</h5>
                         </div>
@@ -28,22 +28,8 @@
 
 </div>
 
-
-<style>
-    .scrollable-div {
-        overflow-x: auto;
-    }
-
-    .scrollable-content {
-        white-space: nowrap;
-    }
-
-        .scrollable-content div {
-            display: inline-block;
-        }
-</style>
-
 <script src="https://openlayers.org/api/2.13.1/OpenLayers.js"></script>
+
 <script>
     map = new OpenLayers.Map("mapdiv");
     map.addLayer(new OpenLayers.Layer.OSM());

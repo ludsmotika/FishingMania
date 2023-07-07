@@ -5,6 +5,7 @@
 
     using FishingMania.Data.Models;
     using FishingMania.Web.ViewModels.FishingSpot;
+    using FishingMania.Web.ViewModels.FishSpecies;
 
     public interface IFishingSpotService
     {
@@ -15,5 +16,9 @@
         Task<List<FishingSpotDropdownViewModel>> AllForInputAsync();
 
         Task<FishingSpotDetailsViewModel> GetSpotForDetailsById(int id);
+
+        Task<List<FishSpeciesDropdownViewModel>> GetFishSpeciesForSpotByIdAsync(int id);
+
+        Task<bool> FishingSpotHasFishSpecies(int fishSpeciesId, int fishingSpotId);
     }
 }

@@ -14,5 +14,7 @@
         Task CreateAsync(CatchFormViewModel model, string userId);
 
         Task<CatchDetailsViewModel> GetCatchByIdAsync(int id);
+
+        Task DeleteByIdAsync(int id);
     }
 }

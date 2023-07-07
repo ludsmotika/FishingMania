@@ -1,13 +1,13 @@
 ﻿@using FishingMania.Web.ViewModels.Catch;
 @model CatchFormViewModel
 
-<form method="post" enctype="multipart/form-data" class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6 text-center text-primary font-weight-bold text-lg">
-    <div class="form-group">
+<form method="post" enctype="multipart/form-data" class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6 text-center my-5 text-white bg-primary rounded-5">
+    <div class="form-group h3">
         <label asp-for="@Model.Description"></label>
         <input asp-for="@Model.Description" class="form-control" />
         <span asp-validation-for="@Model.Description" class="text-danger"></span>
     </div>
-    <div class="form-group">
+    <div class="form-group h3">
         <label asp-for="@Model.Weight"></label>
         <input asp-for="@Model.Weight" class="form-control" />
         <span asp-validation-for="@Model.Weight" class="text-danger"></span>
@@ -21,9 +21,10 @@
             <img id="imagePreview" src="#" alt="Preview Image" style="display: none; max-width: 100%;" />
         </div>
     </div>
-    <div class="form-group">
+    <div class="form-group h3">
         <label asp-for="@Model.FishingSpotId" class="form-label-add-edit"></label>
-        <select asp-for="@Model.FishingSpotId" class="form-control" aria-required="true">
+        <select asp-for="@Model.FishingSpotId" id="parentSelect" name="fishingSpotId" class="form-control" aria-required="true">
+            <option disabled selected>Select fishing spot</option>
             @foreach (var type in Model.FishingSpots)
             {
                 <option value="@type.Id">@type.Name</option>
@@ -31,18 +32,15 @@
         </select>
         <span asp-validation-for="@Model.FishingSpotId" class="text-danger"></span>
     </div>
-    <div class="form-group">
+    <div class="form-group h3">
         <label asp-for="@Model.FishSpeciesId" class="form-label-add-edit"></label>
-        <select asp-for="@Model.FishSpeciesId" class="form-control" aria-required="true">
-            @foreach (var type in Model.FishSpecies)
-            {
-                <option value="@type.Id">@type.Name</option>
-            }
+        <select asp-for="@Model.FishSpeciesId" id="childSelect" name="fishSpeciesId" class="form-control" aria-required="true">
+            <option disabled selected>Select fish species</option>
         </select>
         <span asp-validation-for="@Model.FishSpeciesId" class="text-danger"></span>
     </div>
-    <button type="submit" class="btn bg-primary text-white col-md-4">Submit</button>
+    <button type="submit" class="btn bg-white text-primary col-md-4 my-4">Submit</button>
 </form>
 
-
 <script src="~/js/showPhotoWhenUploaded.js"></script>
+<script src="~/js/cascadeSelectFishSpecies.js"></script>

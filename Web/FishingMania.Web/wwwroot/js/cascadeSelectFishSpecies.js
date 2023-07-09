@@ -13,7 +13,9 @@
                     $('#childSelect').empty();
 
                     // Add new child select options based on the received data
-                    $('#childSelect').append("<option disabled selected>Select fish species</option>");
+
+                    $('#childSelect').append("<option disabled selected>- Select fish species -</option>");
+
                     $.each(data, function (index, option) {
                         $('#childSelect').append($('<option></option>').val(option.value).text(option.text));
                     });

@@ -24,7 +24,7 @@
     <div class="form-group h3">
         <label asp-for="@Model.FishingSpotId" class="form-label-add-edit"></label>
         <select asp-for="@Model.FishingSpotId" id="parentSelect" name="fishingSpotId" class="form-control" aria-required="true">
-            <option disabled selected>Select fishing spot</option>
+            <option disabled selected>- Select fishing spot -</option>
             @foreach (var type in Model.FishingSpots)
             {
                 <option value="@type.Id">@type.Name</option>
@@ -35,7 +35,7 @@
     <div class="form-group h3">
         <label asp-for="@Model.FishSpeciesId" class="form-label-add-edit"></label>
         <select asp-for="@Model.FishSpeciesId" id="childSelect" name="fishSpeciesId" class="form-control" aria-required="true">
-            <option disabled selected>Select fish species</option>
+            <option disabled selected>- Select fish species -</option>
         </select>
         <span asp-validation-for="@Model.FishSpeciesId" class="text-danger"></span>
     </div>

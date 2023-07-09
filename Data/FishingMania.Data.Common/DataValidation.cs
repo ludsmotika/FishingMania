@@ -20,7 +20,7 @@
         {
             public const int DescriptionMinLength = 10;
             public const int DescriptionMaxLength = 150;
-            public const string MinFishWeight = "0.00";
+            public const string MinFishWeight = "0.05";
             public const string MaxFishWeight = "250.00";
         }
     }

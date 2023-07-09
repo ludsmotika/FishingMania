@@ -52,33 +52,15 @@
 
         public async Task<FishingSpotDetailsViewModel> GetSpotForDetailsById(int id)
         {
-            FishingSpot fishingSpot = await this.fishingSpotsRepository
+            FishingSpotDetailsViewModel fishingSpot = await this.fishingSpotsRepository
                                                 .AllAsNoTracking().Where(fs => fs.Id == id)
                                                 .Include(fs => fs.Image)
                                                 .Include(fs => fs.FishSpeciesFishingSpots)
                                                 .ThenInclude(fsfs => fsfs.FishSpecies)
-                                                .ThenInclude(fsfs => fsfs.Image)
-                                                .IgnoreQueryFilters()
+                                                .ThenInclude(fsfs => fsfs.Image).To<FishingSpotDetailsViewModel>()
                                                 .FirstOrDefaultAsync();
 
-            FishingSpotDetailsViewModel viewModel = new FishingSpotDetailsViewModel()
-            {
-                Id = fishingSpot.Id,
-                Name = fishingSpot.Name,
-                Description = fishingSpot.Description,
-                Latitude = fishingSpot.Latitude,
-                Longitude = fishingSpot.Longitude,
-                ImageId = fishingSpot.ImageId,
-                Image = fishingSpot.Image,
-                FishSpecies = fishingSpot.FishSpeciesFishingSpots
-                                         .Select(fs => new FishSpeciesViewModel()
-                                         {
-                                             Image = fs.FishSpecies.Image,
-                                             Name = fs.FishSpecies.Name,
-                                         }).ToList(),
-            };
-
-            return viewModel;
+            return fishingSpot;
         }
 
         public async Task<bool> FishingSpotHasFishSpecies(int fishSpeciesId, int fishingSpotId)

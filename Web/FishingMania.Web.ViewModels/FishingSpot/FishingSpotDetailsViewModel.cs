@@ -2,12 +2,14 @@
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations.Schema;
+    using System.Linq;
 
+    using AutoMapper;
     using FishingMania.Data.Models;
     using FishingMania.Services.Mapping;
     using FishingMania.Web.ViewModels.FishSpecies;
 
-    public class FishingSpotDetailsViewModel : IMapFrom<FishingSpot>
+    public class FishingSpotDetailsViewModel : IMapFrom<FishingSpot>, IHaveCustomMappings
     {
         public int Id { get; set; }
 
@@ -25,5 +27,15 @@
         public Image Image { get; set; }
 
         public List<FishSpeciesViewModel> FishSpecies { get; set; }
+
+        public void CreateMappings(IProfileExpression configuration)
+        {
+            configuration.CreateMap<FishingSpot, FishingSpotDetailsViewModel>().ForMember(x => x.FishSpecies, opt => opt.MapFrom(x => x.FishSpeciesFishingSpots
+                                         .Select(fs => new FishSpeciesViewModel()
+                                         {
+                                             Image = fs.FishSpecies.Image,
+                                             Name = fs.FishSpecies.Name,
+                                         }).ToList()));
+        }
     }
 }

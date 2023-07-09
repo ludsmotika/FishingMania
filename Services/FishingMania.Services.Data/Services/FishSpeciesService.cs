@@ -7,6 +7,7 @@
     using FishingMania.Data.Common.Repositories;
     using FishingMania.Data.Models;
     using FishingMania.Services.Data.Contracts;
+    using FishingMania.Services.Mapping;
     using FishingMania.Web.ViewModels.FishSpecies;
     using Microsoft.EntityFrameworkCore;
 
@@ -23,7 +24,7 @@
         {
             List<FishSpeciesDropdownViewModel> fishSpeciesDropdownViewModels =
                 await this.fishSpeciesRepository.All()
-                                                .Select(fs => new FishSpeciesDropdownViewModel() { Id = fs.Id, Name = fs.Name })
+                                                .To<FishSpeciesDropdownViewModel>()
                                                 .ToListAsync();
 
             return fishSpeciesDropdownViewModels;

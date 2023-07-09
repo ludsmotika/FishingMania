@@ -30,6 +30,7 @@
             <div class="my-4">
                 <span class="font-weight-bold">Fishing Spot:</span>
                 <img class="col-md-6 rounded-5" src="@Model.FishingSpot.Image.URL" />
+                <a class="btn btn-secondary text-primary mt-3" asp-controller="FishingSpots" asp-action="Details" asp-route-id="@Model.FishingSpotId">Go to check the fishing spot!</a>
             </div>
         </div>
     </div>

@@ -20,14 +20,12 @@
     {
         private readonly ICatchesService catchesService;
         private readonly IFishingSpotService fishingSpotService;
-        private readonly IFishSpeciesService fishSpeciesService;
         private readonly UserManager<ApplicationUser> userManager;
 
-        public CatchesController(ICatchesService catchesService, IFishingSpotService fishingSpotService, IFishSpeciesService fishSpeciesService, UserManager<ApplicationUser> userManager)
+        public CatchesController(ICatchesService catchesService, IFishingSpotService fishingSpotService, UserManager<ApplicationUser> userManager)
         {
             this.catchesService = catchesService;
             this.fishingSpotService = fishingSpotService;
-            this.fishSpeciesService = fishSpeciesService;
             this.userManager = userManager;
         }
 

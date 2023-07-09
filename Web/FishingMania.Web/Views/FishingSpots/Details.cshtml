@@ -6,7 +6,7 @@
     <div class="d-flex col-md-12 bg-primary text-white rounded-5">
         <div class="col-md-6">
             <img src="@Model.Image.URL" class="col-md-12 my-4 rounded-5" />
-            <h5>The common fish species you can catch on this spot</h5>
+            <h5>The common fish species you can catch on this spot:</h5>
             <div class="scrollable-div col-md-12 mb-5 bg-primary text-white rounded-4 overflow-x-auto">
                 <div class="scrollable-content d-flex text-nowrap">
                     @foreach (var currentFishSpecies in Model.FishSpecies)
@@ -20,7 +20,8 @@
             </div>
         </div>
         <div class="col-md-6">
-            <p class="my-5 mx-2 fs-6">@Model.Description</p>
+            <h4 class="mt-4">Spot Description:</h4>
+            <p class="mb-5 mx-2 fs-6">@Model.Description</p>
             <div id="mapdiv" class="col-md-12 m-5" style="height:300px;"></div>
         </div>
 

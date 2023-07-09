@@ -1,0 +1,51 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Log in";
+}
+
+<div class="offset-3 col-md-6 text-center bg-primary text-white rounded-5 my-5">
+    <section>
+        <form id="account" method="post" class="m-5">
+            <h1 class="mt-5">@ViewData["Title"]</h1>
+            <h2>Use a local account to log in.</h2>
+            <hr />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-floating my-3">
+                <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" />
+                <label asp-for="Input.Email" class="form-label"></label>
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+            <div class="form-floating my-3">
+                <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" />
+                <label asp-for="Input.Password" class="form-label"></label>
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+            <hr />
+            <div>
+                <div class="checkbox">
+                    <label asp-for="Input.RememberMe" class="form-label">
+                        <input class="form-check-input" asp-for="Input.RememberMe" />
+                        @Html.DisplayNameFor(m => m.Input.RememberMe)
+                    </label>
+                </div>
+            </div>
+            <div>
+                <button id="login-submit" type="submit" class="w-100 btn btn-lg bg-white text-primary">Log in</button>
+            </div>
+            <div class="d-flex flex-row">
+                <p class="mr-auto">
+                    <a id="forgot-password" class="text-white" asp-page="./ForgotPassword">Forgot your password?</a>
+                </p>
+                <p>
+                    <a class="text-white" asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
+                </p>
+            </div>
+        </form>
+    </section>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

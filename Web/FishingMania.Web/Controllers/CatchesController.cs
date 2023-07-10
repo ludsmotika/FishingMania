@@ -63,6 +63,7 @@
                 {
                     model.FishingSpots = await this.fishingSpotService.AllForInputAsync();
 
+                    this.ModelState.AddModelError("FishSpeciesId", "Invalid fish species for fishing spot!");
                     return this.View(model);
                 }
 

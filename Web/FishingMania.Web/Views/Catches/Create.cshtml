@@ -1,7 +1,7 @@
 ﻿@using FishingMania.Web.ViewModels.Catch;
 @model CatchFormViewModel
 
-<form method="post" enctype="multipart/form-data" class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6 text-center my-5 text-white bg-primary rounded-5">
+<form id="customForm" method="post" enctype="multipart/form-data" class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6 text-center my-5 text-white bg-primary rounded-5">
     <div class="form-group h3">
         <label asp-for="@Model.Description"></label>
         <input asp-for="@Model.Description" class="form-control" />

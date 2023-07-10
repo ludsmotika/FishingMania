@@ -30,8 +30,6 @@
 
         public DbSet<FishSpecies> FishSpecies { get; set; }
 
-        public DbSet<FishSpeciesFishingSpots> FishSpeciesFishingSpots { get; set; }
-
         public DbSet<Image> Images { get; set; }
 
         public override int SaveChanges() => this.SaveChanges(true);
@@ -55,9 +53,6 @@
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.Entity<FishSpeciesFishingSpots>()
-                   .HasKey(fs => new { fs.FishSpeciesId, fs.FishingSpotId });
-
             builder.Entity<Catch>().Property(c => c.FishWeight).HasPrecision(12, 10);
             builder.Entity<FishingSpot>().Property(fs => fs.Latitude).HasPrecision(12, 10);
             builder.Entity<FishingSpot>().Property(fs => fs.Longitude).HasPrecision(12, 10);

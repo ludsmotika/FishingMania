@@ -493,7 +493,6 @@ C:\Users\danie\source\repos\FishingMania\Web\FishingMania.Web\obj\Debug\net6.0\F
 C:\Users\danie\source\repos\FishingMania\Web\FishingMania.Web\obj\Debug\net6.0\FishingMania.Web.AssemblyInfoInputs.cache
 C:\Users\danie\source\repos\FishingMania\Web\FishingMania.Web\obj\Debug\net6.0\FishingMania.Web.AssemblyInfo.cs
 C:\Users\danie\source\repos\FishingMania\Web\FishingMania.Web\obj\Debug\net6.0\FishingMania.Web.csproj.CoreCompileInputs.cache
-C:\Users\danie\source\repos\FishingMania\Web\FishingMania.Web\obj\Debug\net6.0\FishingMania.Web.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\danie\source\repos\FishingMania\Web\FishingMania.Web\obj\Debug\net6.0\FishingMania.Web.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\danie\source\repos\FishingMania\Web\FishingMania.Web\obj\Debug\net6.0\FishingMania.Web.RazorAssemblyInfo.cache
 C:\Users\danie\source\repos\FishingMania\Web\FishingMania.Web\obj\Debug\net6.0\FishingMania.Web.RazorAssemblyInfo.cs

@@ -17,15 +17,11 @@
     {
         private readonly IDeletableEntityRepository<Catch> catchesRepository;
         private readonly IImageService imageService;
-        private readonly IFishingSpotService fishingSpotService;
-        private readonly IFishSpeciesService fishSpeciesService;
 
-        public CatchesService(IDeletableEntityRepository<Catch> catchesRepository, IImageService imageService, IFishingSpotService fishingSpotService, IFishSpeciesService fishSpeciesService)
+        public CatchesService(IDeletableEntityRepository<Catch> catchesRepository, IImageService imageService)
         {
             this.catchesRepository = catchesRepository;
             this.imageService = imageService;
-            this.fishingSpotService = fishingSpotService;
-            this.fishSpeciesService = fishSpeciesService;
         }
 
         public async Task CreateAsync(CatchFormViewModel model, string userId)

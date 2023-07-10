@@ -9,7 +9,7 @@
     using FishingMania.Services.Mapping;
     using FishingMania.Web.ViewModels.FishSpecies;
 
-    public class FishingSpotDetailsViewModel : IMapFrom<FishingSpot>, IHaveCustomMappings
+    public class FishingSpotDetailsViewModel : IMapFrom<FishingSpot>
     {
         public int Id { get; set; }
 
@@ -28,14 +28,14 @@
 
         public List<FishSpeciesViewModel> FishSpecies { get; set; }
 
-        public void CreateMappings(IProfileExpression configuration)
-        {
-            configuration.CreateMap<FishingSpot, FishingSpotDetailsViewModel>().ForMember(x => x.FishSpecies, opt => opt.MapFrom(x => x.FishSpeciesFishingSpots
-                                         .Select(fs => new FishSpeciesViewModel()
-                                         {
-                                             Image = fs.FishSpecies.Image,
-                                             Name = fs.FishSpecies.Name,
-                                         }).ToList()));
-        }
+        //public void CreateMappings(IProfileExpression configuration)
+        //{
+        //    configuration.CreateMap<FishingSpot, FishingSpotDetailsViewModel>().ForMember(x => x.FishSpecies, opt => opt.MapFrom(x => x.FishSpeciesFishingSpots
+        //                                 .Select(fs => new FishSpeciesViewModel()
+        //                                 {
+        //                                     Image = fs.FishSpecies.Image,
+        //                                     Name = fs.FishSpecies.Name,
+        //                                 }).ToList()));
+        //}
     }
 }

@@ -648,7 +648,6 @@ C:\Users\danie\source\repos\FishingMania\Tests\FishingMania.Web.Tests\obj\Debug\
 C:\Users\danie\source\repos\FishingMania\Tests\FishingMania.Web.Tests\obj\Debug\net6.0\FishingMania.Web.Tests.AssemblyInfoInputs.cache
 C:\Users\danie\source\repos\FishingMania\Tests\FishingMania.Web.Tests\obj\Debug\net6.0\FishingMania.Web.Tests.AssemblyInfo.cs
 C:\Users\danie\source\repos\FishingMania\Tests\FishingMania.Web.Tests\obj\Debug\net6.0\FishingMania.Web.Tests.csproj.CoreCompileInputs.cache
-C:\Users\danie\source\repos\FishingMania\Tests\FishingMania.Web.Tests\obj\Debug\net6.0\FishingMania.Web.Tests.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\danie\source\repos\FishingMania\Tests\FishingMania.Web.Tests\obj\Debug\net6.0\FishingMania.Web.Tests.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\danie\source\repos\FishingMania\Tests\FishingMania.Web.Tests\obj\Debug\net6.0\staticwebassets\msbuild.FishingMania.Web.Tests.Microsoft.AspNetCore.StaticWebAssets.props
 C:\Users\danie\source\repos\FishingMania\Tests\FishingMania.Web.Tests\obj\Debug\net6.0\staticwebassets\msbuild.build.FishingMania.Web.Tests.props

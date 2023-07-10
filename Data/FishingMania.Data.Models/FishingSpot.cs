@@ -34,7 +34,7 @@
         [ForeignKey(nameof(ImageId))]
         public Image Image { get; set; }
 
-        public IEnumerable<FishSpeciesFishingSpots> FishSpeciesFishingSpots { get; set; } = new List<FishSpeciesFishingSpots>();
+        public IEnumerable<FishSpecies> FishSpeciesFishingSpots { get; set; } = new List<FishSpecies>();
 
         public IEnumerable<Catch> Catches { get; set; } = new List<Catch>();
     }

@@ -13,6 +13,7 @@
     using FishingMania.Web.ViewModels.FishingSpot;
     using FishingMania.Web.ViewModels.FishSpecies;
     using Microsoft.EntityFrameworkCore;
+    using Microsoft.VisualBasic;
 
     public class FishingSpotService : IFishingSpotService
     {
@@ -43,30 +44,28 @@
             return await this.fishingSpotsRepository.AllAsNoTracking().Where(fs => fs.FishingSpotType == type).To<FishingSpotViewModel>().ToListAsync();
         }
 
+
         public async Task<List<FishSpeciesDropdownViewModel>> GetFishSpeciesForSpotByIdAsync(int id)
         {
-            return null;
-            //return await this.fishingSpotsRepository.All().Where(fs => fs).Select(fs => new FishSpeciesDropdownViewModel() { Name = fs.FishSpecies.Name, Id = fs.FishSpecies.Id }).ToListAsync();
+            return await this.fishingSpotsRepository.All().Where(fs => fs.Id == id).SelectMany(fs => fs.FishSpecies).To<FishSpeciesDropdownViewModel>().ToListAsync();
         }
 
         public async Task<FishingSpotDetailsViewModel> GetSpotForDetailsById(int id)
         {
-            //FishingSpotDetailsViewModel fishingSpot = await this.fishingSpotsRepository
-            //                                    .AllAsNoTracking().Where(fs => fs.Id == id)
-            //                                    .Include(fs => fs.Image)
-            //                                    .Include(fs => fs.FishSpeciesFishingSpots)
-            //                                    .ThenInclude(fsfs => fsfs.FishSpecies)
-            //                                    .ThenInclude(fsfs => fsfs.Image).To<FishingSpotDetailsViewModel>()
-            //                                    .FirstOrDefaultAsync();
+            FishingSpotDetailsViewModel fishingSpot = await this.fishingSpotsRepository
+                                                .AllAsNoTracking().Where(fs => fs.Id == id)
+                                                .Include(fs => fs.Image)
+                                                .Include(fs => fs.FishSpecies)
+                                                .ThenInclude(fsfs => fsfs.Image)
+                                                .To<FishingSpotDetailsViewModel>()
+                                                .FirstOrDefaultAsync();
 
-            //return fishingSpot;
-            return null;
+            return fishingSpot;
         }
 
         public async Task<bool> FishingSpotHasFishSpecies(int fishSpeciesId, int fishingSpotId)
         {
-            // return await this.fishSpeciesFishingSpotsRepository.All().AnyAsync(fs => fs.FishSpeciesId == fishSpeciesId && fs.FishingSpotId == fishingSpotId);
-            return false;
+            return await this.fishingSpotsRepository.All().Where(fs => fs.Id == fishingSpotId).SelectMany(fs => fs.FishSpecies).AnyAsync(x => x.Id == fishSpeciesId);
         }
     }
 }

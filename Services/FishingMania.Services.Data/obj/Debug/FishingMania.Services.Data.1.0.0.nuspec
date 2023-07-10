@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>FishingMania.Services.Data</id>
+    <version>1.0.0</version>
+    <authors>FishingMania.Services.Data</authors>
+    <description>Package Description</description>
+    <dependencies>
+      <group targetFramework="net6.0">
+        <dependency id="FishingMania.Data.Common" version="1.0.0" exclude="Build,Analyzers" />
+        <dependency id="FishingMania.Data.Models" version="1.0.0" exclude="Build,Analyzers" />
+        <dependency id="FishingMania.Services.Mapping" version="1.0.0" exclude="Build,Analyzers" />
+        <dependency id="FishingMania.Web.ViewModels" version="1.0.0" exclude="Build,Analyzers" />
+        <dependency id="CloudinaryDotNet" version="1.20.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="C:\Users\danie\source\repos\FishingMania\Services\FishingMania.Services.Data\bin\Debug\net6.0\FishingMania.Services.Data.dll" target="lib\net6.0\FishingMania.Services.Data.dll" />
+  </files>
+</package>

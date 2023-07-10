@@ -573,3 +573,4 @@ C:\Users\danie\source\repos\FishingMania\Web\FishingMania.Web\bin\Debug\net6.0\S
 C:\Users\danie\source\repos\FishingMania\Web\FishingMania.Web\bin\Debug\net6.0\CloudinaryDotNet.dll
 C:\Users\danie\source\repos\FishingMania\Web\FishingMania.Web\bin\Debug\net6.0\Microsoft.AspNetCore.JsonPatch.dll
 C:\Users\danie\source\repos\FishingMania\Web\FishingMania.Web\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
+C:\Users\danie\source\repos\FishingMania\Web\FishingMania.Web\bin\Debug\net6.0\appsettings.Production.json

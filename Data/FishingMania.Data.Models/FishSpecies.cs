@@ -24,6 +24,6 @@
         [ForeignKey(nameof(ImageId))]
         public Image Image { get; set; }
 
-        public List<FishingSpot> FishingSpots{ get; set; } = new List<FishingSpot>();
+        public List<FishingSpot> FishingSpots { get; set; } = new List<FishingSpot>();
     }
 }

@@ -325,13 +325,13 @@ namespace FishingMania.Data.Migrations
 
             modelBuilder.Entity("FishSpeciesFishingSpot", b =>
                 {
-                    b.Property<int>("FishSpeciesFishingSpotsId")
+                    b.Property<int>("FishSpeciesId")
                         .HasColumnType("int");
 
                     b.Property<int>("FishingSpotsId")
                         .HasColumnType("int");
 
-                    b.HasKey("FishSpeciesFishingSpotsId", "FishingSpotsId");
+                    b.HasKey("FishSpeciesId", "FishingSpotsId");
 
                     b.HasIndex("FishingSpotsId");
 
@@ -505,7 +505,7 @@ namespace FishingMania.Data.Migrations
                 {
                     b.HasOne("FishingMania.Data.Models.FishSpecies", null)
                         .WithMany()
-                        .HasForeignKey("FishSpeciesFishingSpotsId")
+                        .HasForeignKey("FishSpeciesId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 

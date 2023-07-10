@@ -3,8 +3,9 @@
     using System.ComponentModel.DataAnnotations.Schema;
 
     using FishingMania.Data.Models;
+    using FishingMania.Services.Mapping;
 
-    public class FishSpeciesViewModel
+    public class FishSpeciesViewModel : IMapFrom<FishSpecies>
     {
         public int Id { get; set; }
 

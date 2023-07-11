@@ -23,15 +23,37 @@
             <div class="my-4">
                 <span class="font-weight-bold">Fish Weight:</span> @Math.Round(Model.FishWeight,3) kg.
             </div>
-            <div class="my-4">
+            <div class="my-4 mb-0">
                 <span class="font-weight-bold">Fish Species:</span>
                 <img class="col-md-6 rounded-5" src="@Model.FishSpecies.Image.URL" />
             </div>
+            <p class="h5 text-center offset-6 col-md-5">@Model.FishSpecies.Name</p>
             <div class="my-4">
                 <span class="font-weight-bold">Fishing Spot:</span>
                 <img class="col-md-6 rounded-5" src="@Model.FishingSpot.Image.URL" />
-                <a class="btn btn-secondary text-primary mt-3" asp-controller="FishingSpots" asp-action="Details" asp-route-id="@Model.FishingSpotId">Go to check the fishing spot!</a>
+                <a class="btn btn-secondary text-primary mt-3" asp-controller="FishingSpots" asp-action="Details" asp-route-id="@Model.FishingSpotId">Go check the fishing spot!</a>
             </div>
         </div>
+    </div>
+    <div class="row col-md-12 my-5 align-items-center bg-primary text-white rounded-5">
+        <h2 class="mb-4">Post Information</h2>
+        <div class="col-md-4 d-flex flex-row m-auto">
+            <p>Posted by: <i class="fa-solid fa-user my-auto mx-5"></i>@Model.ApplicationUser.UserName</p>
+        </div>
+        <div class="col-md-4 d-flex flex-row m-auto">
+            <p>Votes:</p>
+            <a>
+                <i class="fa-solid fa-thumbs-up my-auto mx-5" asp-action></i>
+            </a>
+            @*<p>@Model.Votes.Count</p>*@
+            <a>
+                <i class="fa-solid fa-thumbs-down my-auto mx-5"></i>
+            </a>
+            @*<p>@Model.Votes.Count</p>*@
+        </div>
+        <div class="col-md-4 d-flex flex-row m-auto mb-4">
+            <a class="btn bg-white text-primary rounded-5 m-auto" asp-action="Report" asp-controller="Catches">Report Post</a>
+        </div>
+
     </div>
 </div>

@@ -7,9 +7,10 @@
     using AutoMapper;
     using FishingMania.Data.Models;
     using FishingMania.Services.Mapping;
+    using FishingMania.Web.ViewModels.Catch;
     using FishingMania.Web.ViewModels.FishSpecies;
 
-    public class FishingSpotDetailsViewModel : IMapFrom<FishingSpot>
+    public class FishingSpotDetailsViewModel : IMapFrom<FishingSpot>, IHaveCustomMappings
     {
         public int Id { get; set; }
 
@@ -28,14 +29,21 @@
 
         public List<FishSpeciesViewModel> FishSpecies { get; set; }
 
-        //public void CreateMappings(IProfileExpression configuration)
-        //{
-        //    configuration.CreateMap<FishingSpot, FishingSpotDetailsViewModel>().ForMember(x => x.FishSpecies, opt => opt.MapFrom(x => x.FishSpeciesFishingSpots
-        //                                 .Select(fs => new FishSpeciesViewModel()
-        //                                 {
-        //                                     Image = fs.FishSpecies.Image,
-        //                                     Name = fs.FishSpecies.Name,
-        //                                 }).ToList()));
-        //}
+        public List<CatchViewModel> ThreeBiggestCatches { get; set; }
+
+        public void CreateMappings(IProfileExpression configuration)
+        {
+            configuration.CreateMap<FishingSpot, FishingSpotDetailsViewModel>()
+                         .ForMember(x => x.ThreeBiggestCatches,
+                                    opt => opt.MapFrom(x => x.Catches.OrderByDescending(c => c.FishWeight).Take(3)
+                                                                     .Select(c => new CatchViewModel()
+                                                                     {
+                                                                         Id = c.Id,
+                                                                         Description = c.Description,
+                                                                         FishWeight = c.FishWeight,
+                                                                         ImageId = c.ImageId,
+                                                                         Image = c.Image,
+                                                                     }).ToList()));
+        }
     }
 }

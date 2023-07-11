@@ -24,7 +24,16 @@
             <p class="mb-5 mx-2 fs-6">@Model.Description</p>
             <div id="mapdiv" class="col-md-12 m-5" style="height:300px;"></div>
         </div>
+    </div>
+    <div class="container text-center col-md-12 rounded-5 my-5 bg-primary">
+        <p class="pt-4 h2 text-white">Look at the three biggest catches on this spot!</p>
 
+        <div class="row">
+            @foreach (var currentCatch in Model.ThreeBiggestCatches)
+            {
+                <partial name="~/Views/Shared/Catches/_CatchPartialView.cshtml" for="@currentCatch" />
+            }
+        </div>
     </div>
 
 </div>

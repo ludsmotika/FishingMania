@@ -1,8 +1,9 @@
-﻿using FishingMania.Data.Models;
-using System.ComponentModel.DataAnnotations;
-
-namespace FishingMania.Web.ViewModels.Comment
+﻿namespace FishingMania.Web.ViewModels.Comment
 {
+    using System.ComponentModel.DataAnnotations;
+
+    using FishingMania.Data.Models;
+
     using static FishingMania.Data.Common.DataValidation.Comment;
 
     public class CommentInputViewModel

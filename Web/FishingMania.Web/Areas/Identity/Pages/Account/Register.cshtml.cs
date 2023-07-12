@@ -53,7 +53,7 @@ namespace FishingMania.Web.Areas.Identity.Pages.Account
             public string Email { get; set; }
 
             [Required]
-            [StringLength(25, MinimumLength = 5)]
+            [StringLength(30, MinimumLength = 5)]
             [Display(Name = "UserName")]
             public string UserName { get; set; }
 

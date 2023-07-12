@@ -1,0 +1,15 @@
+﻿@using FishingMania.Web.ViewModels.Comment;
+@inject UserManager<ApplicationUser> _userManager
+@model List<CommentViewModel>
+
+@foreach (var currentComment in @Model)
+{
+    <div class="row col-md-12 bg-white text-primary rounded-5 my-5 d-flex flex-row">
+        <div class="col-md-2 text-left">
+            <p class="mt-3"><i class="fa-solid fa-user my-auto mx-2"></i>@_userManager.FindByIdAsync(currentComment.ApplicationUserId).Result.UserName</p>
+            <span>@currentComment.CreatedOn.ToString("f")</span>
+        </div>
+        <div class="col-md-10 text-break text-left border border-5 rounded-5 font-weight-bold">@currentComment.Content</div>
+    </div>
+}
+

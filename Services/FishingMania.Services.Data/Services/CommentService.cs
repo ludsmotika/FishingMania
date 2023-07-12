@@ -29,7 +29,7 @@
             return comments;
         }
 
-        public async Task<CommentViewModel> PostComment(CommentInputViewModel model)
+        public async Task PostComment(CommentInputViewModel model)
         {
 
             Comment commentToAdd = new Comment()
@@ -38,19 +38,11 @@
                 ApplicationUserId = model.ApplicationUserId,
                 EntityType = model.EntityType,
                 EntityTypeId = model.EntityTypeId,
+                CreatedOn = DateTime.Now,
             };
 
             await this.commentRepository.AddAsync(commentToAdd);
             await this.commentRepository.SaveChangesAsync();
-
-            CommentViewModel viewModel = new CommentViewModel()
-            {
-                ApplicationUserId = commentToAdd.ApplicationUserId,
-                Content = commentToAdd.Content,
-                CreatedOn = commentToAdd.CreatedOn,
-            };
-
-            return viewModel;
         }
     }
 }

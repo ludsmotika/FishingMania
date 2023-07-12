@@ -7,6 +7,7 @@
     using FishingMania.Web.ViewModels.Comment;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
+    using SendGrid.Helpers.Mail;
 
     [ApiController]
     [Authorize]
@@ -22,14 +23,15 @@
         }
 
         [HttpPost]
-        [AllowAnonymous]
         [IgnoreAntiforgeryToken]
         public async Task<IActionResult> Post(CommentInputViewModel model)
         {
             if (this.ModelState.IsValid)
             {
-                CommentViewModel viewModel = await this.commentsService.PostComment(model);
-                return this.PartialView("~/Views/Shared/Comments/_CommentPartialView.cshtml", viewModel);
+                await this.commentsService.PostComment(model);
+
+                List<CommentViewModel> viewModel = await this.commentsService.GetAllCommentsForThisEntity(model.EntityType, model.EntityTypeId);
+                return this.PartialView("~/Views/Shared/Comments/_CommentsListPartialView.cshtml", viewModel);
             }
 
             return this.BadRequest();

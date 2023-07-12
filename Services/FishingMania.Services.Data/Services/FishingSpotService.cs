@@ -44,7 +44,6 @@
             return await this.fishingSpotsRepository.AllAsNoTracking().Where(fs => fs.FishingSpotType == type).To<FishingSpotViewModel>().ToListAsync();
         }
 
-
         public async Task<List<FishSpeciesDropdownViewModel>> GetFishSpeciesForSpotByIdAsync(int id)
         {
             return await this.fishingSpotsRepository.All().Where(fs => fs.Id == id).SelectMany(fs => fs.FishSpecies).To<FishSpeciesDropdownViewModel>().ToListAsync();

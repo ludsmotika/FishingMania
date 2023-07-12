@@ -1,9 +1,11 @@
 ﻿namespace FishingMania.Web.ViewModels.Catch
 {
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations.Schema;
 
     using FishingMania.Data.Models;
     using FishingMania.Services.Mapping;
+    using FishingMania.Web.ViewModels.Comment;
 
     public class CatchDetailsViewModel : IMapFrom<Catch>
     {
@@ -32,5 +34,7 @@
 
         [ForeignKey(nameof(FishingSpotId))]
         public FishingSpot FishingSpot { get; set; }
+
+        public List<CommentViewModel> Comments { get; set; } = new List<CommentViewModel>();
     }
 }

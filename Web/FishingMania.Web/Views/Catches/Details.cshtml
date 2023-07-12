@@ -54,6 +54,83 @@
         <div class="col-md-4 d-flex flex-row m-auto mb-4">
             <a class="btn bg-white text-primary rounded-5 m-auto" asp-action="Report" asp-controller="Catches">Report Post</a>
         </div>
-
     </div>
+    <div class="row col-md-12 bg-primary text-white rounded-5">
+
+        <h2>Comments:</h2>
+
+        @if (this.User.Identity.IsAuthenticated)
+        {
+            <form id="commentForm">
+                <p>Write a comment:</p>
+                <div class="d-flex flex-row text-center">
+                    <textarea id="commentContent" rows="4" class="col-md-10 rounded-5"></textarea>
+                    <button type="submit" class="btn bg-white text-primary m-auto">Submit Comment</button>
+                </div>
+                <span id="commentLengthValidationSpan" class="text-danger"></span>
+            </form>
+        }
+        else
+        {
+            <p>please login if you want to comment on posts</p>
+            <a class="nav-link btn my-auto ms-auto m-3 bg-white text-primary" asp-area="Identity" asp-page="/Account/Login"><strong>Login</strong></a>
+        }
+        <div id="commentsSection">
+            @foreach (var currentComment in Model.Comments)
+            {
+                <partial name="~/Views/Shared/Comments/_CommentPartialView.cshtml" for="@currentComment" />
+            }
+        </div>
+    </div>
+
 </div>
+
+@if (this.User.Identity.IsAuthenticated)
+{
+    <script>
+        $(document).ready(function () {
+            $('#commentForm').submit(function (event) {
+                event.preventDefault();
+
+                var content = $('#commentContent').val();
+
+                var minContentLength = 15;
+                var maxContentLength = 500;
+
+                if (content.length < minContentLength) {
+                    $('#commentLengthValidationSpan').text('Please enter at least ' + minContentLength + ' characters.');
+                    return;
+                } else if (content.length > maxContentLength) {
+                    $('#commentLengthValidationSpan').text('Please enter no more than ' + maxContentLength + ' characters.');
+                    return;
+                }
+                else {
+                    $('#commentLengthValidationSpan').empty();
+                }
+
+                var commentContent = $('#commentContent').val();
+                var commentData = {
+                    content: commentContent,
+                    applicationUserId: `@User.FindFirstValue(ClaimTypes.NameIdentifier).ToString()`,
+                    entityType: @Convert.ToInt32(EntityWithCommentsType.Catch),
+                    entityTypeId: @Model.Id,
+                };
+
+                $('#commentContent').val('');
+
+                $.ajax({
+                    url: '/api/Comments', // Replace with the actual URL for your ApiController
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify(commentData),
+                    success: function (comment) {
+                        $('#commentsSection').prepend(comment);
+                    },
+                    error: function (xhr, status, error) {
+                        alert("Unexpected error while commenting this post!");
+                    }
+                });
+            });
+        });
+    </script>
+}

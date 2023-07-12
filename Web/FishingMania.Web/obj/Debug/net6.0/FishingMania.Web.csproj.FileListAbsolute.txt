@@ -574,3 +574,6 @@ C:\Users\danie\source\repos\FishingMania\Web\FishingMania.Web\bin\Debug\net6.0\C
 C:\Users\danie\source\repos\FishingMania\Web\FishingMania.Web\bin\Debug\net6.0\Microsoft.AspNetCore.JsonPatch.dll
 C:\Users\danie\source\repos\FishingMania\Web\FishingMania.Web\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
 C:\Users\danie\source\repos\FishingMania\Web\FishingMania.Web\bin\Debug\net6.0\appsettings.Production.json
+C:\Users\danie\source\repos\FishingMania\Web\FishingMania.Web\bin\Debug\net6.0\System.Net.Http.Formatting.dll
+C:\Users\danie\source\repos\FishingMania\Web\FishingMania.Web\bin\Debug\net6.0\System.Web.Http.dll
+C:\Users\danie\source\repos\FishingMania\Web\FishingMania.Web\obj\Debug\net6.0\FishingMania.Web.MvcApplicationPartsAssemblyInfo.cs

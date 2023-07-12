@@ -30,7 +30,7 @@
             },
             error: function () {
                 // Handle error case
-                alert('Error occurred while retrieving child options.');
+                alert('Error occurred while retrieving fish species options.');
             }
         });
     });

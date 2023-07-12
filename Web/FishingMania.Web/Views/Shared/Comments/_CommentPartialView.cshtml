@@ -1,0 +1,8 @@
+﻿@using FishingMania.Web.ViewModels.Comment;
+@inject UserManager<ApplicationUser> _userManager
+@model CommentViewModel
+
+<div class="row col-md-12 bg-white text-primary rounded-5 my-5 d-inline-block">
+    <p class="col-md-4"><i class="fa-solid fa-user my-auto mx-5"></i>@_userManager.FindByIdAsync(Model.ApplicationUserId).Result.UserName</p>
+    <h5 class="col-md-8">@Model.Content</h5>
+</div>

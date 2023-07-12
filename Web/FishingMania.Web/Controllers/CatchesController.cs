@@ -20,12 +20,14 @@
     {
         private readonly ICatchesService catchesService;
         private readonly IFishingSpotService fishingSpotService;
+        private readonly ICommentService commentService;
         private readonly UserManager<ApplicationUser> userManager;
 
-        public CatchesController(ICatchesService catchesService, IFishingSpotService fishingSpotService, UserManager<ApplicationUser> userManager)
+        public CatchesController(ICatchesService catchesService, IFishingSpotService fishingSpotService, ICommentService commentService, UserManager<ApplicationUser> userManager)
         {
             this.catchesService = catchesService;
             this.fishingSpotService = fishingSpotService;
+            this.commentService = commentService;
             this.userManager = userManager;
         }
 
@@ -113,6 +115,7 @@
             try
             {
                 CatchDetailsViewModel catchModel = await this.catchesService.GetCatchByIdAsync(id);
+                catchModel.Comments = await this.commentService.GetAllCommentsForThisEntity(EntityWithCommentsType.Catch, id);
 
                 if (catchModel == null)
                 {

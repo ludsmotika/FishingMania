@@ -23,5 +23,12 @@
             public const string MinFishWeight = "0.05";
             public const string MaxFishWeight = "250.00";
         }
+
+        public static class Comment
+        {
+            public const int ContentMinLength = 15;
+            public const int ContentMaxLength = 500;
+
+        }
     }
 }

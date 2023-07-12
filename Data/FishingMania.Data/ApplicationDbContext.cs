@@ -24,6 +24,8 @@
         {
         }
 
+        public DbSet<Comment> Comments { get; set; }
+
         public DbSet<FishingSpot> FishingSpots { get; set; }
 
         public DbSet<Catch> Catches { get; set; }

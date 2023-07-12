@@ -49,7 +49,7 @@
             return await this.fishingSpotsRepository.All().Where(fs => fs.Id == id).SelectMany(fs => fs.FishSpecies).To<FishSpeciesDropdownViewModel>().ToListAsync();
         }
 
-        public async Task<FishingSpotDetailsViewModel> GetSpotForDetailsById(int id)
+        public async Task<FishingSpotDetailsViewModel> GetSpotForDetailsByIdAsync(int id)
         {
             FishingSpotDetailsViewModel fishingSpot = await this.fishingSpotsRepository
                                                 .AllAsNoTracking().Where(fs => fs.Id == id)
@@ -62,7 +62,7 @@
             return fishingSpot;
         }
 
-        public async Task<bool> FishingSpotHasFishSpecies(int fishSpeciesId, int fishingSpotId)
+        public async Task<bool> FishingSpotHasFishSpeciesAsync(int fishSpeciesId, int fishingSpotId)
         {
             return await this.fishingSpotsRepository.All().Where(fs => fs.Id == fishingSpotId).SelectMany(fs => fs.FishSpecies).AnyAsync(x => x.Id == fishSpeciesId);
         }

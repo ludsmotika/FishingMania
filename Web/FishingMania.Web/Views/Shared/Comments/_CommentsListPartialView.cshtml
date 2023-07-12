@@ -1,15 +1,42 @@
 ﻿@using FishingMania.Web.ViewModels.Comment;
+@using System.Security.Claims;
 @inject UserManager<ApplicationUser> _userManager
 @model List<CommentViewModel>
 
 @foreach (var currentComment in @Model)
 {
-    <div class="row col-md-12 bg-white text-primary rounded-5 my-5 d-flex flex-row">
+    <div id="commentCard-@currentComment.Id" class="row col-md-12 bg-white text-primary rounded-5 my-5 d-flex flex-row">
         <div class="col-md-2 text-left">
             <p class="mt-3"><i class="fa-solid fa-user my-auto mx-2"></i>@_userManager.FindByIdAsync(currentComment.ApplicationUserId).Result.UserName</p>
             <span>@currentComment.CreatedOn.ToString("f")</span>
+            @if (User.Identity.IsAuthenticated && (this.User.FindFirstValue(ClaimTypes.NameIdentifier) == currentComment.ApplicationUserId))
+            {
+                <a id="@currentComment.Id" class="my-auto bg-white text-danger ms-auto deleteComment">Delete Comment</a>
+            }
         </div>
-        <div class="col-md-10 text-break text-left border border-5 rounded-5 font-weight-bold">@currentComment.Content</div>
+        <div class="col-md-10 text-break text-left border border-5 rounded-5 font-weight-bold my-2">@currentComment.Content</div>
     </div>
 }
 
+<script>
+    $(document).ready(function () {
+        $('.deleteComment').click(function (event) {
+            event.preventDefault();
+
+            var id = parseInt($(event.target).attr('id'));
+
+            $.ajax({
+                url: `/api/Comments/` + id,
+                type: 'DELETE',
+                data: JSON.stringify({ id: id }),
+                contentType: 'application/json',
+                success: function () {
+                    $(`#commentCard-${id}`).remove();
+                },
+                error: function (xhr, status, error) {
+                    alert("Unexpected error while deleting this comment!");
+                }
+            });
+        });
+    });
+</script>

@@ -7,6 +7,8 @@
 
     public class CommentViewModel : IMapFrom<Comment>
     {
+        public int Id { get; set; }
+
         public string ApplicationUserId { get; set; }
 
         public string Content { get; set; }

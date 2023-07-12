@@ -8,8 +8,12 @@
 
     public interface ICommentService
     {
-        Task PostComment(CommentInputViewModel model);
+        Task PostCommentAsync(CommentInputViewModel model);
 
-        Task<List<CommentViewModel>> GetAllCommentsForThisEntity(EntityWithCommentsType entityType, int entityId);
+        Task<List<CommentViewModel>> GetAllCommentsForThisEntityAsync(EntityWithCommentsType entityType, int entityId);
+
+        Task DeleteCommentByIdAsync(int id);
+
+        Task<CommentViewModel> GetCommentByIdAsync(int id);
     }
 }

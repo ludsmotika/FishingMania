@@ -15,10 +15,10 @@
 
         Task<List<FishingSpotDropdownViewModel>> AllForInputAsync();
 
-        Task<FishingSpotDetailsViewModel> GetSpotForDetailsById(int id);
+        Task<FishingSpotDetailsViewModel> GetSpotForDetailsByIdAsync(int id);
 
         Task<List<FishSpeciesDropdownViewModel>> GetFishSpeciesForSpotByIdAsync(int id);
 
-        Task<bool> FishingSpotHasFishSpecies(int fishSpeciesId, int fishingSpotId);
+        Task<bool> FishingSpotHasFishSpeciesAsync(int fishSpeciesId, int fishingSpotId);
     }
 }

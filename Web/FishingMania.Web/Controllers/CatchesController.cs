@@ -61,7 +61,7 @@
 
             try
             {
-                if (!await this.fishingSpotService.FishingSpotHasFishSpecies(model.FishSpeciesId, model.FishingSpotId))
+                if (!await this.fishingSpotService.FishingSpotHasFishSpeciesAsync(model.FishSpeciesId, model.FishingSpotId))
                 {
                     model.FishingSpots = await this.fishingSpotService.AllForInputAsync();
 
@@ -115,7 +115,7 @@
             try
             {
                 CatchDetailsViewModel catchModel = await this.catchesService.GetCatchByIdAsync(id);
-                catchModel.Comments = await this.commentService.GetAllCommentsForThisEntity(EntityWithCommentsType.Catch, id);
+                catchModel.Comments = await this.commentService.GetAllCommentsForThisEntityAsync(EntityWithCommentsType.Catch, id);
 
                 if (catchModel == null)
                 {

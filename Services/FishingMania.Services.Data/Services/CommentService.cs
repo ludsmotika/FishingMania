@@ -23,13 +23,37 @@
             this.commentRepository = commentRepository;
         }
 
-        public async Task<List<CommentViewModel>> GetAllCommentsForThisEntity(EntityWithCommentsType entityType, int entityId)
+        public async Task DeleteCommentByIdAsync(int id)
+        {
+            Comment commentToDelete = await this.commentRepository.All().FirstOrDefaultAsync(c => c.Id == id);
+            if (commentToDelete == null)
+            {
+                throw new ArgumentException();
+            }
+
+            this.commentRepository.Delete(commentToDelete);
+            await this.commentRepository.SaveChangesAsync();
+        }
+
+        public async Task<List<CommentViewModel>> GetAllCommentsForThisEntityAsync(EntityWithCommentsType entityType, int entityId)
         {
             List<CommentViewModel> comments = await this.commentRepository.All().Where(x => x.EntityTypeId == entityId && x.EntityType == entityType).OrderByDescending(x => x.CreatedOn).To<CommentViewModel>().ToListAsync();
             return comments;
         }
 
-        public async Task PostComment(CommentInputViewModel model)
+        public async Task<CommentViewModel> GetCommentByIdAsync(int id)
+        {
+            CommentViewModel comment = await this.commentRepository.All().Where(c => c.Id == id).To<CommentViewModel>().FirstOrDefaultAsync();
+
+            if (comment == null)
+            {
+                throw new NullReferenceException();
+            }
+
+            return comment;
+        }
+
+        public async Task PostCommentAsync(CommentInputViewModel model)
         {
 
             Comment commentToAdd = new Comment()

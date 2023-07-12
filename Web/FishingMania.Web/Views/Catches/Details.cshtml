@@ -1,5 +1,6 @@
 ﻿@using FishingMania.Web.ViewModels.Catch;
 @using System.Security.Claims;
+@using System.Text.Encodings.Web;
 @model CatchDetailsViewModel
 @inject UserManager<ApplicationUser> UserManager
 
@@ -86,52 +87,52 @@
 
 @if (this.User.Identity.IsAuthenticated)
 {
-    <script>
-        $(document).ready(function () {
-            $('#commentForm').submit(function (event) {
-                event.preventDefault();
+<script>
+    $(document).ready(function () {
+        $('#commentForm').submit(function (event) {
+            event.preventDefault();
 
-                var content = $('#commentContent').val();
+            var content = $('#commentContent').val();
 
-                var minContentLength = 15;
-                var maxContentLength = 500;
+            var minContentLength = 15;
+            var maxContentLength = 500;
 
-                if (content.length < minContentLength) {
-                    $('#commentLengthValidationSpan').text('Please enter at least ' + minContentLength + ' characters.');
-                    return;
-                } else if (content.length > maxContentLength) {
-                    $('#commentLengthValidationSpan').text('Please enter no more than ' + maxContentLength + ' characters.');
-                    return;
+            if (content.length < minContentLength) {
+                $('#commentLengthValidationSpan').text('Please enter at least ' + minContentLength + ' characters.');
+                return;
+            } else if (content.length > maxContentLength) {
+                $('#commentLengthValidationSpan').text('Please enter no more than ' + maxContentLength + ' characters.');
+                return;
+            }
+            else {
+                $('#commentLengthValidationSpan').empty();
+            }
+
+            var commentContent = $('#commentContent').val();
+            var commentData = {
+                content: commentContent,
+                applicationUserId: `@User.FindFirstValue(ClaimTypes.NameIdentifier).ToString()`,
+                entityType: @Convert.ToInt32(EntityWithCommentsType.Catch),
+                entityTypeId: @Model.Id,
+            };
+
+            $('#commentContent').val('');
+
+            $.ajax({
+                url: '/api/Comments', // Replace with the actual URL for your ApiController
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(commentData),
+                success: function (comments) {
+                    $('#commentsSection').empty();
+
+                    $('#commentsSection').append(comments);
+                },
+                error: function (xhr, status, error) {
+                    alert("Unexpected error while commenting this post!");
                 }
-                else {
-                    $('#commentLengthValidationSpan').empty();
-                }
-
-                var commentContent = $('#commentContent').val();
-                var commentData = {
-                    content: commentContent,
-                    applicationUserId: `@User.FindFirstValue(ClaimTypes.NameIdentifier).ToString()`,
-                    entityType: @Convert.ToInt32(EntityWithCommentsType.Catch),
-                    entityTypeId: @Model.Id,
-                };
-
-                $('#commentContent').val('');
-
-                $.ajax({
-                    url: '/api/Comments', // Replace with the actual URL for your ApiController
-                    type: 'POST',
-                    contentType: 'application/json',
-                    data: JSON.stringify(commentData),
-                    success: function (comments) {
-                        $('#commentsSection').empty();
-
-                        $('#commentsSection').append(comments);
-                    },
-                    error: function (xhr, status, error) {
-                        alert("Unexpected error while commenting this post!");
-                    }
-                });
             });
         });
-    </script>
+    });
+</script>
 }

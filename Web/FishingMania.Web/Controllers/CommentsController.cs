@@ -1,6 +1,8 @@
 ﻿namespace FishingMania.Web.Controllers
 {
+    using System;
     using System.Collections.Generic;
+    using System.Security.Claims;
     using System.Threading.Tasks;
 
     using FishingMania.Services.Data.Contracts;
@@ -11,7 +13,7 @@
 
     [ApiController]
     [Authorize]
-    [Route("api/[controller]")]
+    [Route("api/[controller]/{id?}")]
     public class CommentsController : BaseController
     {
 
@@ -28,13 +30,36 @@
         {
             if (this.ModelState.IsValid)
             {
-                await this.commentsService.PostComment(model);
+                await this.commentsService.PostCommentAsync(model);
 
-                List<CommentViewModel> viewModel = await this.commentsService.GetAllCommentsForThisEntity(model.EntityType, model.EntityTypeId);
+                List<CommentViewModel> viewModel = await this.commentsService.GetAllCommentsForThisEntityAsync(model.EntityType, model.EntityTypeId);
                 return this.PartialView("~/Views/Shared/Comments/_CommentsListPartialView.cshtml", viewModel);
             }
 
             return this.BadRequest();
+        }
+
+        [HttpDelete]
+        [IgnoreAntiforgeryToken]
+        public async Task Delete(int id)
+        {
+            try
+            {
+                CommentViewModel viewModel = await this.commentsService.GetCommentByIdAsync(id);
+
+                if (this.User.FindFirstValue(ClaimTypes.NameIdentifier) == viewModel.ApplicationUserId)
+                {
+                    await this.commentsService.DeleteCommentByIdAsync(id);
+                }
+                else
+                {
+                    throw new ArgumentException();
+                }
+            }
+            catch (System.Exception)
+            {
+                throw;
+            }
         }
     }
 }

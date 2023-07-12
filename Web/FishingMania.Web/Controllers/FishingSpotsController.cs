@@ -35,38 +35,10 @@
             return this.View($"{enumValue}s", fishingSpots);
         }
 
-        //[AllowAnonymous]
-        //public async Task<IActionResult> Reservoirs()
-        //{
-        //    List<FishingSpotViewModel> fishingSpots = await this.fishingSpotService.GetAllFishingSpotsByTypeAsync(FishingSpotType.Reservoir);
-        //    return this.View(fishingSpots);
-        //}
-
-        //[AllowAnonymous]
-        //public async Task<IActionResult> Lakes()
-        //{
-        //    List<FishingSpotViewModel> fishingSpots = await this.fishingSpotService.GetAllFishingSpotsByTypeAsync(FishingSpotType.Lake);
-        //    return this.View(fishingSpots);
-        //}
-
-        //[AllowAnonymous]
-        //public async Task<IActionResult> Swamps()
-        //{
-        //    List<FishingSpotViewModel> fishingSpots = await this.fishingSpotService.GetAllFishingSpotsByTypeAsync(FishingSpotType.Swamp);
-        //    return this.View(fishingSpots);
-        //}
-
-        //[AllowAnonymous]
-        //public async Task<IActionResult> Rivers()
-        //{
-        //    List<FishingSpotViewModel> fishingSpots = await this.fishingSpotService.GetAllFishingSpotsByTypeAsync(FishingSpotType.River);
-        //    return this.View(fishingSpots);
-        //}
-
         [AllowAnonymous]
         public async Task<IActionResult> Details(int id)
         {
-            FishingSpotDetailsViewModel spotModel = await this.fishingSpotService.GetSpotForDetailsById(id);
+            FishingSpotDetailsViewModel spotModel = await this.fishingSpotService.GetSpotForDetailsByIdAsync(id);
             return this.View(spotModel);
         }
 

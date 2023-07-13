@@ -15,10 +15,12 @@
     public class FishingSpotsController : Controller
     {
         private readonly IFishingSpotService fishingSpotService;
+        private readonly ICommentService commentService;
 
-        public FishingSpotsController(IFishingSpotService fishingSpotService)
+        public FishingSpotsController(IFishingSpotService fishingSpotService, ICommentService commentService)
         {
             this.fishingSpotService = fishingSpotService;
+            this.commentService = commentService;
         }
 
         [AllowAnonymous]
@@ -39,6 +41,14 @@
         public async Task<IActionResult> Details(int id)
         {
             FishingSpotDetailsViewModel spotModel = await this.fishingSpotService.GetSpotForDetailsByIdAsync(id);
+
+            spotModel.Comments = await this.commentService.GetAllCommentsForThisEntityAsync(EntityWithCommentsType.Spot, id);
+
+            if (spotModel == null)
+            {
+                return this.RedirectToAction("All", "Catches");
+            }
+
             return this.View(spotModel);
         }
 

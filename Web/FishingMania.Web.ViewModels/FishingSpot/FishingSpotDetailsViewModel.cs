@@ -8,6 +8,7 @@
     using FishingMania.Data.Models;
     using FishingMania.Services.Mapping;
     using FishingMania.Web.ViewModels.Catch;
+    using FishingMania.Web.ViewModels.Comment;
     using FishingMania.Web.ViewModels.FishSpecies;
 
     public class FishingSpotDetailsViewModel : IMapFrom<FishingSpot>, IHaveCustomMappings
@@ -30,6 +31,8 @@
         public List<FishSpeciesViewModel> FishSpecies { get; set; }
 
         public List<CatchViewModel> ThreeBiggestCatches { get; set; }
+
+        public List<CommentViewModel> Comments { get; set; } = new List<CommentViewModel>();
 
         public void CreateMappings(IProfileExpression configuration)
         {

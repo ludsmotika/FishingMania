@@ -32,6 +32,7 @@
             {
                 await this.commentsService.PostCommentAsync(model);
 
+                // Getting and returning all the comments so the user see the new comments that may be posted
                 List<CommentViewModel> viewModel = await this.commentsService.GetAllCommentsForThisEntityAsync(model.EntityType, model.EntityTypeId);
                 return this.PartialView("~/Views/Shared/Comments/_CommentsListPartialView.cshtml", viewModel);
             }

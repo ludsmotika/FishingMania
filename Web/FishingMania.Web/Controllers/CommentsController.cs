@@ -14,7 +14,7 @@
     [ApiController]
     [Authorize]
     [Route("api/[controller]/{id?}")]
-    public class CommentsController : BaseController
+    public class CommentsController : Controller
     {
 
         private readonly ICommentService commentsService;

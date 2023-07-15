@@ -3,11 +3,12 @@
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
+    using FishingMania.Services.Data.ServiceModels;
     using FishingMania.Web.ViewModels.Catch;
 
     public interface ICatchesService
     {
-        Task<List<CatchViewModel>> GetAllCatchesAsync();
+        Task<AllCatchesFilteredAndPagedServiceModel> GetAllCatchesAsync(AllCatchesQueryViewModel queryModel);
 
         Task<List<CatchViewModel>> GetCatchesByUserIdAsync(string id);
 

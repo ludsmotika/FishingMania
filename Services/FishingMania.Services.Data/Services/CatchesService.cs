@@ -9,8 +9,12 @@
     using FishingMania.Data.Common.Repositories;
     using FishingMania.Data.Models;
     using FishingMania.Services.Data.Contracts;
+    using FishingMania.Services.Data.ServiceModels;
     using FishingMania.Services.Mapping;
     using FishingMania.Web.ViewModels.Catch;
+    using FishingMania.Web.ViewModels.Catch.Enums;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Routing;
     using Microsoft.EntityFrameworkCore;
 
     public class CatchesService : ICatchesService
@@ -57,9 +61,69 @@
 
         }
 
-        public async Task<List<CatchViewModel>> GetAllCatchesAsync()
+        public async Task<AllCatchesFilteredAndPagedServiceModel> GetAllCatchesAsync(AllCatchesQueryViewModel queryModel)
         {
-            return await this.catchesRepository.AllAsNoTracking().To<CatchViewModel>().ToListAsync();
+            IQueryable<Catch> catchesQuery = this.catchesRepository.All().AsQueryable();
+
+            if (queryModel.CurrentPage <= 0)
+            {
+                queryModel.CurrentPage = 1;
+            }
+
+            if (!string.IsNullOrWhiteSpace(queryModel.Type.ToString()))
+            {
+                catchesQuery = catchesQuery
+                    .Where(c => c.FishSpecies.Type == queryModel.Type);
+            }
+
+            if (!string.IsNullOrWhiteSpace(queryModel.SearchString))
+            {
+                string wildCard = $"%{queryModel.SearchString.ToLower()}%";
+
+                catchesQuery = catchesQuery
+                    .Where(c => EF.Functions.Like(c.Description, wildCard) ||
+                                EF.Functions.Like(c.FishSpecies.Name, wildCard) ||
+                                EF.Functions.Like(c.FishingSpot.Name, wildCard));
+            }
+
+            catchesQuery = queryModel.CatchesSorting switch
+            {
+                CatchesSorting.Newest => catchesQuery
+                    .OrderByDescending(c => c.CreatedOn),
+                CatchesSorting.Oldest => catchesQuery
+                    .OrderBy(c => c.CreatedOn),
+                CatchesSorting.FishWeightAscending => catchesQuery
+                    .OrderBy(c => c.FishWeight),
+                CatchesSorting.FishWeightDescending => catchesQuery
+                    .OrderByDescending(c => c.FishWeight),
+                _ => catchesQuery.OrderBy(c => c.CreatedOn).ThenByDescending(c => c.CreatedOn),
+            };
+
+            IEnumerable<CatchViewModel> allCatches = await catchesQuery
+                .Skip((queryModel.CurrentPage - 1) * queryModel.CatchesPerPage)
+                .Take(queryModel.CatchesPerPage)
+                .To<CatchViewModel>()
+                .ToArrayAsync();
+
+            if (catchesQuery.Count() != 0)
+            {
+                int maxPage = (int)Math.Ceiling((double)catchesQuery.Count() / queryModel.CatchesPerPage);
+
+                if (queryModel.CurrentPage > maxPage && maxPage != 0)
+                {
+                    throw new ArgumentException();
+                }
+            }
+
+
+            int totalCatches = catchesQuery.Count();
+
+            return new AllCatchesFilteredAndPagedServiceModel()
+            {
+                TotalCatches = totalCatches,
+                Catches = allCatches,
+            };
+
         }
 
         public async Task<CatchDetailsViewModel> GetCatchByIdAsync(int id)

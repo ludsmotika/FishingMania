@@ -14,6 +14,10 @@
 
         public const string AllowedExtensionsErrorMessage = "This file extension is not allowed.";
 
+        public const int DefaultPage = 1;
+
+        public const int EntitiesPerPage = 6;
+
         public static readonly string[] AllowedImageExtensions = { ".jpg", ".jpeg", ".png" };
     }
 }

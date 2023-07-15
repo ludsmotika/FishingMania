@@ -2,11 +2,13 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Threading.Tasks;
 
     using FishingMania.Common;
     using FishingMania.Data.Models;
     using FishingMania.Services.Data.Contracts;
+    using FishingMania.Services.Data.ServiceModels;
     using FishingMania.Web.ViewModels.Catch;
     using FishingMania.Web.ViewModels.FishSpecies;
     using Microsoft.AspNetCore.Authorization;
@@ -32,10 +34,23 @@
         }
 
         [AllowAnonymous]
-        public async Task<IActionResult> All()
+        public async Task<IActionResult> All([FromQuery] AllCatchesQueryViewModel queryModel)
         {
-            List<CatchViewModel> catches = await this.catchesService.GetAllCatchesAsync();
-            return this.View(catches);
+            try
+            {
+                AllCatchesFilteredAndPagedServiceModel serviceModel =
+               await this.catchesService.GetAllCatchesAsync(queryModel);
+
+                queryModel.Catches = serviceModel.Catches;
+                queryModel.TotalCatches = serviceModel.TotalCatches;
+                queryModel.Types = Enum.GetValues(typeof(FishType)).Cast<FishType>().ToList();
+
+                return this.View(queryModel);
+            }
+            catch (Exception)
+            {
+                return this.BadRequest();
+            }
         }
 
         [HttpGet]

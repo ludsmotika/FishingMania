@@ -32,7 +32,6 @@
                 {
                     string voteState = string.Empty;
 
-                    // Validate if the user has can like post.
                     if (await this.votesService.DoesVoteExistAsync(model))
                     {
                         if (model.IsClicked == true)

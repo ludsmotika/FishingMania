@@ -56,12 +56,19 @@
         [HttpGet]
         public async Task<IActionResult> Create()
         {
-            var model = new CatchFormViewModel();
+            try
+            {
+                var model = new CatchFormViewModel();
 
-            model.FishingSpots = await this.fishingSpotService.AllForInputAsync();
-            model.FishSpecies = new List<FishSpeciesDropdownViewModel>();
+                model.FishingSpots = await this.fishingSpotService.AllForInputAsync();
+                model.FishSpecies = new List<FishSpeciesDropdownViewModel>();
 
-            return this.View(model);
+                return this.View(model);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         [HttpPost]

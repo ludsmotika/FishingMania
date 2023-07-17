@@ -98,7 +98,7 @@
 
                 var applicationUserId = Boolean(`@User.Identity.IsAuthenticated`) ? `@User.FindFirst(ClaimTypes.NameIdentifier)?.Value` : null;
                 var isPositive = event.target.id == "likeIcon" ? true : false;
-if (event.target.id == "likeButton" || event.target.id == "dislikeButton") {
+                if (event.target.id == "likeButton" || event.target.id == "dislikeButton") {
                     return;
                 }
 

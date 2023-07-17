@@ -11,6 +11,7 @@
 
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
+    using Microsoft.EntityFrameworkCore.Internal;
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
     {
@@ -24,8 +25,6 @@
         {
         }
 
-        public DbSet<Comment> Comments { get; set; }
-
         public DbSet<FishingSpot> FishingSpots { get; set; }
 
         public DbSet<Catch> Catches { get; set; }
@@ -33,6 +32,10 @@
         public DbSet<FishSpecies> FishSpecies { get; set; }
 
         public DbSet<Image> Images { get; set; }
+
+        public DbSet<Comment> Comments { get; set; }
+
+        public DbSet<Vote> Votes { get; set; }
 
         public override int SaveChanges() => this.SaveChanges(true);
 

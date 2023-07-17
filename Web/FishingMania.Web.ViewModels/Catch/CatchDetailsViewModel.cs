@@ -6,6 +6,7 @@
     using FishingMania.Data.Models;
     using FishingMania.Services.Mapping;
     using FishingMania.Web.ViewModels.Comment;
+    using FishingMania.Web.ViewModels.Votes;
 
     public class CatchDetailsViewModel : IMapFrom<Catch>
     {
@@ -36,5 +37,7 @@
         public FishingSpot FishingSpot { get; set; }
 
         public List<CommentViewModel> Comments { get; set; } = new List<CommentViewModel>();
+
+        public List<VoteViewModel> Votes { get; set; } = new List<VoteViewModel>();
     }
 }

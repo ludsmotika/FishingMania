@@ -16,7 +16,7 @@
         public int EntityTypeId { get; set; }
 
         [Required]
-        public string ApplicationUserId { get; set; }
+        public string ApplicationUserId { get; set; } = null!;
 
         [Required]
         public EntityWithCommentsType EntityType { get; set; }

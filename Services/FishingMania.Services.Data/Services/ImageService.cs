@@ -1,5 +1,6 @@
 ﻿namespace FishingMania.Services.Data.Services
 {
+    using System;
     using System.Linq;
     using System.Threading.Tasks;
 
@@ -40,9 +41,9 @@
                 await this.imagesRepository.SaveChangesAsync();
                 return await this.GetByUrlAsync(imageUrl);
             }
-            catch (System.Exception ex)
+            catch (Exception)
             {
-                throw ex;
+                throw;
             }
         }
 

@@ -5,6 +5,7 @@
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+
     using FishingMania.Data.Common.Repositories;
     using FishingMania.Data.Models;
     using FishingMania.Services.Data.Contracts;
@@ -55,7 +56,6 @@
 
         public async Task PostCommentAsync(CommentInputViewModel model)
         {
-
             Comment commentToAdd = new Comment()
             {
                 Content = model.Content,

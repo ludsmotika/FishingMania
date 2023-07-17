@@ -1,6 +1,7 @@
 ﻿namespace FishingMania.Data.Models
 {
     using System;
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
@@ -45,5 +46,8 @@
         [Required]
         [ForeignKey(nameof(FishingSpotId))]
         public FishingSpot FishingSpot { get; set; }
+
+        [Required]
+        public List<Vote> Votes { get; set; } = new List<Vote>();
     }
 }

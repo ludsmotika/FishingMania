@@ -367,6 +367,47 @@ namespace FishingMania.Data.Migrations
                     b.ToTable("Images");
                 });
 
+            modelBuilder.Entity("FishingMania.Data.Models.Vote", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("ApplicationUserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("CatchId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsPositive")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ApplicationUserId");
+
+                    b.HasIndex("CatchId");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.ToTable("Votes");
+                });
+
             modelBuilder.Entity("FishSpeciesFishingSpot", b =>
                 {
                     b.Property<int>("FishSpeciesId")
@@ -556,6 +597,25 @@ namespace FishingMania.Data.Migrations
                     b.Navigation("Image");
                 });
 
+            modelBuilder.Entity("FishingMania.Data.Models.Vote", b =>
+                {
+                    b.HasOne("FishingMania.Data.Models.ApplicationUser", "ApplicationUser")
+                        .WithMany()
+                        .HasForeignKey("ApplicationUserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("FishingMania.Data.Models.Catch", "Catch")
+                        .WithMany("Votes")
+                        .HasForeignKey("CatchId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("ApplicationUser");
+
+                    b.Navigation("Catch");
+                });
+
             modelBuilder.Entity("FishSpeciesFishingSpot", b =>
                 {
                     b.HasOne("FishingMania.Data.Models.FishSpecies", null)
@@ -629,6 +689,11 @@ namespace FishingMania.Data.Migrations
                     b.Navigation("Logins");
 
                     b.Navigation("Roles");
+                });
+
+            modelBuilder.Entity("FishingMania.Data.Models.Catch", b =>
+                {
+                    b.Navigation("Votes");
                 });
 
             modelBuilder.Entity("FishingMania.Data.Models.FishingSpot", b =>

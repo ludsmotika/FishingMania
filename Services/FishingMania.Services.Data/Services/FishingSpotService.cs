@@ -51,15 +51,10 @@
 
         public async Task<FishingSpotDetailsViewModel> GetSpotForDetailsByIdAsync(int id)
         {
-            FishingSpotDetailsViewModel fishingSpot = await this.fishingSpotsRepository
+            return await this.fishingSpotsRepository
                                                 .AllAsNoTracking().Where(fs => fs.Id == id)
-                                                .Include(fs => fs.Image)
-                                                .Include(fs => fs.FishSpecies)
-                                                .ThenInclude(fsfs => fsfs.Image)
                                                 .To<FishingSpotDetailsViewModel>()
                                                 .FirstOrDefaultAsync();
-
-            return fishingSpot;
         }
 
         public async Task<bool> FishingSpotHasFishSpeciesAsync(int fishSpeciesId, int fishingSpotId)

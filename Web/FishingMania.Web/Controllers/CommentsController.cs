@@ -9,14 +9,12 @@
     using FishingMania.Web.ViewModels.Comment;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
-    using SendGrid.Helpers.Mail;
 
     [ApiController]
     [Authorize]
     [Route("api/[controller]/{id?}")]
     public class CommentsController : Controller
     {
-
         private readonly ICommentService commentsService;
 
         public CommentsController(ICommentService commentService)

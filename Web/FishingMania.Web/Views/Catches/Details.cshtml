@@ -1,6 +1,7 @@
 ﻿@using FishingMania.Web.ViewModels.Catch;
 @using System.Security.Claims;
 @using System.Text.Encodings.Web;
+@using Newtonsoft.Json;
 @model CatchDetailsViewModel
 @inject UserManager<ApplicationUser> UserManager
 
@@ -37,20 +38,20 @@
         </div>
     </div>
     <div class="row col-md-12 my-5 align-items-center bg-primary text-white rounded-5">
-        <h2 class="mb-4">Post Information</h2>
+        <h2 class="mb-4 my-3">Post Information</h2>
         <div class="col-md-4 d-flex flex-row m-auto">
             <p>Posted by: <i class="fa-solid fa-user my-auto mx-5"></i>@Model.ApplicationUser.UserName</p>
         </div>
         <div class="col-md-4 d-flex flex-row m-auto">
             <p>Votes:</p>
-            <a>
-                <i class="fa-solid fa-thumbs-up my-auto mx-5" asp-action></i>
+            <a id="likeButton">
+                <i id="likeIcon" class="@(Model.Votes.Where(x => x.ApplicationUserId == User.FindFirst(ClaimTypes.NameIdentifier)?.Value && x.IsPositive == true).Any() ? "fa-solid" : "fa-regular") far fa-thumbs-up my-auto mx-5"></i>
             </a>
-            @*<p>@Model.Votes.Count</p>*@
-            <a>
-                <i class="fa-solid fa-thumbs-down my-auto mx-5"></i>
+            <p id="likesCount">@Model.Votes.Where(x=>x.IsPositive == true).Count()</p>
+            <a id="dislikeButton">
+                <i id="dislikeIcon" class="@(Model.Votes.Where(x => x.ApplicationUserId == User.FindFirst(ClaimTypes.NameIdentifier)?.Value && x.IsPositive == false).Any() ? "fa-solid" : "fa-regular")  fa-thumbs-down my-auto mx-5"></i>
             </a>
-            @*<p>@Model.Votes.Count</p>*@
+            <p id="dislikesCount">@Model.Votes.Where(x=>x.IsPositive == false).Count()</p>
         </div>
         <div class="col-md-4 d-flex flex-row m-auto mb-4">
             <a class="btn bg-white text-primary rounded-5 m-auto" asp-action="Report" asp-controller="Catches">Report Post</a>
@@ -58,7 +59,7 @@
     </div>
     <div class="row col-md-12 bg-primary text-white rounded-5">
 
-        <h2>Post Comments:</h2>
+        <h2 class="my-3">Post Comments</h2>
 
         @if (this.User.Identity.IsAuthenticated)
         {
@@ -87,6 +88,93 @@
 
 <script>
     $(document).ready(function () {
+        $('#likeButton, #dislikeButton').click(function (event) {
+            event.preventDefault();
+
+            var catchId = @Model.Id;
+
+
+            if (@JsonConvert.ToString(this.User.Identity.IsAuthenticated).ToLower()) {
+
+                var applicationUserId = Boolean(`@User.Identity.IsAuthenticated`) ? `@User.FindFirst(ClaimTypes.NameIdentifier)?.Value` : null;
+                var isPositive = event.target.id == "likeIcon" ? true : false;
+if (event.target.id == "likeButton" || event.target.id == "dislikeButton") {
+                    return;
+                }
+
+                var isClicked = $(event.target).hasClass("fa-solid") ? true : false;
+                var voteData = {
+                    catchId: catchId,
+                    isPositive: isPositive,
+                    isClicked: isClicked,
+                    applicationUserId: applicationUserId,
+                };
+                $.ajax({
+                    url: '/api/Votes/Vote',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify(voteData),
+                    success: function (voteState) {
+                        if (voteState == "removeVote") {
+
+                            if (isPositive) {
+                                var newLikeIconElement = $('<a id="likeIcon" class="fa-regular fa-thumbs-up my-auto mx-5" style="color:white; text-decoration:none;"></a>');
+                                $('#likeIcon').replaceWith(newLikeIconElement);
+                                $("#likesCount").text(parseInt($("#likesCount").text()) - 1);
+                            }
+                            else {
+                                var newDislikeIconElement = $('<a id="dislikeIcon" class="fa-regular fa-thumbs-down my-auto mx-5" style="color:white; text-decoration:none;"></a>');
+                                $('#dislikeIcon').replaceWith(newDislikeIconElement);
+                                $("#dislikesCount").text(parseInt($("#dislikesCount").text()) - 1);
+                            }
+                        }
+                        else if (voteState == "changingVoteIsPositive") {
+                            if (event.target.id == "likeIcon") {
+                                var newLikeIconElement = $('<a id="likeIcon" class="fa-solid fa-thumbs-up my-auto mx-5" style="color:white; text-decoration:none;"></a>');
+                                var newDislikeIconElement = $('<a id="dislikeIcon" class="fa-regular fa-thumbs-down my-auto mx-5" style="color:white; text-decoration:none;"></a>');
+
+                                $('#likeIcon').replaceWith(newLikeIconElement);
+                                $('#dislikeIcon').replaceWith(newDislikeIconElement);
+
+                                $("#likesCount").text(parseInt($("#likesCount").text()) + 1);
+                                $("#dislikesCount").text(parseInt($("#dislikesCount").text()) - 1);
+                            }
+                            else {
+                                var newLikeIconElement = $('<a id="likeIcon" class="fa-regular fa-thumbs-up my-auto mx-5" style="color:white; text-decoration:none;"></a>');
+                                var newDislikeIconElement = $('<a id="dislikeIcon" class="fa-solid fa-thumbs-down my-auto mx-5" style="color:white; text-decoration:none;"></a>');
+
+                                $('#likeIcon').replaceWith(newLikeIconElement);
+                                $('#dislikeIcon').replaceWith(newDislikeIconElement);
+
+                                $("#likesCount").text(parseInt($("#likesCount").text()) - 1);
+                                $("#dislikesCount").text(parseInt($("#dislikesCount").text()) + 1);
+                            }
+                        }
+                        else if (voteState == "newVote") {
+
+                            if (isPositive) {
+                                var newLikeIconElement = $('<a id="likeIcon" class="fa-solid fa-thumbs-up my-auto mx-5" style="color:white; text-decoration:none;"></a>');
+                                $('#likeIcon').replaceWith(newLikeIconElement);
+                                $("#likesCount").text(parseInt($("#likesCount").text()) + 1);
+                            }
+                            else {
+                                var newDislikeIconElement = $('<a id="dislikeIcon" class="fa-solid fa-thumbs-down my-auto mx-5" style="color:white; text-decoration:none;"></a>');
+                                $('#dislikeIcon').replaceWith(newDislikeIconElement);
+                                $("#dislikesCount").text(parseInt($("#dislikesCount").text()) + 1);
+                            }
+                        }
+                        else if (voteState == "repeatedVote") {
+                            return;
+                        }
+                    },
+                    error: function (xhr) {
+                        alert("Problem occured while voting on the post!");
+                    }
+                });
+            }
+        });
+
+
         $('#commentForm').submit(function (event) {
             event.preventDefault();
 

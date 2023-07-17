@@ -47,16 +47,26 @@
 
         public async Task VotePostAsync(VoteInputViewModel model)
         {
-            Vote vote = new Vote()
-            {
-                ApplicationUserId = model.ApplicationUserId,
-                CatchId = model.CatchId,
-                IsPositive = model.IsPositive,
-            };
+            Vote voteDeletedVoteWithSameProps = await this.votesRepository.AllWithDeleted().Where(v => v.ApplicationUserId == model.ApplicationUserId && v.IsPositive == model.IsPositive && v.CatchId == model.CatchId).FirstOrDefaultAsync();
 
-            await this.votesRepository.AddAsync(vote);
+            if (voteDeletedVoteWithSameProps != null)
+            {
+                voteDeletedVoteWithSameProps.IsDeleted = false;
+                voteDeletedVoteWithSameProps.DeletedOn = null;
+            }
+            else
+            {
+                Vote newVote = new Vote()
+                {
+                    ApplicationUserId = model.ApplicationUserId,
+                    CatchId = model.CatchId,
+                    IsPositive = model.IsPositive,
+                };
+
+                await this.votesRepository.AddAsync(newVote);
+            }
+
             await this.votesRepository.SaveChangesAsync();
         }
-
     }
 }

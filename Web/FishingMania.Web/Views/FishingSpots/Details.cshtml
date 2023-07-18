@@ -27,7 +27,7 @@
         </div>
     </div>
 
-    @if (Model.ThreeBiggestCatches.Count() == 3 )
+    @if (Model.ThreeBiggestCatches.Count() == 3)
     {
         <div class="container text-center col-md-12 rounded-5 my-5 bg-primary">
             <p class="pt-4 h2 text-white">Look at the top three biggest catches on this spot!</p>
@@ -40,7 +40,7 @@
             </div>
         </div>
     }
-    
+
     <div class="row col-md-12 bg-primary text-white rounded-5 my-5">
 
         <h2>Post Comments:</h2>
@@ -92,53 +92,55 @@
 </script>
 
 
-<script>
-    $(document).ready(function () {
-        $('#commentForm').submit(function (event) {
-            event.preventDefault();
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#commentForm').submit(function (event) {
+                event.preventDefault();
 
-            var content = $('#commentContent').val();
+                var content = $('#commentContent').val();
 
-            var minContentLength = 15;
-            var maxContentLength = 500;
+                var minContentLength = 15;
+                var maxContentLength = 500;
 
-            if (content.length < minContentLength) {
-                $('#commentLengthValidationSpan').text('Please enter at least ' + minContentLength + ' characters.');
-                return;
-            } else if (content.length > maxContentLength) {
-                $('#commentLengthValidationSpan').text('Please enter no more than ' + maxContentLength + ' characters.');
-                return;
-            }
-            else {
-                $('#commentLengthValidationSpan').empty();
-            }
-            console.log(Boolean(`@User.Identity.IsAuthenticated`));
-            var applicationUserId = Boolean(`@User.Identity.IsAuthenticated`) ? `@User.FindFirst(ClaimTypes.NameIdentifier)?.Value` : null;
-
-            var commentContent = $('#commentContent').val();
-            var commentData = {
-                content: commentContent,
-                applicationUserId: applicationUserId,
-                entityType: @Convert.ToInt32(EntityWithCommentsType.Spot),
-                entityTypeId: @Model.Id,
-            };
-
-            $('#commentContent').val('');
-
-            $.ajax({
-                url: '/api/Comments',
-                type: 'POST',
-                contentType: 'application/json',
-                data: JSON.stringify(commentData),
-                success: function (comments) {
-                    $('#commentsSection').empty();
-
-                    $('#commentsSection').append(comments);
-                },
-                error: function (xhr, status, error) {
-                    alert("Unexpected error while commenting this post!");
+                if (content.length < minContentLength) {
+                    $('#commentLengthValidationSpan').text('Please enter at least ' + minContentLength + ' characters.');
+                    return;
+                } else if (content.length > maxContentLength) {
+                    $('#commentLengthValidationSpan').text('Please enter no more than ' + maxContentLength + ' characters.');
+                    return;
                 }
+                else {
+                    $('#commentLengthValidationSpan').empty();
+                }
+                console.log(Boolean(`@User.Identity.IsAuthenticated`));
+                var applicationUserId = Boolean(`@User.Identity.IsAuthenticated`) ? `@User.FindFirst(ClaimTypes.NameIdentifier)?.Value` : null;
+
+                var commentContent = $('#commentContent').val();
+                var commentData = {
+                    content: commentContent,
+                    applicationUserId: applicationUserId,
+                    entityType: @Convert.ToInt32(EntityWithCommentsType.Spot),
+                    entityTypeId: @Model.Id,
+                };
+
+                $('#commentContent').val('');
+
+                $.ajax({
+                    url: '/api/Comments',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify(commentData),
+                    success: function (comments) {
+                        $('#commentsSection').empty();
+
+                        $('#commentsSection').append(comments);
+                    },
+                    error: function (xhr, status, error) {
+                        alert("Unexpected error while commenting this post!");
+                    }
+                });
             });
         });
-    });
-</script>
+    </script>
+}

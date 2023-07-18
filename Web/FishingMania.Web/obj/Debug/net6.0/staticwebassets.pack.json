@@ -1,6 +1,10 @@
 {
   "Files": [
     {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\animations\\errorPage404.gif",
+      "PackagePath": "staticwebassets\\animations\\errorPage404.gif"
+    },
+    {
       "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\css\\custom\\catches.css",
       "PackagePath": "staticwebassets\\css\\custom\\catches.css"
     },

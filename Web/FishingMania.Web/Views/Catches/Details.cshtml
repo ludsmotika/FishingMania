@@ -86,144 +86,146 @@
 
 </div>
 
-<script>
-    $(document).ready(function () {
-        $('#likeButton, #dislikeButton').click(function (event) {
-            event.preventDefault();
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#likeButton, #dislikeButton').click(function (event) {
+                event.preventDefault();
 
-            var catchId = @Model.Id;
+                var catchId = @Model.Id;
 
 
-            if (@JsonConvert.ToString(this.User.Identity.IsAuthenticated).ToLower()) {
+                if (@JsonConvert.ToString(this.User.Identity.IsAuthenticated).ToLower()) {
 
-                var applicationUserId = Boolean(`@User.Identity.IsAuthenticated`) ? `@User.FindFirst(ClaimTypes.NameIdentifier)?.Value` : null;
-                var isPositive = event.target.id == "likeIcon" ? true : false;
-                if (event.target.id == "likeButton" || event.target.id == "dislikeButton") {
+                    var applicationUserId = Boolean(`@User.Identity.IsAuthenticated`) ? `@User.FindFirst(ClaimTypes.NameIdentifier)?.Value` : null;
+                    var isPositive = event.target.id == "likeIcon" ? true : false;
+                    if (event.target.id == "likeButton" || event.target.id == "dislikeButton") {
+                        return;
+                    }
+
+                    var isClicked = $(event.target).hasClass("fa-solid") ? true : false;
+                    var voteData = {
+                        catchId: catchId,
+                        isPositive: isPositive,
+                        isClicked: isClicked,
+                        applicationUserId: applicationUserId,
+                    };
+                    $.ajax({
+                        url: '/api/Votes/Vote',
+                        type: 'POST',
+                        contentType: 'application/json',
+                        data: JSON.stringify(voteData),
+                        success: function (voteState) {
+                            if (voteState == "removeVote") {
+
+                                if (isPositive) {
+                                    var newLikeIconElement = $('<a id="likeIcon" class="fa-regular fa-thumbs-up my-auto mx-5" style="color:white; text-decoration:none;"></a>');
+                                    $('#likeIcon').replaceWith(newLikeIconElement);
+                                    $("#likesCount").text(parseInt($("#likesCount").text()) - 1);
+                                }
+                                else {
+                                    var newDislikeIconElement = $('<a id="dislikeIcon" class="fa-regular fa-thumbs-down my-auto mx-5" style="color:white; text-decoration:none;"></a>');
+                                    $('#dislikeIcon').replaceWith(newDislikeIconElement);
+                                    $("#dislikesCount").text(parseInt($("#dislikesCount").text()) - 1);
+                                }
+                            }
+                            else if (voteState == "changingVoteIsPositive") {
+                                if (event.target.id == "likeIcon") {
+                                    var newLikeIconElement = $('<a id="likeIcon" class="fa-solid fa-thumbs-up my-auto mx-5" style="color:white; text-decoration:none;"></a>');
+                                    var newDislikeIconElement = $('<a id="dislikeIcon" class="fa-regular fa-thumbs-down my-auto mx-5" style="color:white; text-decoration:none;"></a>');
+
+                                    $('#likeIcon').replaceWith(newLikeIconElement);
+                                    $('#dislikeIcon').replaceWith(newDislikeIconElement);
+
+                                    $("#likesCount").text(parseInt($("#likesCount").text()) + 1);
+                                    $("#dislikesCount").text(parseInt($("#dislikesCount").text()) - 1);
+                                }
+                                else {
+                                    var newLikeIconElement = $('<a id="likeIcon" class="fa-regular fa-thumbs-up my-auto mx-5" style="color:white; text-decoration:none;"></a>');
+                                    var newDislikeIconElement = $('<a id="dislikeIcon" class="fa-solid fa-thumbs-down my-auto mx-5" style="color:white; text-decoration:none;"></a>');
+
+                                    $('#likeIcon').replaceWith(newLikeIconElement);
+                                    $('#dislikeIcon').replaceWith(newDislikeIconElement);
+
+                                    $("#likesCount").text(parseInt($("#likesCount").text()) - 1);
+                                    $("#dislikesCount").text(parseInt($("#dislikesCount").text()) + 1);
+                                }
+                            }
+                            else if (voteState == "newVote") {
+
+                                if (isPositive) {
+                                    var newLikeIconElement = $('<a id="likeIcon" class="fa-solid fa-thumbs-up my-auto mx-5" style="color:white; text-decoration:none;"></a>');
+                                    $('#likeIcon').replaceWith(newLikeIconElement);
+                                    $("#likesCount").text(parseInt($("#likesCount").text()) + 1);
+                                }
+                                else {
+                                    var newDislikeIconElement = $('<a id="dislikeIcon" class="fa-solid fa-thumbs-down my-auto mx-5" style="color:white; text-decoration:none;"></a>');
+                                    $('#dislikeIcon').replaceWith(newDislikeIconElement);
+                                    $("#dislikesCount").text(parseInt($("#dislikesCount").text()) + 1);
+                                }
+                            }
+                            else if (voteState == "repeatedVote") {
+                                return;
+                            }
+                        },
+                        error: function (xhr) {
+                            alert("Problem occured while voting on the post!");
+                        }
+                    });
+                }
+                else {
+                    alert("Login to vote on posts!");
+                }
+
+            });
+
+
+            $('#commentForm').submit(function (event) {
+                event.preventDefault();
+
+                var content = $('#commentContent').val();
+
+                var minContentLength = 15;
+                var maxContentLength = 500;
+
+                if (content.length < minContentLength) {
+                    $('#commentLengthValidationSpan').text('Please enter at least ' + minContentLength + ' characters.');
+                    return;
+                } else if (content.length > maxContentLength) {
+                    $('#commentLengthValidationSpan').text('Please enter no more than ' + maxContentLength + ' characters.');
                     return;
                 }
+                else {
+                    $('#commentLengthValidationSpan').empty();
+                }
+                console.log(Boolean(`@User.Identity.IsAuthenticated`));
+                var applicationUserId = Boolean(`@User.Identity.IsAuthenticated`) ? `@User.FindFirst(ClaimTypes.NameIdentifier)?.Value` : null;
 
-                var isClicked = $(event.target).hasClass("fa-solid") ? true : false;
-                var voteData = {
-                    catchId: catchId,
-                    isPositive: isPositive,
-                    isClicked: isClicked,
+                var commentContent = $('#commentContent').val();
+                var commentData = {
+                    content: commentContent,
                     applicationUserId: applicationUserId,
+                    entityType: @Convert.ToInt32(EntityWithCommentsType.Catch),
+                    entityTypeId: @Model.Id,
                 };
+
+                $('#commentContent').val('');
+
                 $.ajax({
-                    url: '/api/Votes/Vote',
+                    url: '/api/Comments',
                     type: 'POST',
                     contentType: 'application/json',
-                    data: JSON.stringify(voteData),
-                    success: function (voteState) {
-                        if (voteState == "removeVote") {
+                    data: JSON.stringify(commentData),
+                    success: function (comments) {
+                        $('#commentsSection').empty();
 
-                            if (isPositive) {
-                                var newLikeIconElement = $('<a id="likeIcon" class="fa-regular fa-thumbs-up my-auto mx-5" style="color:white; text-decoration:none;"></a>');
-                                $('#likeIcon').replaceWith(newLikeIconElement);
-                                $("#likesCount").text(parseInt($("#likesCount").text()) - 1);
-                            }
-                            else {
-                                var newDislikeIconElement = $('<a id="dislikeIcon" class="fa-regular fa-thumbs-down my-auto mx-5" style="color:white; text-decoration:none;"></a>');
-                                $('#dislikeIcon').replaceWith(newDislikeIconElement);
-                                $("#dislikesCount").text(parseInt($("#dislikesCount").text()) - 1);
-                            }
-                        }
-                        else if (voteState == "changingVoteIsPositive") {
-                            if (event.target.id == "likeIcon") {
-                                var newLikeIconElement = $('<a id="likeIcon" class="fa-solid fa-thumbs-up my-auto mx-5" style="color:white; text-decoration:none;"></a>');
-                                var newDislikeIconElement = $('<a id="dislikeIcon" class="fa-regular fa-thumbs-down my-auto mx-5" style="color:white; text-decoration:none;"></a>');
-
-                                $('#likeIcon').replaceWith(newLikeIconElement);
-                                $('#dislikeIcon').replaceWith(newDislikeIconElement);
-
-                                $("#likesCount").text(parseInt($("#likesCount").text()) + 1);
-                                $("#dislikesCount").text(parseInt($("#dislikesCount").text()) - 1);
-                            }
-                            else {
-                                var newLikeIconElement = $('<a id="likeIcon" class="fa-regular fa-thumbs-up my-auto mx-5" style="color:white; text-decoration:none;"></a>');
-                                var newDislikeIconElement = $('<a id="dislikeIcon" class="fa-solid fa-thumbs-down my-auto mx-5" style="color:white; text-decoration:none;"></a>');
-
-                                $('#likeIcon').replaceWith(newLikeIconElement);
-                                $('#dislikeIcon').replaceWith(newDislikeIconElement);
-
-                                $("#likesCount").text(parseInt($("#likesCount").text()) - 1);
-                                $("#dislikesCount").text(parseInt($("#dislikesCount").text()) + 1);
-                            }
-                        }
-                        else if (voteState == "newVote") {
-
-                            if (isPositive) {
-                                var newLikeIconElement = $('<a id="likeIcon" class="fa-solid fa-thumbs-up my-auto mx-5" style="color:white; text-decoration:none;"></a>');
-                                $('#likeIcon').replaceWith(newLikeIconElement);
-                                $("#likesCount").text(parseInt($("#likesCount").text()) + 1);
-                            }
-                            else {
-                                var newDislikeIconElement = $('<a id="dislikeIcon" class="fa-solid fa-thumbs-down my-auto mx-5" style="color:white; text-decoration:none;"></a>');
-                                $('#dislikeIcon').replaceWith(newDislikeIconElement);
-                                $("#dislikesCount").text(parseInt($("#dislikesCount").text()) + 1);
-                            }
-                        }
-                        else if (voteState == "repeatedVote") {
-                            return;
-                        }
+                        $('#commentsSection').append(comments);
                     },
-                    error: function (xhr) {
-                        alert("Problem occured while voting on the post!");
+                    error: function (xhr, status, error) {
+                        alert("Unexpected error while commenting this post!");
                     }
                 });
-            }
-            else{
-                alert("Login to vote on posts!");
-            }
-
-        });
-
-
-        $('#commentForm').submit(function (event) {
-            event.preventDefault();
-
-            var content = $('#commentContent').val();
-
-            var minContentLength = 15;
-            var maxContentLength = 500;
-
-            if (content.length < minContentLength) {
-                $('#commentLengthValidationSpan').text('Please enter at least ' + minContentLength + ' characters.');
-                return;
-            } else if (content.length > maxContentLength) {
-                $('#commentLengthValidationSpan').text('Please enter no more than ' + maxContentLength + ' characters.');
-                return;
-            }
-            else {
-                $('#commentLengthValidationSpan').empty();
-            }
-            console.log(Boolean(`@User.Identity.IsAuthenticated`));
-            var applicationUserId = Boolean(`@User.Identity.IsAuthenticated`) ? `@User.FindFirst(ClaimTypes.NameIdentifier)?.Value` : null;
-
-            var commentContent = $('#commentContent').val();
-            var commentData = {
-                content: commentContent,
-                applicationUserId: applicationUserId,
-                entityType: @Convert.ToInt32(EntityWithCommentsType.Catch),
-                entityTypeId: @Model.Id,
-            };
-
-            $('#commentContent').val('');
-
-            $.ajax({
-                url: '/api/Comments',
-                type: 'POST',
-                contentType: 'application/json',
-                data: JSON.stringify(commentData),
-                success: function (comments) {
-                    $('#commentsSection').empty();
-
-                    $('#commentsSection').append(comments);
-                },
-                error: function (xhr, status, error) {
-                    alert("Unexpected error while commenting this post!");
-                }
             });
         });
-    });
-</script>
+    </script>
+}

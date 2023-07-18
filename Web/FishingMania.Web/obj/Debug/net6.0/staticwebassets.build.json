@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "jefrn7MEJ12F/aUyARGHxxWn7CaxRTWGNR6T+/khY2A=",
+  "Hash": "fE6vCi38tsfCsDkasb4DGmtzrqYwxarw10cV2XQQHSA=",
   "Source": "FishingMania.Web",
   "BasePath": "_content/FishingMania.Web",
   "Mode": "Default",
@@ -1035,6 +1035,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\danie\\.nuget\\packages\\microsoft.aspnetcore.identity.ui\\6.0.18\\staticwebassets\\V5\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Identity": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\animations\\errorPage404.gif",
+      "SourceId": "FishingMania.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\",
+      "BasePath": "_content/FishingMania.Web",
+      "RelativePath": "animations/errorPage404.gif",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\animations\\errorPage404.gif"
     },
     {
       "Identity": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\css\\custom\\catches.css",

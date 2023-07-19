@@ -76,6 +76,7 @@
             services.AddTransient<IImageService, ImageService>();
             services.AddTransient<ICommentService, CommentService>();
             services.AddTransient<IVotesService, VotesService>();
+            services.AddTransient<IProductsService, ProductsService>();
 
             // Cloudinary service
             var cloudinarySettings = this.configuration.GetSection("CloudinarySettings");

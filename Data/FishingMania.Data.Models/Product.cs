@@ -1,9 +1,10 @@
 ﻿namespace FishingMania.Data.Models
 {
-    using FishingMania.Data.Common.Models;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+
+    using FishingMania.Data.Common.Models;
 
     using static FishingMania.Data.Common.DataValidation.Product;
 
@@ -16,6 +17,10 @@
         [Required]
         [Range(typeof(decimal), MinPrice, MaxPrice)]
         public decimal Price { get; set; }
+
+        [Required]
+        [StringLength(DescriptionMaxLength, MinimumLength = DescriptionMinLength)]
+        public string Description { get; set; }
 
         [Required]
         [Range(MinAmountInStock, MaxAmountInStock)]

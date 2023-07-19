@@ -54,6 +54,8 @@ namespace FishingMania.Data.Common
             public const string MaxPrice = "10000.00";
             public const int MinAmountInStock = 0;
             public const int MaxAmountInStock = 1000;
+            public const int DescriptionMinLength = 10;
+            public const int DescriptionMaxLength = 500;
         }
 
         public static class Order

@@ -71,7 +71,7 @@
             builder.Entity<Catch>().Property(c => c.FishWeight).HasPrecision(12, 10);
             builder.Entity<FishingSpot>().Property(fs => fs.Latitude).HasPrecision(12, 10);
             builder.Entity<FishingSpot>().Property(fs => fs.Longitude).HasPrecision(12, 10);
-            builder.Entity<Product>().Property(p => p.Price).HasPrecision(12, 10);
+            builder.Entity<Product>().Property(p => p.Price).HasPrecision(15, 10);
 
             // Needed for Identity models configuration
             base.OnModelCreating(builder);

@@ -464,6 +464,11 @@ namespace FishingMania.Data.Migrations
                     b.Property<DateTime?>("DeletedOn")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
@@ -479,8 +484,8 @@ namespace FishingMania.Data.Migrations
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<decimal>("Price")
-                        .HasPrecision(12, 10)
-                        .HasColumnType("decimal(12,10)");
+                        .HasPrecision(15, 10)
+                        .HasColumnType("decimal(15,10)");
 
                     b.HasKey("Id");
 

@@ -30,6 +30,9 @@
                               new FishSpeciesSeeder(),
                               new FishingSpotsSeeder(),
                               new CatchesSeeder(),
+                              new ProductCategoriesSeeder(),
+                              new ManufacturersSeeder(),
+                              new ProductsSeeder(),
                           };
 
             foreach (var seeder in seeders)

@@ -201,6 +201,34 @@
       "PackagePath": "staticwebassets\\img\\other\\swampPanorama.jpg"
     },
     {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\img\\products\\daiwaReelFirst.jpg",
+      "PackagePath": "staticwebassets\\img\\products\\daiwaReelFirst.jpg"
+    },
+    {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\img\\products\\daiwaReelSecond.jpg",
+      "PackagePath": "staticwebassets\\img\\products\\daiwaReelSecond.jpg"
+    },
+    {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\img\\products\\shimanoRodFirst.jpg",
+      "PackagePath": "staticwebassets\\img\\products\\shimanoRodFirst.jpg"
+    },
+    {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\img\\products\\shimanoRodSecond.jpg",
+      "PackagePath": "staticwebassets\\img\\products\\shimanoRodSecond.jpg"
+    },
+    {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\img\\products\\shimanoRodThird.jpg",
+      "PackagePath": "staticwebassets\\img\\products\\shimanoRodThird.jpg"
+    },
+    {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\img\\products\\trabuccoLineFirst.jpg",
+      "PackagePath": "staticwebassets\\img\\products\\trabuccoLineFirst.jpg"
+    },
+    {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\img\\products\\trabuccoLineSecond.jpg",
+      "PackagePath": "staticwebassets\\img\\products\\trabuccoLineSecond.jpg"
+    },
+    {
       "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\js\\cascadeSelectFishSpecies.js",
       "PackagePath": "staticwebassets\\js\\cascadeSelectFishSpecies.js"
     },

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "cNfarjwYLW20qQRGgmxDlfOUXPA1wchiyLW7HNtCcMg=",
+  "Hash": "6qYGTIXg/IlQiPGbYZ2PpWWcWJeTFa/11co+8qMtxS4=",
   "Source": "FishingMania.Web.Tests",
   "BasePath": "_content/FishingMania.Web.Tests",
   "Mode": "Default",
@@ -28,6 +28,23 @@
     }
   ],
   "Assets": [
+    {
+      "Identity": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\animations\\errorPage404.gif",
+      "SourceId": "FishingMania.Web",
+      "SourceType": "Project",
+      "ContentRoot": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\",
+      "BasePath": "_content/FishingMania.Web",
+      "RelativePath": "animations/errorPage404.gif",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\animations\\errorPage404.gif"
+    },
     {
       "Identity": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\css\\custom\\catches.css",
       "SourceId": "FishingMania.Web",

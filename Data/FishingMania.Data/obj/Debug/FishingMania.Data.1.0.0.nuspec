@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>FishingMania.Data</id>
+    <version>1.0.0</version>
+    <authors>FishingMania.Data</authors>
+    <description>Package Description</description>
+    <dependencies>
+      <group targetFramework="net6.0">
+        <dependency id="FishingMania.Data.Common" version="1.0.0" exclude="Build,Analyzers" />
+        <dependency id="FishingMania.Data.Models" version="1.0.0" exclude="Build,Analyzers" />
+        <dependency id="FishingMania.Common" version="1.0.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.EntityFrameworkCore" version="6.0.3" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.EntityFrameworkCore.SqlServer" version="6.0.3" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.Configuration.UserSecrets" version="6.0.1" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+    <contentFiles>
+      <files include="any/net6.0/appsettings.json" buildAction="Content" />
+    </contentFiles>
+  </metadata>
+  <files>
+    <file src="C:\Users\danie\source\repos\FishingMania\Data\FishingMania.Data\bin\Debug\net6.0\FishingMania.Data.runtimeconfig.json" target="lib\net6.0\FishingMania.Data.runtimeconfig.json" />
+    <file src="C:\Users\danie\source\repos\FishingMania\Data\FishingMania.Data\bin\Debug\net6.0\FishingMania.Data.dll" target="lib\net6.0\FishingMania.Data.dll" />
+    <file src="C:\Users\danie\source\repos\FishingMania\Data\FishingMania.Data\appsettings.json" target="content\appsettings.json" />
+    <file src="C:\Users\danie\source\repos\FishingMania\Data\FishingMania.Data\appsettings.json" target="contentFiles\any\net6.0\appsettings.json" />
+  </files>
+</package>

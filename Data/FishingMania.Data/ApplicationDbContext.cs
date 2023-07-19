@@ -37,6 +37,16 @@
 
         public DbSet<Vote> Votes { get; set; }
 
+        public DbSet<Product> Products { get; set; }
+
+        public DbSet<ShoppingCart> ShoppingCarts { get; set; }
+
+        public DbSet<Order> Orders { get; set; }
+
+        public DbSet<Manufacturer> Manufacturers { get; set; }
+
+        public DbSet<ProductCategory> ProductCategories { get; set; }
+
         public override int SaveChanges() => this.SaveChanges(true);
 
         public override int SaveChanges(bool acceptAllChangesOnSuccess)
@@ -61,6 +71,7 @@
             builder.Entity<Catch>().Property(c => c.FishWeight).HasPrecision(12, 10);
             builder.Entity<FishingSpot>().Property(fs => fs.Latitude).HasPrecision(12, 10);
             builder.Entity<FishingSpot>().Property(fs => fs.Longitude).HasPrecision(12, 10);
+            builder.Entity<Product>().Property(p => p.Price).HasPrecision(12, 10);
 
             // Needed for Identity models configuration
             base.OnModelCreating(builder);

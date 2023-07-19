@@ -48,6 +48,6 @@
         public FishingSpot FishingSpot { get; set; }
 
         [Required]
-        public List<Vote> Votes { get; set; } = new List<Vote>();
+        public IEnumerable<Vote> Votes { get; set; } = new HashSet<Vote>();
     }
 }

@@ -1,5 +1,5 @@
 ﻿@using FishingMania.Web.ViewModels.FishingSpot;
-@model List<FishingSpotViewModel>
+@model AllFishingSpotsPaginationViewModel
 @{
     this.ViewData["Title"] = "Fishing Spots Page";
 }
@@ -7,8 +7,33 @@
 <h1 class="text-primary text-center m-5"><strong>All fishing spots!</strong></h1>
 
 <div class="d-flex col-md-12 row">
-    @foreach (var spot in Model)
+    @foreach (var spot in Model.FishingSpots)
     {
-        <partial name="~/Views/Shared/FishingSpots/_FishingSpotPartialView.cshtml" for="@spot"/>
+        <partial name="~/Views/Shared/FishingSpots/_FishingSpotPartialView.cshtml" for="@spot" />
     }
+</div>
+
+
+<div class="row offset-4 col-md-4 mb-5 bg-primary rounded-pill">
+    <div class="col-md-4 d-grid gap-2 d-md-flex justify-content-md-start my-3">
+        <a class="btn bg-white text-primary @(Model.PageNumber == 1 ? "disabled" : string.Empty)"
+           asp-controller="FishingSpots"
+           asp-action="All"
+           asp-route-page="@Model.PreviousPageNumber"><<</a>
+    </div>
+
+    @{
+        bool shouldNextPageBeDisabled = !Model.HasNextPage ||
+        !Model.FishingSpots.Any();
+    }
+
+    <span class="col-md-4 text-center text-white align-self-center">@Model.PageNumber / @Model.PagesCount</span>
+
+    <div class="col-md-4 d-grid gap-2 d-md-flex justify-content-md-end my-3">
+        <a class="btn bg-white text-primary
+           @(shouldNextPageBeDisabled ? "disabled" : string.Empty)"
+           asp-controller="FishingSpots"
+           asp-action="All"
+           asp-route-page="@(Model.PageNumber + 1)">>></a>
+    </div>
 </div>

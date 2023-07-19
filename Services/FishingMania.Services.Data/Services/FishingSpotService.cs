@@ -34,14 +34,25 @@
             return fishingSpots;
         }
 
-        public async Task<List<FishingSpotViewModel>> GetAllFishingSpotsAsync()
+        public async Task<List<FishingSpotViewModel>> GetAllFishingSpotsAsync(int page, int itemsPerPage)
         {
-            return await this.fishingSpotsRepository.AllAsNoTracking().To<FishingSpotViewModel>().ToListAsync();
+            return await this.fishingSpotsRepository.AllAsNoTracking()
+                                                    .OrderBy(fs => fs.CreatedOn)
+                                                    .Skip((page - 1) * itemsPerPage)
+                                                    .Take(itemsPerPage)
+                                                    .To<FishingSpotViewModel>()
+                                                    .ToListAsync();
         }
 
-        public async Task<List<FishingSpotViewModel>> GetAllFishingSpotsByTypeAsync(FishingSpotType type)
+        public async Task<List<FishingSpotViewModel>> GetAllFishingSpotsByTypeAsync(FishingSpotType type, int page, int itemsPerPage)
         {
-            return await this.fishingSpotsRepository.AllAsNoTracking().Where(fs => fs.FishingSpotType == type).To<FishingSpotViewModel>().ToListAsync();
+            return await this.fishingSpotsRepository.AllAsNoTracking()
+                                                    .Where(fs => fs.FishingSpotType == type)
+                                                    .OrderBy(fs => fs.CreatedOn)
+                                                    .Skip((page - 1) * itemsPerPage)
+                                                    .Take(itemsPerPage)
+                                                    .To<FishingSpotViewModel>()
+                                                    .ToListAsync();
         }
 
         public async Task<List<FishSpeciesDropdownViewModel>> GetFishSpeciesForSpotByIdAsync(int id)
@@ -60,6 +71,16 @@
         public async Task<bool> FishingSpotHasFishSpeciesAsync(int fishSpeciesId, int fishingSpotId)
         {
             return await this.fishingSpotsRepository.All().Where(fs => fs.Id == fishingSpotId).SelectMany(fs => fs.FishSpecies).AnyAsync(x => x.Id == fishSpeciesId);
+        }
+
+        public async Task<int> GetCountAsync()
+        {
+            return await this.fishingSpotsRepository.AllAsNoTracking().CountAsync();
+        }
+
+        public async Task<int> GetCountByTypeAsync(FishingSpotType type)
+        {
+            return await this.fishingSpotsRepository.AllAsNoTracking().Where(fs => fs.FishingSpotType == type).CountAsync();
         }
     }
 }

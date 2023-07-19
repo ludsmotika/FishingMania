@@ -25,12 +25,35 @@
         }
 
         [AllowAnonymous]
-        public async Task<IActionResult> All()
+        public async Task<IActionResult> All(int page)
         {
             try
             {
-                List<FishingSpotViewModel> fishingSpots = await this.fishingSpotService.GetAllFishingSpotsAsync();
-                return this.View(fishingSpots);
+                if (page < 1)
+                {
+                    page = 1;
+                }
+
+                const int itemsPerPage = 6;
+
+                int maxPage = (int)Math.Ceiling((double)await this.fishingSpotService.GetCountAsync() / itemsPerPage);
+
+                if (page > maxPage)
+                {
+                    page = maxPage;
+                }
+
+                List<FishingSpotViewModel> fishingSpots = await this.fishingSpotService.GetAllFishingSpotsAsync(page, itemsPerPage);
+
+                AllFishingSpotsPaginationViewModel fishingSpotsViewModel = new AllFishingSpotsPaginationViewModel()
+                {
+                    FishingSpots = fishingSpots,
+                    ItemsPerPage = itemsPerPage,
+                    PageNumber = page,
+                    Count = await this.fishingSpotService.GetCountAsync(),
+                };
+
+                return this.View(fishingSpotsViewModel);
             }
             catch (Exception)
             {
@@ -39,11 +62,25 @@
         }
 
         [AllowAnonymous]
-        public async Task<IActionResult> FishingSpotsByType(FishingSpotType enumValue)
+        public async Task<IActionResult> FishingSpotsByType(FishingSpotType enumValue, int page)
         {
             try
             {
-                List<FishingSpotViewModel> fishingSpots = await this.fishingSpotService.GetAllFishingSpotsByTypeAsync(enumValue);
+                if (page < 1)
+                {
+                    page = 1;
+                }
+
+                const int itemsPerPage = 3;
+
+                int maxPage = (int)Math.Ceiling((double)await this.fishingSpotService.GetCountByTypeAsync(enumValue) / itemsPerPage);
+
+                if (page > maxPage)
+                {
+                    page = maxPage;
+                }
+
+                List<FishingSpotViewModel> fishingSpots = await this.fishingSpotService.GetAllFishingSpotsByTypeAsync(enumValue, page, itemsPerPage);
 
                 string spotTypeDescription = string.Empty;
                 string spotTypeImageURL = string.Empty;
@@ -73,11 +110,15 @@
                         break;
                 }
 
-                FishingSpotByTypeViewModel viewModel = new FishingSpotByTypeViewModel()
+                AllFishingSpotsByTypeViewModel viewModel = new AllFishingSpotsByTypeViewModel()
                 {
                     FishingSpots = fishingSpots,
                     SpotTypeDescription = spotTypeDescription,
                     SpotTypeImageURL = spotTypeImageURL,
+                    ItemsPerPage = itemsPerPage,
+                    PageNumber = page,
+                    FishingSpotType = enumValue,
+                    Count = await this.fishingSpotService.GetCountByTypeAsync(enumValue),
                 };
 
                 return this.View($"ByType", viewModel);

@@ -1,21 +1,46 @@
 ﻿@using FishingMania.Web.ViewModels.FishingSpot;
-@model FishingSpotByTypeViewModel
+@model AllFishingSpotsByTypeViewModel
 
-<div>
-    <h1 class="text-primary text-center m-5"><strong>@this.ViewData["Title"]</strong></h1>
-    <div class="container col-md-12 my-5">
-        <img class="w-100 gradientify rounded-5" src="@Model.SpotTypeImageURL" />
-        <div class="card-img-overlay col-md-4 font-weight-bold rounded-5 ml-auto mr-5 my-5 bg-dark bg-opacity-75">
-            <p class="text-white m-5">
-                @Model.SpotTypeDescription
-            </p>
-        </div>
+<h1 class="text-primary text-center m-5"><strong>@this.ViewData["Title"]</strong></h1>
+<div class="container col-md-12 my-5">
+    <img class="w-100 gradientify rounded-5" src="@Model.SpotTypeImageURL" />
+    <div class="card-img-overlay col-md-4 font-weight-bold rounded-5 ml-auto mr-5 my-5 bg-dark bg-opacity-75">
+        <p class="text-white m-5">
+            @Model.SpotTypeDescription
+        </p>
+    </div>
+</div>
+
+<div class="d-flex row">
+    @foreach (var spot in Model.FishingSpots)
+    {
+        <partial name="~/Views/Shared/FishingSpots/_FishingSpotPartialView.cshtml" for="@spot" />
+    }
+</div>
+
+
+<div class="row offset-4 col-md-4 mb-5 bg-primary rounded-pill">
+    <div class="col-md-4 d-grid gap-2 d-md-flex justify-content-md-start my-3">
+        <a class="btn bg-white text-primary @(Model.PageNumber == 1 ? "disabled" : string.Empty)"
+           asp-controller="FishingSpots"
+           asp-action="FishingSpotsByType"
+           asp-route-enumValue="@Model.FishingSpotType"
+           asp-route-page="@Model.PreviousPageNumber"><<</a>
     </div>
 
-    <div class="d-flex row">
-        @foreach (var spot in Model.FishingSpots)
-        {
-            <partial name="~/Views/Shared/FishingSpots/_FishingSpotPartialView.cshtml" for="@spot" />
-        }
+    @{
+        bool shouldNextPageBeDisabled = !Model.HasNextPage ||
+        !Model.FishingSpots.Any();
+    }
+
+    <span class="col-md-4 text-center text-white align-self-center">@Model.PageNumber / @Model.PagesCount</span>
+
+    <div class="col-md-4 d-grid gap-2 d-md-flex justify-content-md-end my-3">
+        <a class="btn bg-white text-primary
+           @(shouldNextPageBeDisabled ? "disabled" : string.Empty)"
+           asp-controller="FishingSpots"
+           asp-action="FishingSpotsByType"
+           asp-route-enumValue="@Model.FishingSpotType"
+           asp-route-page="@(Model.PageNumber + 1)">>></a>
     </div>
 </div>

@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+
     using FishingMania.Data.Models;
     using FishingMania.Web.ViewModels.Catch.Enums;
 

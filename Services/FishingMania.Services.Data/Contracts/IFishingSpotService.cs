@@ -9,9 +9,13 @@
 
     public interface IFishingSpotService
     {
-        Task<List<FishingSpotViewModel>> GetAllFishingSpotsAsync();
+        Task<int> GetCountAsync();
 
-        Task<List<FishingSpotViewModel>> GetAllFishingSpotsByTypeAsync(FishingSpotType type);
+        Task<int> GetCountByTypeAsync(FishingSpotType type);
+
+        Task<List<FishingSpotViewModel>> GetAllFishingSpotsAsync(int page, int itemsPerPage);
+
+        Task<List<FishingSpotViewModel>> GetAllFishingSpotsByTypeAsync(FishingSpotType type, int page, int itemsPerPage);
 
         Task<List<FishingSpotDropdownViewModel>> AllForInputAsync();
 

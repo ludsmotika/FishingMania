@@ -5,12 +5,12 @@
     this.ViewData["Title"] = "My Catches Page";
 }
 
-<div class="col-md-12 bg-primary rounded-pill text-center">
-    <h1 class="text-white my-5 font-weight-bold">Your personal catches</h1>
+<div class="container col-md-6 offset-3 bg-primary rounded-pill text-center my-5">
+    <h1 class="text-white m-5 font-weight-bold">Your personal catches</h1>
 </div>
 
 <div class="row">
-    @if(Model.Count==0)
+    @if (Model.Count == 0)
     {
         <div class="col-md-6 offset-3 text-center">
             <h3 class="text-primary font-weight-bold my-3">You haven't uploaded any posts. If you want to become part of the fishing family you can make your first post right now</h3>

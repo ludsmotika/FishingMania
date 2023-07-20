@@ -13,11 +13,13 @@
     [Authorize]
     public class ProductsController : Controller
     {
-        private readonly IProductsService productsServise;
+        private readonly IProductsService productsService;
+        private readonly IProductCategoryService productCategoriesService;
 
-        public ProductsController(IProductsService productsServise)
+        public ProductsController(IProductsService productsService, IProductCategoryService productCategoriesService)
         {
-            this.productsServise = productsServise;
+            this.productsService = productsService;
+            this.productCategoriesService = productCategoriesService;
         }
 
         [AllowAnonymous]
@@ -26,11 +28,11 @@
             try
             {
                 AllProductsFilteredAndPagedServiceModel serviceModel =
-               await this.productsServise.GetAllProductsAsync(queryModel);
+               await this.productsService.GetAllProductsAsync(queryModel);
 
                 queryModel.Products = serviceModel.Products;
                 queryModel.TotalProducts = serviceModel.TotalProducts;
-                //queryModel.Category = Enum.GetValues(typeof(FishType)).Cast<FishType>().ToList();
+                queryModel.Categories = await this.productCategoriesService.GetAllProductCategoriesAsync();
 
                 return this.View(queryModel);
             }

@@ -3,10 +3,9 @@
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
-    using FishingMania.Data.Models;
-    using FishingMania.Web.ViewModels.Catch;
-    using FishingMania.Web.ViewModels.Catch.Enums;
     using FishingMania.Web.ViewModels.Product.Enums;
+    using FishingMania.Web.ViewModels.ProductCategory;
+
     using static FishingMania.Common.GlobalConstants;
 
     public class AllProductsQueryViewModel
@@ -19,7 +18,10 @@
             this.Products = new HashSet<ProductViewModel>();
         }
 
-        public string Category { get; set; }
+        [Display(Name = "Category")]
+        public int? SelectedCategoryId { get; set; }
+
+        public List<ProductCategoryViewModel> Categories { get; set; }
 
         [Display(Name = "Search by word")]
         public string? SearchString { get; set; }

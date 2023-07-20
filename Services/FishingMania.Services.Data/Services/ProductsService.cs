@@ -33,6 +33,12 @@
                 queryModel.CurrentPage = 1;
             }
 
+            if (!string.IsNullOrWhiteSpace(queryModel.SelectedCategoryId.ToString()))
+            {
+                productsQuery = productsQuery
+                    .Where(p => p.ProductCategory.Id == queryModel.SelectedCategoryId);
+            }
+
             if (!string.IsNullOrWhiteSpace(queryModel.SearchString))
             {
                 string wildCard = $"%{queryModel.SearchString.ToLower()}%";

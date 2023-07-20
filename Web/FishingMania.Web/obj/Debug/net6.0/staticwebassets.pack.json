@@ -169,6 +169,18 @@
       "PackagePath": "staticwebassets\\img\\fishingSpots\\struma.jpg"
     },
     {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\img\\other\\allProductsStore.jpg",
+      "PackagePath": "staticwebassets\\img\\other\\allProductsStore.jpg"
+    },
+    {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\img\\other\\fishermanStorePhoto.jpg",
+      "PackagePath": "staticwebassets\\img\\other\\fishermanStorePhoto.jpg"
+    },
+    {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\img\\other\\forestFishingStore.jpg",
+      "PackagePath": "staticwebassets\\img\\other\\forestFishingStore.jpg"
+    },
+    {
       "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\img\\other\\homePageCatchBackground.jpg",
       "PackagePath": "staticwebassets\\img\\other\\homePageCatchBackground.jpg"
     },
@@ -195,6 +207,10 @@
     {
       "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\img\\other\\riverPanorama.jpg",
       "PackagePath": "staticwebassets\\img\\other\\riverPanorama.jpg"
+    },
+    {
+      "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\img\\other\\saltWaterFishingStoreHome.jpg",
+      "PackagePath": "staticwebassets\\img\\other\\saltWaterFishingStoreHome.jpg"
     },
     {
       "Id": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\wwwroot\\img\\other\\swampPanorama.jpg",

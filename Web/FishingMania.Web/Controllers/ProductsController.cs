@@ -1,13 +1,16 @@
 ﻿namespace FishingMania.Web.Controllers
 {
     using System;
+    using System.Security.Claims;
     using System.Threading.Tasks;
 
     using FishingMania.Data.Models;
     using FishingMania.Services.Data.Contracts;
     using FishingMania.Services.Data.ServiceModels;
+    using FishingMania.Web.ViewModels.Comment;
     using FishingMania.Web.ViewModels.Product;
     using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
 
     [Authorize]
@@ -65,5 +68,6 @@
                 return this.BadRequest();
             }
         }
+
     }
 }

@@ -23,6 +23,6 @@
         public ApplicationUser ApplicationUser { get; set; }
 
         [Required]
-        public IEnumerable<Product> Products { get; set; } = new HashSet<Product>();
+        public IEnumerable<ShoppingCartProduct> ShoppingCartProducts { get; set; } = new HashSet<ShoppingCartProduct>();
     }
 }

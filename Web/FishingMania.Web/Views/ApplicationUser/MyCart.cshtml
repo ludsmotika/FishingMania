@@ -1,0 +1,19 @@
+﻿@using FishingMania.Web.ViewModels.Cart;
+@model ShoppingCartViewModel
+
+<div>
+    @if(Model.ShoppingCartProducts.Count() == 0)
+    {
+        <p>No Products in you cart</p>
+
+    }
+    else
+    {
+        @foreach (var item in Model.ShoppingCartProducts)
+        {
+            <img src="@item.Product.Images.FirstOrDefault().URL" />
+            <p>@item.Product.Name @item.Product.Price</p>
+            <p>@item.Amount</p>
+        }
+    }
+</div>

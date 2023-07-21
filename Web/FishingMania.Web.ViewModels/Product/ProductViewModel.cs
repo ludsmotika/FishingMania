@@ -13,6 +13,8 @@
 
         public decimal Price { get; set; }
 
+        public int AmountInStock { get; set; }
+
         public List<Image> Images { get; set; }
     }
 }

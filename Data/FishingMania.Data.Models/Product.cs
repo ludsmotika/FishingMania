@@ -47,6 +47,6 @@
         public IEnumerable<Image> Images { get; set; } = new HashSet<Image>();
 
         [Required]
-        public IEnumerable<ShoppingCart> ShoppingCarts { get; set; } = new HashSet<ShoppingCart>();
+        public IEnumerable<ShoppingCartProduct> ShoppingCartProduct { get; set; } = new HashSet<ShoppingCartProduct>();
     }
 }

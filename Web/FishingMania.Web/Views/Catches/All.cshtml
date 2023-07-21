@@ -9,7 +9,7 @@
     <h1 class="text-white text-center m-5"><strong>All the catches</strong></h1>
     @if (this.SignInManager.IsSignedIn(this.User))
     {
-        <a class="btn my-auto ms-auto m-3 bg-white text-primary" asp-controller="Catches" asp-action="Mine">My catches</a>
+        <a class="btn my-auto ms-auto m-3 bg-white text-primary" asp-controller="ApplicationUser" asp-action="MyCatches">My catches</a>
     }
     <a class="btn my-auto m-3 bg-white text-primary ms-auto" asp-controller="Catches" asp-action="Create">Add new catch</a>
 </div>

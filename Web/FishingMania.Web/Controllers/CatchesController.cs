@@ -108,28 +108,6 @@
         }
 
         [HttpGet]
-        public async Task<IActionResult> Mine()
-        {
-            try
-            {
-                ApplicationUser applicationUser = await this.userManager.GetUserAsync(this.User);
-
-                if (applicationUser == null)
-                {
-                    return this.RedirectToAction("All", "Catches");
-                }
-
-                List<CatchViewModel> catchesOfUser = await this.catchesService.GetCatchesByUserIdAsync(applicationUser.Id);
-                return this.View(catchesOfUser);
-            }
-            catch (Exception ex)
-            {
-                this.ModelState.AddModelError(string.Empty, ex.Message);
-                return this.RedirectToAction("All", "Catches");
-            }
-        }
-
-        [HttpGet]
         [AllowAnonymous]
         public async Task<IActionResult> Details(int id)
         {

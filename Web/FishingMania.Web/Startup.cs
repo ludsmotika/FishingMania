@@ -78,6 +78,7 @@
             services.AddTransient<IVotesService, VotesService>();
             services.AddTransient<IProductsService, ProductsService>();
             services.AddTransient<IProductCategoryService, ProductCategoryService>();
+            services.AddTransient<ICartsService, CartsService>();
 
             // Cloudinary service
             var cloudinarySettings = this.configuration.GetSection("CloudinarySettings");

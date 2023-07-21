@@ -1,12 +1,17 @@
 ﻿@using FishingMania.Common
 @using FishingMania.Data.Models
 @using Microsoft.AspNetCore.Identity
+@using System.Security.Claims;
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
 
 <ul class="navbar-nav">
     @if (this.SignInManager.IsSignedIn(this.User))
     {
+        <li class="nav-item ml-auto mr-2">
+            <a class="nav-link text-white" asp-area="" asp-controller="ApplicationUser" asp-action="MyCart"><i class="fa-solid fa-cart-shopping"></i></a>
+        </li>
+
         <li class="nav-item">
             <a class="nav-link text-white" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Welcome, @this.User.Identity.Name!</a>
         </li>
@@ -16,6 +21,7 @@
                 <a class="nav-link text-white" asp-area="Administration" asp-controller="Dashboard" asp-action="Index" title="Admin">Admin</a>
             </li>
         }
+
         <li class="nav-item">
             <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@this.Url.Action("Index", "Home", new { area = string.Empty })">
                 <button type="submit" class="nav-link btn btn-primary text-primary bg-white"><strong>Logout</strong></button>

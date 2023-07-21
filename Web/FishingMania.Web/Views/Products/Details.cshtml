@@ -15,7 +15,7 @@
                 <div class="carousel-inner text-center rounded-5">
                     @for (var i = 0; i < Model.Images.Count(); i++)
                     {
-                        <div class="carousel-item @(i == 0 ? "active" : "")" style="height:300px;">
+                        <div class="carousel-item @(i == 0 ? "active" : "")" style="height:500px;">
                             <img src="@Model.Images[i].URL" class="d-block h-100 w-100" style="object-fit:cover;" alt="@Model.Name">
                         </div>
                     }
@@ -41,6 +41,20 @@
                     <span class="font-weight-bold">Category:</span>
                     <span class="col-md-6">@Model.ProductCategory.Name</span>
                 </div>
+
+                @if (Model.AmountInStock == 0)
+                {
+                    <p class="btn bg-primary text-white col-md-4 mx-4 mb-5 mt-5">Sold Out</p>
+                }
+                else
+                {
+                    <form id="addProductForm" method="post" enctype="multipart/form-data" asp-controller="Products" asp-action="AddProductToCartAsync" class="col-md-6 offset-3 text-center my-5 text-white bg-primary rounded-5">
+                        <input id="amount" type="number" name="amount" min="0" max="@Model.AmountInStock" value="1" />
+                        <button type="submit" class="btn bg-white text-primary col-md-4 my-4">Add to cart</button>
+                        <span id="amountValidationSpan" class="text-danger"></span>
+                    </form>
+                }
+
             </div>
 
         </div>
@@ -77,7 +91,54 @@
 
 @section Scripts {
     <script>
+
         $(document).ready(function () {
+
+
+            $('#addProductForm').submit(function (event) {
+                event.preventDefault();
+
+                var amount = parseInt($('#amount').val());
+
+                var minAmount = 0;
+                var maxAmount = @Model.AmountInStock;
+
+                if (amount < minAmount) {
+                    $('#amountValidationSpan').text('Please enter at least ' + minAmount + ' characters.');
+                    return;
+                } else if (amount > maxAmount) {
+                    $('#amountValidationSpan').text('Please enter no more than ' + maxAmount + ' characters.');
+                    return;
+                }
+                else {
+                    $('#amountValidationSpan').empty();
+                }
+
+                var applicationUserId = Boolean(`@User.Identity.IsAuthenticated`) ? `@User.FindFirst(ClaimTypes.NameIdentifier)?.Value` : null;
+
+
+                var prodData = {
+                    productId: @Model.Id,
+                    amount: amount,
+                    applicationUserId: applicationUserId,
+                };
+
+                $.ajax({
+                    url: 'https://localhost:5001/api/Carts/AddProductToCartAsync',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify(prodData),
+                    success: function () {
+                        alert("succesfuly added");
+                    },
+                    error: function (xhr, status, error) {
+                        alert("Unexpected error while adding this product!");
+                    }
+                });
+            });
+
+
+
             $('#commentForm').submit(function (event) {
                 event.preventDefault();
 
@@ -96,7 +157,7 @@
                 else {
                     $('#commentLengthValidationSpan').empty();
                 }
-                console.log(Boolean(`@User.Identity.IsAuthenticated`));
+
                 var applicationUserId = Boolean(`@User.Identity.IsAuthenticated`) ? `@User.FindFirst(ClaimTypes.NameIdentifier)?.Value` : null;
 
                 var commentContent = $('#commentContent').val();

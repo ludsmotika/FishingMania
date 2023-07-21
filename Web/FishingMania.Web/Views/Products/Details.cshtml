@@ -1,0 +1,129 @@
+﻿@using FishingMania.Web.ViewModels.Catch;
+@using System.Security.Claims;
+@using System.Text.Encodings.Web;
+@using FishingMania.Web.ViewModels.Product;
+@using Newtonsoft.Json;
+@model ProductDetailsViewModel
+@inject UserManager<ApplicationUser> UserManager
+
+<div class="container my-5 text-center">
+
+    <div class="row col-md-12 bg-primary rounded-5 text-white display-6">
+        <div class="col-md-6 rounded-3 my-5">
+
+            <div id="carousel-@Model.Id" class="carousel slide my-auto mt-3 rounded-5" data-bs-ride="carousel">
+                <div class="carousel-inner text-center rounded-5">
+                    @for (var i = 0; i < Model.Images.Count(); i++)
+                    {
+                        <div class="carousel-item @(i == 0 ? "active" : "")" style="height:300px;">
+                            <img src="@Model.Images[i].URL" class="d-block h-100 w-100" style="object-fit:cover;" alt="@Model.Name">
+                        </div>
+                    }
+                </div>
+                <a class="carousel-control-prev" href="#carousel-@Model.Id" role="button" data-slide="prev">
+                    <span><i class="fa-solid fa-angle-left fa-lg text-primary" aria-hidden="true"></i></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carousel-@Model.Id" role="button" data-slide="next">
+                    <span><i class="fa-solid fa-angle-right fa-lg text-primary" aria-hidden="true"></i></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-6 text-center bg-dark bg-opacity-75 font-weight-bold my-5 rounded-5">
+
+            <div class="my-4 mb-0">
+                <p class="text-wrap text-break h4 mx-5 mt-5">@Model.Description</p>
+
+                <div class="mt-5">
+                    <span class="font-weight-bold">Manufacturer:</span>
+                    <span class="col-md-6">@Model.Manufacturer.Name</span>
+                    <span class="font-weight-bold">Category:</span>
+                    <span class="col-md-6">@Model.ProductCategory.Name</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row col-md-12 bg-primary text-white rounded-5 mt-5">
+
+        <h2 class="my-3">Post Comments</h2>
+
+        @if (this.User.Identity.IsAuthenticated)
+        {
+            <form id="commentForm">
+                <p>Write a comment:</p>
+                <div class="d-flex flex-row text-center mb-5">
+                    <textarea id="commentContent" rows="4" class="col-md-10 rounded-5"></textarea>
+                    <button type="submit" class="btn bg-white text-primary m-auto">Submit Comment</button>
+                </div>
+                <span id="commentLengthValidationSpan" class="text-danger"></span>
+            </form>
+        }
+        else
+        {
+            <div class="container d-flex flex-row offset-3 col-md-6 mt-4">
+                <span>Please login if you want to leave comments on posts:</span>
+                <a class="nav-link btn my-auto col-md-2 mx-auto bg-white text-primary" asp-area="Identity" asp-page="/Account/Login"><strong>Login</strong></a>
+            </div>
+        }
+        <div id="commentsSection">
+            <partial name="~/Views/Shared/Comments/_CommentsListPartialView.cshtml" for="@Model.Comments" />
+        </div>
+    </div>
+
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#commentForm').submit(function (event) {
+                event.preventDefault();
+
+                var content = $('#commentContent').val();
+
+                var minContentLength = 15;
+                var maxContentLength = 500;
+
+                if (content.length < minContentLength) {
+                    $('#commentLengthValidationSpan').text('Please enter at least ' + minContentLength + ' characters.');
+                    return;
+                } else if (content.length > maxContentLength) {
+                    $('#commentLengthValidationSpan').text('Please enter no more than ' + maxContentLength + ' characters.');
+                    return;
+                }
+                else {
+                    $('#commentLengthValidationSpan').empty();
+                }
+                console.log(Boolean(`@User.Identity.IsAuthenticated`));
+                var applicationUserId = Boolean(`@User.Identity.IsAuthenticated`) ? `@User.FindFirst(ClaimTypes.NameIdentifier)?.Value` : null;
+
+                var commentContent = $('#commentContent').val();
+                var commentData = {
+                    content: commentContent,
+                    applicationUserId: applicationUserId,
+                    entityType: @Convert.ToInt32(EntityWithCommentsType.Product),
+                    entityTypeId: @Model.Id,
+                };
+
+                $('#commentContent').val('');
+
+                $.ajax({
+                    url: '/api/Comments',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify(commentData),
+                    success: function (comments) {
+                        $('#commentsSection').empty();
+
+                        $('#commentsSection').append(comments);
+                    },
+                    error: function (xhr, status, error) {
+                        alert("Unexpected error while commenting this product!");
+                    }
+                });
+            });
+        });
+    </script>
+}

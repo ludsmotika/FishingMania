@@ -86,5 +86,10 @@
                 Products = allProducts,
             };
         }
+
+        public async Task<ProductDetailsViewModel> GetProductByIdAsync(int id)
+        {
+            return await this.productsRepository.All().Where(p => p.Id == id).To<ProductDetailsViewModel>().FirstOrDefaultAsync();
+        }
     }
 }

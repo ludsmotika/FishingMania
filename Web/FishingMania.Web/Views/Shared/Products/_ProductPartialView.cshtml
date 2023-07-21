@@ -3,11 +3,11 @@
 
 <div class="card col-md-3 m-5 bg-primary-subtle bg-opacity-25 text-decoration-none text-primary font-weight-bold">
     <div id="carousel-@Model.Id" class="carousel slide my-auto mt-3" data-bs-ride="carousel">
-        <div class="carousel-inner">
+        <div class="carousel-inner text-center">
             @for (var i = 0; i < Model.Images.Count(); i++)
             {
-                <div class="carousel-item @(i == 0 ? "active" : "")">
-                    <img src="@Model.Images[i].URL" class="d-block col-md-12" alt="@Model.Name">
+                <div class="carousel-item @(i == 0 ? "active" : "")" style="height:300px;">
+                    <img src="@Model.Images[i].URL" class="d-block h-100 w-100" style="object-fit:cover;" alt="@Model.Name">
                 </div>
             }
         </div>
@@ -25,8 +25,8 @@
         <h5 class="card-title">@Model.Name</h5>
         <p class="card-text">Price: $@Math.Round(Model.Price,2)</p>
     </div>
-
-    <a asp-action="byu" class="btn bg-primary text-white my-auto mb-3 mx-3">
-        BUY
-    </a>
+    <div>
+        <a class="btn bg-primary text-white col-md-4 mx-4 mb-3" asp-controller="Products" asp-action="Details" asp-route-id="@Model.Id">Details</a>
+        <a class="btn bg-primary text-white col-md-4 mx-4 mb-3" asp-controller="Products" asp-action="AddToCart">Buy</a>
+    </div>
 </div>

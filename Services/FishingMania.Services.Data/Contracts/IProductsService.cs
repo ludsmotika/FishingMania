@@ -9,5 +9,7 @@
     public interface IProductsService
     {
         Task<AllProductsFilteredAndPagedServiceModel> GetAllProductsAsync(AllProductsQueryViewModel queryModel);
+
+        Task<ProductDetailsViewModel> GetProductByIdAsync(int id);
     }
 }

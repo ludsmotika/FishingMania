@@ -52,7 +52,7 @@
             await dbContext.Products.AddAsync(new Product()
             {
                 Name = "Shimano Blaster",
-                Description = "A perfect shimano rod witch will help you with pulling the fishes faster than ever! The length of the rod is 3.20 meters and it has two parts.",
+                Description = "A perfect shimano rod which will help you with pulling the fishes faster than ever! The length of the rod is 3.20 meters and it has two parts.",
                 Price = Math.Round(180.99m, 2),
                 Images = imagesForSecondProduct,
                 AmountInStock = 40,

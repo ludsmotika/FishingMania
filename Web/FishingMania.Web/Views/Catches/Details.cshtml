@@ -10,11 +10,10 @@
     {
         <div class="d-flex my-5 bg-primary rounded-pill">
             <h3 class="text-white font-weight-bold m-5 mr-auto">As a owner of this post you can: </h3>
-            <a class="btn m-5 ms-0 bg-white text-primary ms-auto" asp-controller="Catches" asp-action="Update" asp-route-id="@Model.Id">Update</a>
-            <a class="btn m-5 ms-auto bg-white text-primary" asp-controller="Catches" asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
+            <a class="btn m-5 ms-auto bg-white text-primary" asp-controller="Catches" asp-action="Delete" asp-route-id="@Model.Id">Delete Post</a>
         </div>
     }
-    <div class="row bg-primary rounded-5 text-white display-6">
+    <div class="row col-md-12 bg-primary rounded-5 text-white display-6">
         <div class="col-md-6 rounded-3 my-5">
             <img src="@Model.Image.URL" alt="Fish Image" class="img-fluid rounded-5 w-100 my-4">
             <div class="text-center bg-dark bg-opacity-75 font-weight-bold rounded-1">

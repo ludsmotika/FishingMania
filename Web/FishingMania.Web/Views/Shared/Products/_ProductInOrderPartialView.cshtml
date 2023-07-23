@@ -1,6 +1,6 @@
 ﻿@model OrderProduct
 
-<div class="col-md-12 bg-primary text-white rounded-5 d-flex flex-row my-4">
+<div class="col-md-12 bg-dark bg-opacity-50 text-white rounded-5 d-flex flex-row my-4 align-items-center">
     <div id="carousel-@Model.Id" class="carousel col-md-3 slide m-4 rounded-5" data-bs-ride="carousel">
         <div class="carousel-inner text-center">
             @for (var i = 0; i < Model.Product.Images.Count(); i++)
@@ -26,3 +26,5 @@
         <p class="h4">Total Price: <span class="totalPriceForProduct">@(Model.Amount * Math.Round(Model.Product.Price, 2))</span>$</p>
     </div>
 </div>
+
+

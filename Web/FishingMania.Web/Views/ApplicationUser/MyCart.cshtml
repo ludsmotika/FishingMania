@@ -1,19 +1,57 @@
 ﻿@using FishingMania.Web.ViewModels.Cart;
+@using System.Security.Claims;
 @model ShoppingCartViewModel
 
+@{
+    this.ViewData["Title"] = "My Cart Page";
+}
+
 <div>
-    @if(Model.ShoppingCartProducts.Count() == 0)
+
+    <div class="col-md-6 offset-3 bg-primary text-white text-center rounded-pill d-flex my-5">
+        <p class="h2 mx-auto my-4 text-center">Your shopping cart</p>
+    </div>
+    @if (Model.ShoppingCartProducts.Count() == 0)
     {
         <p>No Products in you cart</p>
 
     }
     else
     {
-        @foreach (var item in Model.ShoppingCartProducts)
+        @foreach (var currentProduct in Model.ShoppingCartProducts)
         {
-            <img src="@item.Product.Images.FirstOrDefault().URL" />
-            <p>@item.Product.Name @item.Product.Price</p>
-            <p>@item.Amount</p>
+            <partial name="~/Views/Shared/Products/_ProductInCartPartialView.cshtml" for="@currentProduct" />
         }
+
+        <a class="btn bg-primary text-white">Finish Order</a>
     }
 </div>
+
+
+
+<script>
+
+    function removeFromCart(event, productId, shoppingCartProductId) {
+
+        event.preventDefault();
+
+        $.ajax({
+            url: 'https://localhost:5001/api/Carts/RemoveProductFromCartAsync',
+            type: 'POST',
+            contentType: 'application/x-www-form-urlencoded',
+            data: {
+                productId: productId,
+                shoppingCartProductId: `${shoppingCartProductId}`,
+                shoppingCartId: `@Model.Id`,
+            },
+            success: function (answer) {
+                $(`#${shoppingCartProductId}`).remove();
+            },
+            error: function (xhr, status, error) {
+                alert("Unexpected error while removing this product from your cart!");
+            }
+        });
+    }
+
+
+</script>

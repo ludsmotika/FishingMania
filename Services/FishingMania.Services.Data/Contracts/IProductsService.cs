@@ -11,5 +11,7 @@
         Task<AllProductsFilteredAndPagedServiceModel> GetAllProductsAsync(AllProductsQueryViewModel queryModel);
 
         Task<ProductDetailsViewModel> GetProductByIdAsync(int id);
+
+        Task<bool> DoesProductExistByIdAsync(int id);
     }
 }

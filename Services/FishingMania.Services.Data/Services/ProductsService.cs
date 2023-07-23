@@ -24,6 +24,11 @@
             this.productsRepository = productsRepository;
         }
 
+        public async Task<bool> DoesProductExistByIdAsync(int id)
+        {
+            return await this.productsRepository.All().Where(p => p.Id == id).AnyAsync();
+        }
+
         public async Task<AllProductsFilteredAndPagedServiceModel> GetAllProductsAsync(AllProductsQueryViewModel queryModel)
         {
             IQueryable<Product> productsQuery = this.productsRepository.All().AsQueryable();

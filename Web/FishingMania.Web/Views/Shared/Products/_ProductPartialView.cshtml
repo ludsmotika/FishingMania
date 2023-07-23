@@ -27,6 +27,6 @@
     </div>
     <div>
         <a class="btn bg-primary text-white col-md-4 mx-4 mb-3" asp-controller="Products" asp-action="Details" asp-route-id="@Model.Id">Details</a>
-        <a class="btn bg-primary text-white col-md-4 mx-4 mb-3 @(Model.AmountInStock == 0 ? "disabled" : "")" asp-controller="Products" asp-action="AddProductToCart">@(Model.AmountInStock == 0 ? "Sold out" : "Buy")</a>
+        <button onclick="handleClick(event, @Model.Id)" class="btn bg-primary text-white col-md-4 mx-4 mb-3 @(Model.AmountInStock == 0 ? "disabled" : "")">@(Model.AmountInStock == 0 ? "Sold out" : "Buy")</button>
     </div>
 </div>

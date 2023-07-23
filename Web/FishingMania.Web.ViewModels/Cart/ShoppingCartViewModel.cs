@@ -5,6 +5,7 @@
 
     using FishingMania.Data.Models;
     using FishingMania.Services.Mapping;
+    using FishingMania.Web.ViewModels.Product;
 
     public class ShoppingCartViewModel : IMapFrom<ShoppingCart>
     {
@@ -15,6 +16,6 @@
         [ForeignKey(nameof(ApplicationUserId))]
         public ApplicationUser ApplicationUser { get; set; }
 
-        public IEnumerable<ShoppingCartProduct> ShoppingCartProducts { get; set; } = new HashSet<ShoppingCartProduct>();
+        public IEnumerable<ProductInShoppingCartViewModel> ShoppingCartProducts { get; set; } = new HashSet<ProductInShoppingCartViewModel>();
     }
 }

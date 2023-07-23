@@ -1,4 +1,5 @@
 ﻿@using FishingMania.Web.ViewModels.Product;
+@using System.Security.Claims;
 @model AllProductsQueryViewModel
 @inject SignInManager<ApplicationUser> SignInManager
 @{
@@ -112,3 +113,52 @@
            asp-route-productsSorting="@((int)Model.ProductsSorting)">>></a>
     </div>
 </div>
+
+
+
+<script>
+
+    function handleClick(event, productId) {
+
+        event.preventDefault();
+
+        var applicationUserId = Boolean(`@User.Identity.IsAuthenticated`) ? `@User.FindFirst(ClaimTypes.NameIdentifier)?.Value` : null;
+
+
+        var prodData = {
+            productId: productId,
+            amount: 1,
+            applicationUserId: applicationUserId,
+        };
+
+        $.ajax({
+            url: 'https://localhost:5001/api/Carts/AddProductToCartAsync',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(prodData),
+            success: function (answer) {
+
+                if (answer == "addedSuccessfully") {
+                    alert("You successfully added this product to your cart!");
+                }
+                else if (answer == "alreadyAdded") {
+                    alert("This product is already in your cart!");
+                }
+                else if (answer == "insufficientQuantity") {
+                    alert("We don't have this much in stock of this product!");
+                }
+            },
+            error: function (xhr, status, error) {
+                if (xhr.status == 401) {
+                    alert("You have to be logged in to use our store!");
+                }
+                else {
+                    alert("Unexpected error while adding this product!");
+                }
+
+            }
+        });
+    }
+
+
+</script>

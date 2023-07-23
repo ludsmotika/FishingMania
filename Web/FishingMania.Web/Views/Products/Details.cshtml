@@ -48,7 +48,7 @@
                 }
                 else
                 {
-                    <form id="addProductForm" method="post" enctype="multipart/form-data" asp-controller="Products" asp-action="AddProductToCartAsync" class="col-md-6 offset-3 text-center my-5 text-white bg-primary rounded-5">
+                    <form id="addProductForm" method="post" enctype="multipart/form-data" asp-controller="Products" asp-action="AddProductToCartAsync" class="col-md-10 offset-1 text-center my-5 text-white bg-primary rounded-5">
                         <input id="amount" type="number" name="amount" min="0" max="@Model.AmountInStock" value="1" />
                         <button type="submit" class="btn bg-white text-primary col-md-4 my-4">Add to cart</button>
                         <span id="amountValidationSpan" class="text-danger"></span>
@@ -128,11 +128,26 @@
                     type: 'POST',
                     contentType: 'application/json',
                     data: JSON.stringify(prodData),
-                    success: function () {
-                        alert("succesfuly added");
+                    success: function (answer) {
+
+                        if (answer == "addedSuccessfully") {
+                            alert("You successfully added this product to your cart!");
+                        }
+                        else if (answer == "alreadyAdded") {
+                            alert("This product is already in your cart!");
+                        }
+                        else if (answer == "insufficientQuantity") {
+                            alert("We don't have this much in stock of this product!");
+                        }
                     },
                     error: function (xhr, status, error) {
-                        alert("Unexpected error while adding this product!");
+                        if (xhr.status == 401) {
+                            alert("You have to be logged in to use our store!");
+                        }
+                        else {
+                            alert("Unexpected error while adding this product!");
+                        }
+
                     }
                 });
             });

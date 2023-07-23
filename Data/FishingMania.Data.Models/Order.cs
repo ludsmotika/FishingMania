@@ -28,6 +28,6 @@
         public string Address { get; set; }
 
         [Required]
-        public IEnumerable<Product> Products { get; set; } = new HashSet<Product>();
+        public IEnumerable<OrderProduct> OrderProducts { get; set; } = new HashSet<OrderProduct>();
     }
 }

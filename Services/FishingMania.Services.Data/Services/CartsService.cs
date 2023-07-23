@@ -64,6 +64,14 @@
             await this.shoppingCartsRepository.SaveChangesAsync();
         }
 
+        public async Task DeleteByIdAsync(string id)
+        {
+            ShoppingCart cartToDelete = await this.shoppingCartsRepository.All().Where(sc => sc.Id == id).FirstOrDefaultAsync();
+
+            this.shoppingCartsRepository.Delete(cartToDelete);
+            await this.shoppingCartsRepository.SaveChangesAsync();
+        }
+
         public async Task<bool> DoesProductIsInShoppingCartAsync(string shoppingCartId, int productId, string shoppingCartProductId)
         {
             ShoppingCartProduct shoppingCartProduct = await this.shoppingCartProductsRepository.All().Where(scp => scp.ShoppingCartId == shoppingCartId && scp.ProductId == productId).FirstOrDefaultAsync();
@@ -113,6 +121,14 @@
                                                                     .FirstOrDefaultAsync();
 
             return shoppingCartViewModel;
+        }
+
+        public async Task<List<ProductInOrderViewModel>> GetProductsForShoppingCartByIdAsync(string shoppingCartId)
+        {
+            return await this.shoppingCartProductsRepository.All()
+                                                            .Where(scp => scp.ShoppingCartId == shoppingCartId)
+                                                            .Select(p => new ProductInOrderViewModel() { Id = p.Id, Amount = p.Amount, ProductId = p.ProductId })
+                                                            .ToListAsync();
         }
 
         public async Task RemoveProductFromShoppingCartByIdAsync(string shoppingCartProductId)

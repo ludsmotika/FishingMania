@@ -1,0 +1,12 @@
+﻿@using FishingMania.Web.ViewModels.Order;
+@model MakeOrderInputViewModel
+
+<form method="post" enctype="multipart/form-data" class="col-md-6 offset-3 bg-primary rounded-5 d-flex flex-column my-5">
+    <p class="h2 text-white text-center my-4">Enter Address For Delivery:</p>
+    <input type="hidden" value="@Model.ShoppingCartId"/>
+    <div class="form-group h3 my-3">
+        <input asp-for="@Model.Address" class="form-control" />
+        <span asp-validation-for="@Model.Address" class="text-danger h4"></span>
+    </div>
+    <button class="btn bg-white text-primary col-md-6 offset-3 my-4">Finish Order</button>
+</form>

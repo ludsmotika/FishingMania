@@ -60,7 +60,7 @@ namespace FishingMania.Data.Common
 
         public static class Order
         {
-            public const int AddressMinLength = 5;
+            public const int AddressMinLength = 20;
             public const int AddressMaxLength = 100;
         }
     }

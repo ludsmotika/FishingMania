@@ -24,7 +24,7 @@
         <p class="h3 mt-4">Product: @Model.Name</p>
         <p class="h3">Price: @Math.Round(Model.Price,2)$</p>
         <p class="h3">Amount: @Model.Amount</p>
-        <p class="h3">Total Price: @(Model.Amount * Math.Round(Model.Price, 2))$</p>
+        <p class="h3">Total Price: <span class="totalPriceForProduct">@(Model.Amount * Math.Round(Model.Price, 2))</span>$</p>
     </div>
     <div class="my-auto ml-auto">
         <button onclick="removeFromCart(event, @Model.Id, '@Model.ShoppingCartProductId')" class="btn bg-white text-primary rounded-5 my-auto mr-0">Remove From Cart</button>

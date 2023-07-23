@@ -60,6 +60,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwbGljYXRpb25Vc2VyXE15Q2F0Y2hlcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/danie/source/repos/FishingMania/Web/FishingMania.Web/Views/ApplicationUser/MyOrders.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwbGljYXRpb25Vc2VyXE15T3JkZXJzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/danie/source/repos/FishingMania/Web/FishingMania.Web/Views/Catches/All.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0Y2hlc1xBbGwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -96,6 +100,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTdG9yZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/danie/source/repos/FishingMania/Web/FishingMania.Web/Views/Orders/MakeOrder.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJzXE1ha2VPcmRlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/danie/source/repos/FishingMania/Web/FishingMania.Web/Views/Products/All.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdHNcQWxsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -122,6 +130,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/danie/source/repos/FishingMania/Web/FishingMania.Web/Views/Shared/Products/_ProductInCartPartialView.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFByb2R1Y3RzXF9Qcm9kdWN0SW5DYXJ0UGFydGlhbFZpZXcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/danie/source/repos/FishingMania/Web/FishingMania.Web/Views/Shared/Products/_ProductInOrderPartialView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFByb2R1Y3RzXF9Qcm9kdWN0SW5PcmRlclBhcnRpYWxWaWV3LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/danie/source/repos/FishingMania/Web/FishingMania.Web/Views/Shared/Products/_ProductPartialView.cshtml]

@@ -13,5 +13,7 @@
         Task<ProductDetailsViewModel> GetProductByIdAsync(int id);
 
         Task<bool> DoesProductExistByIdAsync(int id);
+
+        Task DecreaseProductAmountAsync(int productId, int amount);
     }
 }

@@ -13,17 +13,26 @@
     </div>
     @if (Model.ShoppingCartProducts.Count() == 0)
     {
-        <p>No Products in you cart</p>
+        <div class="col-md-6 offset-3 bg-primary text-white text-center rounded-pill d-flex my-5">
+            <p class="h2 mx-auto my-4 text-center text-white">Currently you don't have any products added to your cart! You can go check out the store and add to your cart!</p>
+        </div>
+
+        <a class="btn bg-primary text-white col-md-4 offset-4" asp-controller="Products" asp-action="All">See All Products</a>
 
     }
     else
     {
-        @foreach (var currentProduct in Model.ShoppingCartProducts)
-        {
-            <partial name="~/Views/Shared/Products/_ProductInCartPartialView.cshtml" for="@currentProduct" />
-        }
+        <div id="cartProducts">
+            @foreach (var currentProduct in Model.ShoppingCartProducts)
+            {
+                <partial name="~/Views/Shared/Products/_ProductInCartPartialView.cshtml" for="@currentProduct" />
+            }
+        </div>
 
-        <a class="btn bg-primary text-white">Finish Order</a>
+        <div class="col-md-6 offset-3 d-flex flex-row bg-primary rounded-pill my-5">
+            <p id="totalPriceP" class="text-white my-4 h2 align-content-center mx-auto">Total Price: @(Math.Round(Model.ShoppingCartProducts.Select(p=>p.Price * p.Amount).Sum(),2))$</p>
+            <a class="btn bg-white text-primary my-4 mx-auto" asp-controller="Orders" asp-action="MakeOrder" asp-route-shoppingCartId="@Model.Id">Make Order</a>
+        </div>
     }
 </div>
 
@@ -36,7 +45,7 @@
         event.preventDefault();
 
         $.ajax({
-            url: 'https://localhost:5001/api/Carts/RemoveProductFromCartAsync',
+            url: '/api/Carts/RemoveProductFromCartAsync',
             type: 'POST',
             contentType: 'application/x-www-form-urlencoded',
             data: {
@@ -44,8 +53,22 @@
                 shoppingCartProductId: `${shoppingCartProductId}`,
                 shoppingCartId: `@Model.Id`,
             },
-            success: function (answer) {
+            success: function (productId) {
                 $(`#${shoppingCartProductId}`).remove();
+
+                var totalPrice = 0;
+
+                $(".totalPriceForProduct").each(function () {
+                    var value = parseFloat($(this).text());
+                    totalPrice += value;
+                });
+
+
+                $(`#totalPriceP`).text(`Total Price: ${totalPrice}$`);
+                if ($("#cartProducts").children().length == 0) {
+                    location.reload();
+                }
+
             },
             error: function (xhr, status, error) {
                 alert("Unexpected error while removing this product from your cart!");

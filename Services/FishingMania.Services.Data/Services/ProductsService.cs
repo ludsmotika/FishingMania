@@ -18,10 +18,16 @@
     {
         private readonly IDeletableEntityRepository<Product> productsRepository;
 
-
         public ProductsService(IDeletableEntityRepository<Product> productsRepository)
         {
             this.productsRepository = productsRepository;
+        }
+
+        public async Task DecreaseProductAmountAsync(int productId, int amount)
+        {
+            Product product = await this.productsRepository.All().Where(p => p.Id == productId).FirstOrDefaultAsync();
+            product.AmountInStock = product.AmountInStock - amount;
+            await this.productsRepository.SaveChangesAsync();
         }
 
         public async Task<bool> DoesProductExistByIdAsync(int id)

@@ -1,0 +1,26 @@
+﻿@using FishingMania.Web.ViewModels.Order;
+@model List<OrderViewModel>
+
+<div class="container col-md-6 offset-3 bg-primary rounded-pill text-center my-5">
+    <h1 class="text-white m-5 font-weight-bold">Your personal orders</h1>
+</div>
+
+@foreach (var item in Model.OrderByDescending(o => o.CreatedOn))
+{
+    <div class="col-md-12 bg-primary text-white rounded-5 d-flex flex-col h4 my-4">
+        <div class="text-left col-md-4">
+            <p class="mt-4">Ordered on:</p>
+            <p>@item.CreatedOn</p>
+            <p>Address:</p>
+            <p>@item.Address</p>
+            <p>Total Price:</p>
+            <p>@Math.Round(item.OrderProducts.Select(op=>op.Product.Price * op.Amount).Sum(),2)$</p>
+        </div>
+        <div class="col-md-8">
+            @foreach (var currentProduct in item.OrderProducts)
+            {
+                <partial name="~/Views/Shared/Products/_ProductInOrderPartialView.cshtml" for="@currentProduct" />
+            }
+        </div>
+    </div>
+}

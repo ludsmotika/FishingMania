@@ -444,6 +444,44 @@ namespace FishingMania.Data.Migrations
                     b.ToTable("Orders", (string)null);
                 });
 
+            modelBuilder.Entity("FishingMania.Data.Models.OrderProduct", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("Amount")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("OrderId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("OrderId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("OrderProducts", (string)null);
+                });
+
             modelBuilder.Entity("FishingMania.Data.Models.Product", b =>
                 {
                     b.Property<int>("Id")
@@ -760,21 +798,6 @@ namespace FishingMania.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("OrderProduct", b =>
-                {
-                    b.Property<string>("OrdersId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("ProductsId")
-                        .HasColumnType("int");
-
-                    b.HasKey("OrdersId", "ProductsId");
-
-                    b.HasIndex("ProductsId");
-
-                    b.ToTable("OrderProduct", (string)null);
-                });
-
             modelBuilder.Entity("FishingMania.Data.Models.Catch", b =>
                 {
                     b.HasOne("FishingMania.Data.Models.ApplicationUser", "ApplicationUser")
@@ -861,6 +884,25 @@ namespace FishingMania.Data.Migrations
                     b.Navigation("ApplicationUser");
                 });
 
+            modelBuilder.Entity("FishingMania.Data.Models.OrderProduct", b =>
+                {
+                    b.HasOne("FishingMania.Data.Models.Order", "Order")
+                        .WithMany("OrderProducts")
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("FishingMania.Data.Models.Product", "Product")
+                        .WithMany("OrdersProduct")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Order");
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("FishingMania.Data.Models.Product", b =>
                 {
                     b.HasOne("FishingMania.Data.Models.ProductCategory", "ProductCategory")
@@ -900,7 +942,7 @@ namespace FishingMania.Data.Migrations
                         .IsRequired();
 
                     b.HasOne("FishingMania.Data.Models.ShoppingCart", "ShoppingCart")
-                        .WithMany("ShoppingCartProduct")
+                        .WithMany("ShoppingCartProducts")
                         .HasForeignKey("ShoppingCartId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -995,21 +1037,6 @@ namespace FishingMania.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("OrderProduct", b =>
-                {
-                    b.HasOne("FishingMania.Data.Models.Order", null)
-                        .WithMany()
-                        .HasForeignKey("OrdersId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("FishingMania.Data.Models.Product", null)
-                        .WithMany()
-                        .HasForeignKey("ProductsId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("FishingMania.Data.Models.ApplicationUser", b =>
                 {
                     b.Navigation("Claims");
@@ -1029,16 +1056,23 @@ namespace FishingMania.Data.Migrations
                     b.Navigation("Catches");
                 });
 
+            modelBuilder.Entity("FishingMania.Data.Models.Order", b =>
+                {
+                    b.Navigation("OrderProducts");
+                });
+
             modelBuilder.Entity("FishingMania.Data.Models.Product", b =>
                 {
                     b.Navigation("Images");
+
+                    b.Navigation("OrdersProduct");
 
                     b.Navigation("ShoppingCartProduct");
                 });
 
             modelBuilder.Entity("FishingMania.Data.Models.ShoppingCart", b =>
                 {
-                    b.Navigation("ShoppingCartProduct");
+                    b.Navigation("ShoppingCartProducts");
                 });
 #pragma warning restore 612, 618
         }

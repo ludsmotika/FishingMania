@@ -111,7 +111,6 @@
         [AllowAnonymous]
         public async Task<IActionResult> Details(int id)
         {
-            // Get the post from the service, bind it to view model and pass it to the view
             try
             {
                 CatchDetailsViewModel catchModel = await this.catchesService.GetCatchByIdAsync(id);
@@ -135,7 +134,7 @@
             try
             {
                 await this.catchesService.DeleteByIdAsync(id);
-                return this.RedirectToAction("Mine", "Catches");
+                return this.RedirectToAction("MyCatches", "ApplicationUser");
             }
             catch (Exception)
             {

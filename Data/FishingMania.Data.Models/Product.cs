@@ -41,7 +41,7 @@
         public ProductCategory ProductCategory { get; set; }
 
         [Required]
-        public IEnumerable<Order> Orders { get; set; } = new HashSet<Order>();
+        public IEnumerable<OrderProduct> OrdersProduct { get; set; } = new HashSet<OrderProduct>();
 
         [Required]
         public IEnumerable<Image> Images { get; set; } = new HashSet<Image>();

@@ -26,6 +26,7 @@
             var seeders = new List<ISeeder>
                           {
                               new RolesSeeder(),
+                              new AdminSeeder(),
                               new ImageSeeder(),
                               new FishSpeciesSeeder(),
                               new FishingSpotsSeeder(),

@@ -1,29 +1,40 @@
 ﻿@using FishingMania.Web.ViewModels.Order;
 @model List<OrderViewModel>
 
-<div class="container col-md-6 offset-3 bg-primary rounded-pill text-center my-5">
-    <h1 class="text-white m-5 font-weight-bold">Your personal orders</h1>
+<div class="col-md-6 offset-3 bg-primary text-white text-center rounded-pill d-flex my-5">
+    <p class="h2 mx-auto my-4 text-center">Your personal orders</p>
 </div>
 
-@foreach (var item in Model.OrderByDescending(o => o.CreatedOn))
+@if (Model.Count() == 0)
 {
-    <div class="col-md-12 bg-primary text-white rounded-5 d-flex flex-col h4 my-4 align-items-center">
-        <div class="text-left col-md-4">
-            <p class="mt-4">Ordered on:</p>
-            <p>@item.CreatedOn</p>
-            <p>Address:</p>
-            <p>@item.Address</p>
-            <p>Total Price: @Math.Round(item.OrderProducts.Select(op=>op.Product.Price * op.Amount).Sum(),2)$</p>
-        </div>
-        <div class="col-md-8 mx-auto">
-            <div class="scrollable-div" style="max-height: 300px; overflow-y: auto;">
-                @foreach (var currentProduct in item.OrderProducts)
-                {
-                    <partial name="~/Views/Shared/Products/_ProductInOrderPartialView.cshtml" for="@currentProduct" />
-                }
+    <div class="col-md-6 offset-3 bg-primary text-white text-center rounded-pill d-flex my-5">
+        <p class="h2 mx-auto my-4 text-center text-white">You don't have any orders made from your account! Visit our store to make purchases!</p>
+    </div>
+
+    <a class="btn bg-primary text-white col-md-4 offset-4" asp-controller="Home" asp-action="Store">See Our Store</a>
+}
+else
+{
+    @foreach (var item in Model.OrderByDescending(o => o.CreatedOn))
+    {
+        <div class="col-md-12 bg-primary text-white rounded-5 d-flex flex-col h4 my-4 align-items-center">
+            <div class="text-left col-md-4">
+                <p class="mt-4">Ordered on:</p>
+                <p>@item.CreatedOn</p>
+                <p>Address:</p>
+                <p>@item.Address</p>
+                <p>Total Price: @Math.Round(item.OrderProducts.Select(op=>op.Product.Price * op.Amount).Sum(),2)$</p>
+            </div>
+            <div class="col-md-8 mx-auto">
+                <div class="scrollable-div" style="max-height: 300px; overflow-y: auto;">
+                    @foreach (var currentProduct in item.OrderProducts)
+                    {
+                        <partial name="~/Views/Shared/Products/_ProductInOrderPartialView.cshtml" for="@currentProduct" />
+                    }
+                </div>
             </div>
         </div>
-    </div>
+    }
 }
 
 <style>
@@ -33,7 +44,7 @@
     }
 
     ::-webkit-scrollbar-thumb {
-        background-color: darkgrey; 
+        background-color: darkgrey;
         border-radius: 5px;
     }
 

@@ -21,6 +21,7 @@
 
             var user = new ApplicationUser
             {
+                Id= "d509c2c7-6949-451f-b05a-1053fb29859d",
                 Email = "admin@example.com",
                 NormalizedEmail = "ADMIN@EXAMPLE.COM",
                 UserName = "admin",

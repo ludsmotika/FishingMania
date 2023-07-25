@@ -47,7 +47,7 @@
 
         public async Task<List<OrderViewModel>> GetOrdersForUserByIsAsync(string userId)
         {
-            return await this.ordersRepository.All().Include(o => o.OrderProducts).ThenInclude(op => op.Product).ThenInclude(p => p.Images).Where(o => o.ApplicationUserId == userId).To<OrderViewModel>().ToListAsync();
+            return await this.ordersRepository.AllWithDeleted().Include(o => o.OrderProducts).ThenInclude(op => op.Product).ThenInclude(p => p.Images).Where(o => o.ApplicationUserId == userId).To<OrderViewModel>().ToListAsync();
         }
     }
 }

@@ -61,6 +61,11 @@
 
         }
 
+        public Task<bool> DoesCatchExist(int id)
+        {
+            return this.catchesRepository.All().Where(c => c.Id == id).AnyAsync();
+        }
+
         public async Task<AllCatchesFilteredAndPagedServiceModel> GetAllCatchesAsync(AllCatchesQueryViewModel queryModel)
         {
             IQueryable<Catch> catchesQuery = this.catchesRepository.All().AsQueryable();

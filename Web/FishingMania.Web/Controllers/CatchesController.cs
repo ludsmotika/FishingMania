@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Security.Claims;
     using System.Threading.Tasks;
 
     using FishingMania.Common;
@@ -11,6 +12,7 @@
     using FishingMania.Services.Data.ServiceModels;
     using FishingMania.Web.ViewModels.Catch;
     using FishingMania.Web.ViewModels.FishSpecies;
+    using FishingMania.Web.ViewModels.Report;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
@@ -23,6 +25,7 @@
         private readonly ICatchesService catchesService;
         private readonly IFishingSpotService fishingSpotService;
         private readonly ICommentService commentService;
+
         private readonly UserManager<ApplicationUser> userManager;
 
         public CatchesController(ICatchesService catchesService, IFishingSpotService fishingSpotService, ICommentService commentService, UserManager<ApplicationUser> userManager)

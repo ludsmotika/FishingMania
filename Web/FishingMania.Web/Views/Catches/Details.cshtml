@@ -53,7 +53,7 @@
             <p id="dislikesCount">@Model.Votes.Where(x=>x.IsPositive == false).Count()</p>
         </div>
         <div class="col-md-4 d-flex flex-row m-auto mb-4">
-            <a class="btn bg-white text-primary rounded-5 m-auto" asp-action="Report" asp-controller="Catches">Report Post</a>
+            <a class="btn bg-white text-primary rounded-5 m-auto" asp-controller="Reports" asp-action="ReportPost" asp-route-catchId="@Model.Id">Report Post</a>
         </div>
     </div>
     <div class="row col-md-12 bg-primary text-white rounded-5">

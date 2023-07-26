@@ -63,5 +63,11 @@ namespace FishingMania.Data.Common
             public const int AddressMinLength = 20;
             public const int AddressMaxLength = 100;
         }
+
+        public static class Report
+        {
+            public const int ComplainMinLength = 20;
+            public const int ComplainMaxLength = 300;
+        }
     }
 }

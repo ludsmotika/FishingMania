@@ -669,3 +669,4 @@ C:\Users\danie\source\repos\FishingMania\Tests\FishingMania.Web.Tests\bin\Debug\
 C:\Users\danie\source\repos\FishingMania\Tests\FishingMania.Web.Tests\bin\Debug\net6.0\appsettings.Production.json
 C:\Users\danie\source\repos\FishingMania\Tests\FishingMania.Web.Tests\bin\Debug\net6.0\System.Net.Http.Formatting.dll
 C:\Users\danie\source\repos\FishingMania\Tests\FishingMania.Web.Tests\bin\Debug\net6.0\System.Web.Http.dll
+C:\Users\danie\source\repos\FishingMania\Tests\FishingMania.Web.Tests\obj\Debug\net6.0\FishingMania.Web.Tests.MvcApplicationPartsAssemblyInfo.cs

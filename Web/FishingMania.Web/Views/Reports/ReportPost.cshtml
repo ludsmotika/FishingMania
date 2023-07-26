@@ -1,0 +1,17 @@
+﻿@using FishingMania.Web.ViewModels.Report;
+@model ReportInputViewModel
+
+
+<div class="mt-5 bg-primary rounded-pill offset-4 col-md-4" style="padding:1px;">
+    <p class="text-center text-white my-4 h2">Reporting Catch</p>
+</div>
+
+<form id="customForm" method="post" enctype="multipart/form-data" class="col-md-6 offset-3 text-center my-5 text-white bg-primary rounded-5">
+    <div class="form-group h3 my-3 mt-5">
+        <label class="mt-4" asp-for="@Model.Complain"></label>
+        <input asp-for="@Model.Complain" class="form-control" />
+        <span asp-validation-for="@Model.Complain" class="text-danger"></span>
+    </div>
+    <input hidden value="@Model.CatchId" asp-for="@Model.CatchId"/>
+    <button type="submit" class="btn bg-white text-primary col-md-4 my-4">Submit Report</button>
+</form>

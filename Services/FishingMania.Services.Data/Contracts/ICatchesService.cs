@@ -17,5 +17,7 @@
         Task<CatchDetailsViewModel> GetCatchByIdAsync(int id);
 
         Task DeleteByIdAsync(int id);
+
+        Task<bool> DoesCatchExist(int id);
     }
 }

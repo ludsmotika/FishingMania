@@ -1,42 +1,25 @@
-﻿@model IEnumerable<FishingMania.Data.Models.Catch>
+﻿@model IEnumerable<FishingMania.Data.Models.Report>
 
 @{
     ViewData["Title"] = "Index";
 }
 
-
 <div class="col-md-4 offset-4 bg-primary text-white text-center rounded-pill d-flex my-5">
-    <p class="h2 mx-auto my-4 text-center">Catches</p>
+    <p class="h2 mx-auto my-4 text-center">Reports</p>
 </div>
 
-<div class="d-flex flex-row bg-primary rounded-pill my-5 col-md-8 offset-2">
-
-    <form method="get" id="searchForm" asp-area="Administration" asp-controller="Catches" asp-action="Index" autocomplete="off" class="my-5 col-md-12 d-flex flex-row">
-        <input class="form-control col-md-5 mx-4" type="text" id="searchQuery" name="searchQuery" placeholder="Search catch">
-        <button type="submit" class="btn bg-white text-primary col-md-5 mx-4">Search Catch</button>
-    </form>
-</div>
 
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Description)
+                @Html.DisplayNameFor(model => model.Complain)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.ApplicationUser)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FishWeight)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Image)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FishSpecies)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FishingSpot)
+                @Html.DisplayNameFor(model => model.CatchId)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.IsDeleted)
@@ -58,22 +41,13 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Description)
+                    @Html.DisplayFor(modelItem => item.Complain)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.ApplicationUser.UserName)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.FishWeight) kg.
-                </td>
-                <td>
-                    <img src="@item.Image.URL" style="height:140px;" />
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FishSpecies.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FishingSpot.Name)
+                    @Html.DisplayFor(modelItem => item.Catch.ApplicationUserId)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.IsDeleted)
@@ -89,10 +63,7 @@
                 </td>
                 <td>
                     <a class="btn bg-primary text-white mt-2" asp-action="Details" asp-route-id="@item.Id">Details</a>
-                    @if (!item.IsDeleted)
-                    {
-                        <a class="btn bg-primary text-white mt-2" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                    }
+                    <a class="btn bg-primary text-white mt-2" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                 </td>
             </tr>
         }

@@ -10,7 +10,7 @@
     using Microsoft.EntityFrameworkCore.Query;
 
     [Area("Administration")]
-    public class CatchesController : Controller
+    public class CatchesController : AdministrationController
     {
         private readonly IDeletableEntityRepository<Catch> catchesRepository;
 

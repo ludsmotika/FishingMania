@@ -62,9 +62,10 @@
 </div>
 
 @section Scripts {
-    <script src="~/js/jquery-override.js" asp-append-version="true"></script>
 
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
+
+    <script src="~/js/jquery-override.js" asp-append-version="true"></script>
 }

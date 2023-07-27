@@ -1,0 +1,68 @@
+﻿@using FishingMania.Data.Models;
+@using FishingMania.Web.ViewModels.FishingSpot;
+@model FishingSpotFormViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>FishingSpot</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" enctype="multipart/form-data" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="@Model.Name" class="control-label"></label>
+                <input asp-for="@Model.Name" class="form-control" />
+                <span asp-validation-for="@Model.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Description" class="control-label"></label>
+                <input asp-for="@Model.Description" class="form-control" />
+                <span asp-validation-for="@Model.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Latitude" class="control-label"></label>
+                <input asp-for="@Model.Latitude" class="form-control" />
+                <span asp-validation-for="@Model.Latitude" class="text-danger"></span>
+
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Longitude" class="control-label"></label>
+                <input asp-for="@Model.Longitude" class="form-control" />
+                <span asp-validation-for="@Model.Longitude" class="text-danger"></span>
+
+            </div>
+            <div class="form-group">
+                <select asp-for="@Model.FishingSpotType" asp-items="Html.GetEnumSelectList<FishingSpotType>()" class="form-control"></select>
+            </div>
+            <div class="form-group my-4">
+                <label class="h5" asp-for="@Model.ImageFile"></label>
+                <input asp-for="@Model.ImageFile" class="form-control-file" accept=".jpg,.jpeg,.png" onchange="previewImage(event)" />
+                <span asp-validation-for="@Model.ImageFile" class="text-danger"></span>
+
+                <div class="form-group">
+                    <img id="imagePreview" src="#" alt="Preview Image" style="display: none; max-width: 100%;" />
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn bg-primary text-white" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a class="btn bg-primary text-white" asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script src="~/js/showPhotoWhenUploaded.js"></script>
+    <script src="~/js/jquery-override.js" asp-append-version="true"></script>
+}

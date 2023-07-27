@@ -27,14 +27,19 @@
             if (!string.IsNullOrEmpty(searchQuery))
             {
                 string wildCard = $"%{searchQuery.ToLower()}%";
-                catches = this.catchesRepository.AllWithDeleted().Where(c => EF.Functions.Like(c.Description, wildCard) || EF.Functions.Like(c.FishSpecies.Name, wildCard) || EF.Functions.Like(c.FishingSpot.Name, wildCard) || EF.Functions.Like(c.ApplicationUser.UserName, wildCard)).Include(c => c.ApplicationUser).Include(c => c.FishSpecies).Include(c => c.FishingSpot).Include(c => c.Image);
+                catches = this.catchesRepository.AllWithDeleted()
+                    .Where(c => EF.Functions.Like(c.Description, wildCard) || EF.Functions.Like(c.FishSpecies.Name, wildCard) || EF.Functions.Like(c.FishingSpot.Name, wildCard) || EF.Functions.Like(c.ApplicationUser.UserName, wildCard))
+                    .Include(c => c.ApplicationUser)
+                    .Include(c => c.FishSpecies)
+                    .Include(c => c.FishingSpot)
+                    .Include(c => c.Image);
             }
             else
             {
                 catches = this.catchesRepository.AllWithDeleted().Include(c => c.ApplicationUser).Include(c => c.FishSpecies).Include(c => c.FishingSpot).Include(c => c.Image);
             }
 
-            return this.View(await catches.ToListAsync());
+            return this.View(await catches.OrderByDescending(c => c.CreatedOn).ToListAsync());
         }
 
         // GET: Administration/Catches/Details/5

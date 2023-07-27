@@ -23,7 +23,7 @@
         // GET: Administration/Reports
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = this.reportsRepository.AllWithDeleted().Include(r => r.ApplicationUser).Include(r => r.Catch);
+            var applicationDbContext = this.reportsRepository.AllWithDeleted().Include(r => r.ApplicationUser).Include(r => r.Catch).OrderByDescending(r => r.CreatedOn);
             return this.View(await applicationDbContext.ToListAsync());
         }
 

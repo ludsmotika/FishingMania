@@ -5,8 +5,10 @@
 
     using FishingMania.Services.Data.Contracts;
     using FishingMania.Web.ViewModels.Report;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 
+    [Authorize]
     public class ReportsController : Controller
     {
         private readonly IReportsService reportsService;

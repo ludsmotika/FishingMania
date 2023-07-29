@@ -1,4 +1,5 @@
-﻿@model FishingMania.Data.Models.FishingSpot
+﻿@using FishingMania.Web.ViewModels.FishingSpot;
+@model FishingSpotEditFormViewModel
 
 @{
     ViewData["Title"] = "Edit";
@@ -10,7 +11,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit">
+        <form asp-action="Edit" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
@@ -34,13 +35,17 @@
             </div>
             <div class="form-group">
                 <label asp-for="FishingSpotType" class="control-label"></label>
-                <select asp-for="FishingSpotType" asp-items="ViewBag.FishingSpotType" class="form-control"></select>
+                <select asp-for="FishingSpotType" asp-items="ViewBag.FishingSpotTypes" class="form-control"></select>
                 <span asp-validation-for="FishingSpotType" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ImageId" class="control-label"></label>
-                <select asp-for="ImageId" class="form-control" asp-items="ViewBag.ImageId"></select>
-                <span asp-validation-for="ImageId" class="text-danger"></span>
+                <label class="h5" asp-for="ImageFile"></label>
+                <input asp-for="ImageFile" class="form-control-file" accept=".jpg,.jpeg,.png" onchange="previewImage(event)" />
+                <span asp-validation-for="ImageFile" class="text-danger"></span>
+
+                <div class="form-group">
+                    <img id="imagePreview" src="#" alt="Preview Image" style="display: none; max-width: 100%;" />
+                </div>
             </div>
             <div class="form-group form-check">
                 <label class="form-check-label">
@@ -51,17 +56,6 @@
                 <label asp-for="DeletedOn" class="control-label"></label>
                 <input asp-for="DeletedOn" class="form-control" />
                 <span asp-validation-for="DeletedOn" class="text-danger"></span>
-            </div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="CreatedOn" class="control-label"></label>
-                <input asp-for="CreatedOn" class="form-control" />
-                <span asp-validation-for="CreatedOn" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ModifiedOn" class="control-label"></label>
-                <input asp-for="ModifiedOn" class="form-control" />
-                <span asp-validation-for="ModifiedOn" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn bg-primary text-white" />
@@ -76,4 +70,6 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="~/js/showPhotoWhenUploaded.js"></script>
+    <script src="~/js/jquery-override.js" asp-append-version="true"></script>
 }

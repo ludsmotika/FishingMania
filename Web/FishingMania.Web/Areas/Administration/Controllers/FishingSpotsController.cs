@@ -1,20 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using FishingMania.Data;
-using FishingMania.Data.Models;
-using FishingMania.Data.Common.Repositories;
-using FishingMania.Web.ViewModels.FishingSpot;
-using FishingMania.Services.Data.Contracts;
-
-namespace FishingMania.Web.Areas.Administration.Controllers
+﻿namespace FishingMania.Web.Areas.Administration.Controllers
 {
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Runtime.InteropServices;
+    using System.Threading.Tasks;
+
+    using FishingMania.Data;
+    using FishingMania.Data.Common.Repositories;
+    using FishingMania.Data.Models;
+    using FishingMania.Services.Data.Contracts;
+    using FishingMania.Services.Mapping;
+    using FishingMania.Web.ViewModels.FishingSpot;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Mvc.Rendering;
+    using Microsoft.EntityFrameworkCore;
+
     [Area("Administration")]
-    public class FishingSpotsController : Controller
+    public class FishingSpotsController : AdministrationController
     {
         private readonly IDeletableEntityRepository<FishingSpot> fishingSpotsRepository;
         private readonly IDeletableEntityRepository<Image> imagesRepository;
@@ -31,7 +35,7 @@ namespace FishingMania.Web.Areas.Administration.Controllers
         public async Task<IActionResult> Index()
         {
             var applicationDbContext = this.fishingSpotsRepository.AllWithDeleted().Include(f => f.Image);
-            return View(await applicationDbContext.ToListAsync());
+            return this.View(await applicationDbContext.ToListAsync());
         }
 
         // GET: Administration/FishingSpots/Details/5
@@ -98,13 +102,27 @@ namespace FishingMania.Web.Areas.Administration.Controllers
                 return this.NotFound();
             }
 
-            var fishingSpot = await this.fishingSpotsRepository.AllWithDeleted().FirstOrDefaultAsync(s => s.Id == id);
+            var fishingSpot = await this.fishingSpotsRepository.AllWithDeleted().Where(s => s.Id == id).To<FishingSpotEditFormViewModel>().FirstOrDefaultAsync();
             if (fishingSpot == null)
             {
                 return this.NotFound();
             }
 
-            this.ViewData["ImageId"] = new SelectList(this.imagesRepository.AllWithDeleted(), "Id", "URL", fishingSpot.ImageId);
+            List<SelectListItem> fishingSpotTypes = new List<SelectListItem>();
+
+            var types = Enum.GetValues<FishingSpotType>().ToList();
+
+            foreach (var type in types)
+            {
+                fishingSpotTypes.Add(new SelectListItem()
+                {
+                    Text = type.ToString(),
+                    Value = type.ToString(),
+                });
+            }
+
+            this.ViewBag.FishingSpotTypes = fishingSpotTypes;
+
             return this.View(fishingSpot);
         }
 
@@ -113,36 +131,53 @@ namespace FishingMania.Web.Areas.Administration.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Name,Description,Latitude,Longitude,FishingSpotType,ImageId,IsDeleted,DeletedOn,Id,CreatedOn,ModifiedOn")] FishingSpot fishingSpot)
+        public async Task<IActionResult> Edit(int id, FishingSpotEditFormViewModel viewModel)
         {
-            if (id != fishingSpot.Id)
-            {
-                return this.NotFound();
-            }
-
             if (this.ModelState.IsValid)
             {
                 try
                 {
-                    this.fishingSpotsRepository.Update(fishingSpot);
+                    FishingSpot fishingSpotToEdit = await this.fishingSpotsRepository.AllWithDeleted().FirstOrDefaultAsync(s => s.Id == id);
+
+                    fishingSpotToEdit.Name = viewModel.Name;
+                    fishingSpotToEdit.Description = viewModel.Description;
+                    fishingSpotToEdit.Longitude = viewModel.Longitude;
+                    fishingSpotToEdit.Latitude = viewModel.Latitude;
+                    fishingSpotToEdit.FishingSpotType = viewModel.FishingSpotType;
+                    fishingSpotToEdit.IsDeleted = viewModel.IsDeleted;
+
+                    if (viewModel.IsDeleted == true && viewModel.DeletedOn == null)
+                    {
+                        fishingSpotToEdit.DeletedOn = DateTime.Now;
+                    }
+                    else if (viewModel.IsDeleted == true && viewModel.DeletedOn != null)
+                    {
+                        fishingSpotToEdit.DeletedOn = viewModel.DeletedOn;
+                    }
+                    else if (viewModel.IsDeleted == false && viewModel.DeletedOn != null)
+                    {
+                        fishingSpotToEdit.DeletedOn = null;
+                    }
+
+                    if (viewModel.ImageFile != null)
+                    {
+                        Image newImage = await this.imageService.AddByFile(viewModel.ImageFile, viewModel.ImageFile.FileName);
+                        fishingSpotToEdit.Image = newImage;
+                        fishingSpotToEdit.ImageId = newImage.Id;
+                    }
+
+                    this.fishingSpotsRepository.Update(fishingSpotToEdit);
                     await this.fishingSpotsRepository.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!this.FishingSpotExists(fishingSpot.Id))
-                    {
-                        return this.NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
+                    throw;
                 }
+
                 return this.RedirectToAction(nameof(this.Index));
             }
 
-            this.ViewData["ImageId"] = new SelectList(this.imagesRepository.AllWithDeleted(), "Id", "URL", fishingSpot.ImageId);
-            return this.View(fishingSpot);
+            return this.View(viewModel);
         }
 
         // GET: Administration/FishingSpots/Delete/5
@@ -174,6 +209,7 @@ namespace FishingMania.Web.Areas.Administration.Controllers
             {
                 return this.Problem("Entity set 'ApplicationDbContext.FishingSpots'  is null.");
             }
+
             var fishingSpot = await this.fishingSpotsRepository.All().FirstOrDefaultAsync(s => s.Id == id);
             if (fishingSpot != null)
             {

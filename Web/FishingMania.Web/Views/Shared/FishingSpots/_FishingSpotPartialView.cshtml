@@ -5,7 +5,7 @@
     <div class="place-image" style="height:270px;">
         <img src="@Model.Image.URL" class="w-100 h-100" alt="Place Image">
         <div class="place-details">
-            <h3 class="place-name">@Model.Name</h3>
+            <h3 class="place-name text-break">@Model.Name</h3>
             <a class="btn btn-secondary text-primary" asp-controller="FishingSpots" asp-action="Details" asp-route-id="@Model.Id">Details</a>
         </div>
     </div>

@@ -59,7 +59,7 @@
                     @Html.DisplayFor(modelItem => item.FishingSpotType)
                 </td>
                 <td>
-                    <img src="@item.Image.URL" style="height:140px;" />
+                    <img src="@item.Image.URL" style="width:330px;" />
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.IsDeleted)
@@ -76,7 +76,10 @@
                 <td>
                     <a class="btn bg-primary text-white mt-2" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
                     <a class="btn bg-primary text-white mt-2" asp-action="Details" asp-route-id="@item.Id">Details</a>
-                    <a class="btn bg-primary text-white mt-2" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    @if (item.IsDeleted == false)
+                    {
+                        <a class="btn bg-primary text-white mt-2" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    }
                 </td>
             </tr>
         }

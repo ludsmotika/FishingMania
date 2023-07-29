@@ -1,0 +1,44 @@
+﻿@using FishingMania.Web.ViewModels.FishingSpot;
+@model AddFishSpeciesToSpotViewModel
+
+<div class="mt-5 bg-primary rounded-pill offset-3 col-md-6" style="padding:1px;">
+    <p class="text-center text-white my-4 h2">Select the fish species for the spot!</p>
+</div>
+
+<form method="post" asp-action="AddFishSpeciesToSpot" asp-controller="FishingSpots" asp-route-spotId="@Model.SpotId" class="offset-4 col-md-4 my-4 text-center">
+    <div class="checkbox-list form-control" style="height:300px;" id="checkboxList">
+        @foreach (var item in Model.FishSpecies)
+        {
+            <label class="checkbox-item h4">
+                <input type="checkbox" name="selectedItems[]" value="@item.Value" @(Model.AllreadyAddedFishSpeciesIds.Contains(int.Parse(item.Value)) ? "checked":"")>
+                @item.Text
+            </label>
+            <option disabled class="separator"></option>
+        }
+    </div>
+    <input type="submit" class="btn bg-primary text-white my-4 text-center" value="Submit">
+</form>
+
+<style>
+    .checkbox-list {
+        border: 1px solid #ccc;
+        padding: 5px;
+        max-height: 150px;
+        overflow-y: auto;
+    }
+
+    .checkbox-item {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+        .checkbox-item input[type="checkbox"] {
+            margin-right: 5px;
+        }
+
+    option.separator {
+        margin-top: 8px;
+        border-top: 0.4px solid #666;
+        padding: 0;
+    }
+</style>

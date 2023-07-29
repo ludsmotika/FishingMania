@@ -15,6 +15,7 @@
     using FishingMania.Web.ViewModels.FishingSpot;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.Rendering;
+    using Microsoft.CodeAnalysis.CSharp;
     using Microsoft.EntityFrameworkCore;
 
     [Area("Administration")]
@@ -22,12 +23,14 @@
     {
         private readonly IDeletableEntityRepository<FishingSpot> fishingSpotsRepository;
         private readonly IDeletableEntityRepository<Image> imagesRepository;
+        private readonly IDeletableEntityRepository<FishSpecies> fishSpeciesRepository;
         private readonly IImageService imageService;
 
-        public FishingSpotsController(ApplicationDbContext context, IDeletableEntityRepository<FishingSpot> fishingSpotsRepository, IDeletableEntityRepository<Image> imagesRepository, IImageService imageService)
+        public FishingSpotsController(IDeletableEntityRepository<FishingSpot> fishingSpotsRepository, IDeletableEntityRepository<Image> imagesRepository, IDeletableEntityRepository<FishSpecies> fishSpeciesRepository, IImageService imageService)
         {
             this.fishingSpotsRepository = fishingSpotsRepository;
             this.imagesRepository = imagesRepository;
+            this.fishSpeciesRepository = fishSpeciesRepository;
             this.imageService = imageService;
         }
 
@@ -198,6 +201,60 @@
 
             return this.View(fishingSpot);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> AddFishSpeciesToSpot(int spotId)
+        {
+            FishingSpot fishingSpot = await this.fishingSpotsRepository.AllWithDeleted().Include(s => s.FishSpecies).Where(s => s.Id == spotId).FirstOrDefaultAsync();
+
+            List<FishSpecies> allFishSpecies = await this.fishSpeciesRepository.All().ToListAsync();
+
+            List<SelectListItem> selectList = new List<SelectListItem>();
+
+            foreach (var item in allFishSpecies)
+            {
+                selectList.Add(new SelectListItem()
+                {
+                    Text = item.Name,
+                    Value = item.Id.ToString(),
+                });
+            }
+
+            AddFishSpeciesToSpotViewModel viewModel = new AddFishSpeciesToSpotViewModel()
+            {
+                SpotId = spotId,
+                FishSpecies = selectList,
+                AllreadyAddedFishSpeciesIds = fishingSpot.FishSpecies.Select(fs => fs.Id).ToList(),
+            };
+
+            return this.View(viewModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddFishSpeciesToSpot(int spotId, string[] selectedItems)
+        {
+            //check what happen when you remove fish to the catches with this fish species on this spot you just edited
+
+            FishingSpot fishingSpot = await this.fishingSpotsRepository.AllWithDeleted().Include(s=>s.FishSpecies).Where(s => s.Id == spotId).FirstOrDefaultAsync();
+
+            List<FishSpecies> fishSpeciesToSet = new List<FishSpecies>();
+
+            foreach (var item in selectedItems)
+            {
+                FishSpecies fishSpecies = await this.fishSpeciesRepository.AllWithDeleted().Where(fs => fs.Id == int.Parse(item)).FirstOrDefaultAsync();
+
+                if (fishSpecies != null || !fishingSpot.FishSpecies.Contains(fishSpecies))
+                {
+                    fishSpeciesToSet.Add(fishSpecies);
+                }
+            }
+
+            fishingSpot.FishSpecies = fishSpeciesToSet;
+            await this.fishingSpotsRepository.SaveChangesAsync();
+
+            return this.RedirectToAction(nameof(this.Index));
+        }
+
 
         // POST: Administration/FishingSpots/Delete/5
         [HttpPost]

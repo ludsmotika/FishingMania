@@ -63,7 +63,10 @@
                 </td>
                 <td>
                     <a class="btn bg-primary text-white mt-2" asp-action="Details" asp-route-id="@item.Id">Details</a>
-                    <a class="btn bg-primary text-white mt-2" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    @if (item.IsDeleted == false)
+                    {
+                        <a class="btn bg-primary text-white mt-2" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    }
                 </td>
             </tr>
         }

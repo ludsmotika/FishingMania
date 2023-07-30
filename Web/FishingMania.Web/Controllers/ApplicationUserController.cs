@@ -113,7 +113,7 @@
 
         public async Task SendEmailToMe()
         {
-            await this.emailSender.SendEmailAsync("fishingManiaAdminPower@gmail.com", "FishingManiaAdmin","babacheto@abv.bg","Recepti","raboti");
+            await this.emailSender.SendEmailAsync("fishingmaniabg@abv.bg", "Daniel Stefanov", "babacheto@abv.bg", "Recepti", "raboti");
         }
     }
 }

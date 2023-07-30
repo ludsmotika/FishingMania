@@ -7,6 +7,7 @@
 
     using FishingMania.Data.Models;
     using FishingMania.Services.Data.Contracts;
+    using FishingMania.Services.Messaging;
     using FishingMania.Web.ViewModels.Cart;
     using FishingMania.Web.ViewModels.Catch;
     using FishingMania.Web.ViewModels.Order;
@@ -21,13 +22,16 @@
         private readonly ICatchesService catchesService;
         private readonly ICartsService cartsService;
         private readonly IOrdersService ordersService;
+        private readonly IEmailSender emailSender;
 
-        public ApplicationUserController(UserManager<ApplicationUser> userManager, ICatchesService catchesService, ICartsService cartsService, IOrdersService ordersService)
+
+        public ApplicationUserController(UserManager<ApplicationUser> userManager, ICatchesService catchesService, ICartsService cartsService, IOrdersService ordersService, IEmailSender emailSender)
         {
             this.userManager = userManager;
             this.catchesService = catchesService;
             this.cartsService = cartsService;
             this.ordersService = ordersService;
+            this.emailSender = emailSender;
         }
 
         public async Task<IActionResult> MyCart()
@@ -105,6 +109,11 @@
             {
                 return this.RedirectToAction("Index", "Home");
             }
+        }
+
+        public async Task SendEmailToMe()
+        {
+            await this.emailSender.SendEmailAsync("fishingManiaAdminPower@gmail.com", "FishingManiaAdmin","babacheto@abv.bg","Recepti","raboti");
         }
     }
 }

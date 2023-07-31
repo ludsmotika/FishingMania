@@ -127,7 +127,7 @@
             {
                 ApplicationUser applicationUser = await this.userManager.GetUserAsync(this.User);
 
-                if (applicationUser == null)
+                if (applicationUser == null || applicationUser.EmailConfirmed == false)
                 {
                     return this.RedirectToAction("Store", "Home");
                 }

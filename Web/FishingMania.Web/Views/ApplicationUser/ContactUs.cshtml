@@ -1,20 +1,32 @@
 ﻿@using FishingMania.Web.ViewModels.ContactUs;
 @using FishingMania.Web.ViewModels.ContactUs.Enums;
+@inject SignInManager<ApplicationUser> signInManager
 @model ContactUsFormViewModel
 
-<div class="mt-5 bg-primary rounded-pill offset-3 col-md-6" style="padding:1px;">
-    <p class="text-center text-white my-4 mx-3 h2">Send email to contact us and we will help you as soon as possible!</p>
-</div>
+@if (signInManager.UserManager.GetUserAsync(User).Result.EmailConfirmed == true)
+{
+    <div class="mt-5 bg-primary rounded-pill offset-3 col-md-6" style="padding:1px;">
+        <p class="text-center text-white my-4 mx-3 h2">Send email to contact us and we will help you as soon as possible!</p>
+    </div>
 
-<form id="customForm" method="post" enctype="multipart/form-data" class="col-md-6 offset-3 text-center my-5 text-white bg-primary rounded-5">
-    <div class="form-group h3 my-2 mt-5">
-        <label class="mt-4" asp-for="@Model.Content"></label>
-        <input asp-for="@Model.Content" class="form-control" />
-        <span asp-validation-for="@Model.Content" class="text-danger"></span>
+    <form id="customForm" method="post" enctype="multipart/form-data" class="col-md-6 offset-3 text-center my-5 text-white bg-primary rounded-5">
+        <div class="form-group h3 my-2 mt-5">
+            <label class="mt-4" asp-for="@Model.Content"></label>
+            <input asp-for="@Model.Content" class="form-control" />
+            <span asp-validation-for="@Model.Content" class="text-danger"></span>
+        </div>
+        <div class="form-group h3 my-2">
+            <label class="mt-4" asp-for="@Model.Topic"></label>
+            <select asp-for="@Model.Topic" asp-items="Html.GetEnumSelectList<ComplainTopic>()" class="form-control"></select>
+        </div>
+        <button type="submit" class="btn bg-white text-primary col-md-4 my-2">Send Email</button>
+    </form>
+}
+else
+{
+    <div class="mt-5 bg-primary rounded-pill offset-3 col-md-6" style="padding:1px;">
+        <p class="text-center text-white my-4 mx-3 h2">To use the contact us page you have verify your email address!</p>
     </div>
-    <div class="form-group h3 my-2">
-        <label class="mt-4" asp-for="@Model.Topic"></label>
-        <select asp-for="@Model.Topic" asp-items="Html.GetEnumSelectList<ComplainTopic>()" class="form-control"></select>
-    </div>
-    <button type="submit" class="btn bg-white text-primary col-md-4 my-2">Send Email</button>
-</form>
+
+    <a class="btn bg-primary text-white text-white col-md-4 my-5 offset-4" asp-area="Identity" asp-page="/Account/Manage/Email">Verify Email Page</a>
+}

@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Security.Claims;
+    using System.Text;
     using System.Threading.Tasks;
 
     using FishingMania.Data.Models;
@@ -10,6 +11,7 @@
     using FishingMania.Services.Messaging;
     using FishingMania.Web.ViewModels.Cart;
     using FishingMania.Web.ViewModels.Catch;
+    using FishingMania.Web.ViewModels.ContactUs;
     using FishingMania.Web.ViewModels.Order;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
@@ -111,9 +113,50 @@
             }
         }
 
-        public async Task SendEmailToMe()
+        [HttpGet]
+        public IActionResult ContactUs()
         {
-            await this.emailSender.SendEmailAsync("fishingmaniabg@abv.bg", "Daniel Stefanov", "babacheto@abv.bg", "Recepti", "raboti");
+            ContactUsFormViewModel viewModel = new ContactUsFormViewModel();
+            return this.View(viewModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ContactUs(ContactUsFormViewModel viewModel)
+        {
+            try
+            {
+                ApplicationUser applicationUser = await this.userManager.GetUserAsync(this.User);
+
+                if (applicationUser == null)
+                {
+                    return this.RedirectToAction("Store", "Home");
+                }
+
+                viewModel.ApplicationUser = applicationUser;
+                viewModel.ApplicationUserId = applicationUser.Id;
+
+                if (!this.ModelState.IsValid)
+                {
+                    return this.RedirectToAction("Store", "Home");
+                }
+
+                StringBuilder html = new StringBuilder();
+                html.AppendLine($"<h2>UserName: {viewModel.ApplicationUser.UserName}</h2>");
+                html.AppendLine($"<h2>User Email: {viewModel.ApplicationUser.Email}</h2>");
+                html.AppendLine($"<h2>Complain: {viewModel.Content}</h2>");
+
+                if (viewModel.Content != null)
+                {
+                    await this.emailSender.SendEmailAsync("fishingmaniabg@abv.bg", "Daniel Stefanov", "fishingmaniabg@abv.bg", viewModel.Topic.ToString(), html.ToString());
+                }
+
+                return this.RedirectToAction("Store", "Home");
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
         }
     }
 }

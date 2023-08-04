@@ -18,8 +18,8 @@
     </div>
     <div class="form-group my-3">
         <label class="h3" asp-for="@Model.ImageFile"></label>
-        <input asp-for="@Model.ImageFile" class="form-control-file" accept=".jpg,.jpeg,.png" onchange="previewImage(event)" />
-        <span asp-validation-for="@Model.ImageFile" class="text-danger"></span>
+        <input id="inputFieldForImage"asp-for="@Model.ImageFile" class="form-control-file" accept=".jpg,.jpeg,.png" onchange="previewImage(event); validateForm();"/>
+        <span id="imageValidation" asp-validation-for="@Model.ImageFile" class="text-danger"></span>
 
         <div class="form-group">
             <img id="imagePreview" src="#" alt="Preview Image" style="display: none; max-width: 100%;" />

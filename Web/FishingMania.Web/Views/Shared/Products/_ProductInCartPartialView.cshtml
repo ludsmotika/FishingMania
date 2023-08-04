@@ -1,7 +1,7 @@
 ﻿@using FishingMania.Web.ViewModels.Product;
 @model ProductInShoppingCartViewModel
 
-<div id="@Model.ShoppingCartProductId" class="col-md-8 offset-2 bg-primary text-white rounded-5 d-flex flex-row my-4">
+<div id="@Model.ShoppingCartProductId" class="col-md-10 offset-1 bg-primary text-white rounded-5 d-flex flex-row my-4">
     <div id="carousel-@Model.Id" class="carousel col-md-3 slide m-4 rounded-5" data-bs-ride="carousel">
         <div class="carousel-inner text-center">
             @for (var i = 0; i < Model.Images.Count(); i++)

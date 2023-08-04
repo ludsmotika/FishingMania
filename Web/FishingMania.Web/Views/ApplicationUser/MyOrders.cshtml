@@ -22,7 +22,7 @@ else
                 <p class="mt-4">Ordered on:</p>
                 <p>@item.CreatedOn</p>
                 <p>Address:</p>
-                <p>@item.Address</p>
+                <p class="text-break">@item.Address</p>
                 <p>Total Price: @Math.Round(item.OrderProducts.Select(op=>op.Product.Price * op.Amount).Sum(),2)$</p>
             </div>
             <div class="col-md-8 mx-auto">

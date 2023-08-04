@@ -63,7 +63,7 @@
             {
                 await this.ordersService.AddProductToOrderAsync(productToAdd.ProductId, productToAdd.Amount, orderId);
                 await this.productsService.DecreaseProductAmountAsync(productToAdd.ProductId, productToAdd.Amount);
-                await this.cartsService.RemoveProductFromShoppingCartByIdAsync(productToAdd.Id);
+                await this.cartsService.RemoveProductFromShoppingCartByIdAsync(productToAdd.Id.ToString());
             }
 
             await this.cartsService.DeleteByIdAsync(shoppingCart.Id);

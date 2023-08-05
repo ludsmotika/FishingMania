@@ -1,9 +1,9 @@
 ﻿namespace FishingMania.Services.Data.Tests
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Reflection;
-    using System.Threading;
     using System.Threading.Tasks;
 
     using FishingMania.Data;
@@ -13,7 +13,7 @@
     using FishingMania.Services.Data.Services;
     using FishingMania.Services.Mapping;
     using FishingMania.Web.ViewModels.Catch;
-    using FishingMania.Web.ViewModels.FishSpecies;
+    using FishingMania.Web.ViewModels.Catch.Enums;
     using Microsoft.EntityFrameworkCore;
     using Xunit;
 
@@ -28,7 +28,7 @@
         public CatchesServiceTests()
         {
             var contextOptions = new DbContextOptionsBuilder<ApplicationDbContext>()
-               .UseInMemoryDatabase("FishingMania")
+               .UseInMemoryDatabase("FishingManiaCatches")
                .Options;
 
             this.applicationDbContext = new ApplicationDbContext(contextOptions);
@@ -97,6 +97,41 @@
             Assert.True(isDeleted);
         }
 
+        [Fact]
+        public async Task DeleteByIdAsyncWorksWithInvalidId()
+        {
+            this.SeedDataAsync();
+
+            async Task Remove() => await this.catchesService.DeleteByIdAsync(2);
+
+            await Assert.ThrowsAsync<ArgumentException>(Remove);
+        }
+
+        [Fact]
+        public async Task GetAllCatchesAsyncWorksCorrect()
+        {
+            AutoMapperConfig.RegisterMappings(typeof(CatchViewModel).GetTypeInfo().Assembly);
+
+            this.SeedDataAsync();
+
+            AllCatchesQueryViewModel allCatchesQueryViewModel = new AllCatchesQueryViewModel()
+            {
+                CurrentPage = -1,
+                CatchesPerPage = 6,
+                CatchesSorting = CatchesSorting.Oldest,
+                SearchString = "Test",
+                Type = FishType.Omnivorous,
+                TotalCatches = 1,
+            };
+
+            var catches = await this.catchesService.GetAllCatchesAsync(allCatchesQueryViewModel);
+
+            Assert.Single(catches.Catches);
+            Assert.Equal("Test", catches.Catches.First().Description);
+            Assert.Equal(1, catches.Catches.First().Id);
+            Assert.Equal(1.95m, catches.Catches.First().FishWeight);
+        }
+
         private async Task SeedDataAsync()
         {
             var applicationUser = new ApplicationUser()
@@ -134,6 +169,7 @@
                 Name = "Test",
                 ImageId = 3,
                 Image = imageForFishSpecies,
+                Type = FishType.Omnivorous,
             };
 
             var fishingSpot = new FishingSpot()

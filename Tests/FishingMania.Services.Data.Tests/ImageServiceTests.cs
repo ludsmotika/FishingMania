@@ -25,7 +25,7 @@
         public ImageServiceTests()
         {
             var contextOptions = new DbContextOptionsBuilder<ApplicationDbContext>()
-            .UseInMemoryDatabase("FishingMania")
+            .UseInMemoryDatabase("FishingManiaImages")
             .Options;
 
             this.applicationDbContext = new ApplicationDbContext(contextOptions);

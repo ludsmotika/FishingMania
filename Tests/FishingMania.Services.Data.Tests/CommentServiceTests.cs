@@ -1,23 +1,20 @@
-﻿using FishingMania.Data.Common.Repositories;
-using FishingMania.Data.Repositories;
-using FishingMania.Data;
-using FishingMania.Services.Data.Services;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FishingMania.Data.Models;
-using Xunit;
-using FishingMania.Web.ViewModels.Comment;
-using FishingMania.Services.Mapping;
-using FishingMania.Web.ViewModels.Catch;
-using System.Reflection;
-using System.Threading;
-
-namespace FishingMania.Services.Data.Tests
+﻿namespace FishingMania.Services.Data.Tests
 {
+    using System;
+    using System.Linq;
+    using System.Reflection;
+    using System.Threading.Tasks;
+
+    using FishingMania.Data;
+    using FishingMania.Data.Common.Repositories;
+    using FishingMania.Data.Models;
+    using FishingMania.Data.Repositories;
+    using FishingMania.Services.Data.Services;
+    using FishingMania.Services.Mapping;
+    using FishingMania.Web.ViewModels.Comment;
+    using Microsoft.EntityFrameworkCore;
+    using Xunit;
+
     public class CommentServiceTests
     {
         private ApplicationDbContext applicationDbContext;
@@ -28,7 +25,7 @@ namespace FishingMania.Services.Data.Tests
         public CommentServiceTests()
         {
             var contextOptions = new DbContextOptionsBuilder<ApplicationDbContext>()
-               .UseInMemoryDatabase("FishingMania")
+               .UseInMemoryDatabase("FishingManiaComments")
                .Options;
 
             this.applicationDbContext = new ApplicationDbContext(contextOptions);
@@ -96,6 +93,24 @@ namespace FishingMania.Services.Data.Tests
             var comments = await this.commentService.GetAllCommentsForThisEntityAsync(EntityWithCommentsType.Catch, 1);
 
             Assert.Single(comments);
+        }
+
+        [Fact]
+        public async Task PostCommentAsyncWorksCorrect()
+        {
+            this.SeedDataAsync();
+
+            var commentViewModel = new CommentInputViewModel()
+            {
+                Content = "Test",
+                EntityTypeId = 1,
+                EntityType = EntityWithCommentsType.Catch,
+                ApplicationUserId = "testUserId",
+            };
+
+            await this.commentService.PostCommentAsync(commentViewModel);
+
+            Assert.Equal(4, this.commentsRepository.All().Count());
         }
 
         private async Task SeedDataAsync()

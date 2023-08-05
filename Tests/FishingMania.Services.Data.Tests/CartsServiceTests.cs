@@ -1,6 +1,7 @@
 ﻿namespace FishingMania.Services.Data.Tests
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Reflection;
     using System.Threading.Tasks;
@@ -27,7 +28,7 @@
         public CartsServiceTests()
         {
             var contextOptions = new DbContextOptionsBuilder<ApplicationDbContext>()
-               .UseInMemoryDatabase("FishingMania")
+               .UseInMemoryDatabase("FishingManiaCarts")
                .Options;
 
             this.applicationDbContext = new ApplicationDbContext(contextOptions);
@@ -193,6 +194,31 @@
 
         private async Task SeedDataAsync()
         {
+
+            var applicationUser = new ApplicationUser()
+            {
+                Id = "testUserId",
+                Email = "testemail@abv.bg",
+                NormalizedEmail = "TESTEMAIL@ABV.Bg",
+                UserName = "testUser",
+                NormalizedUserName = "TESTUSER",
+                SecurityStamp = "12345",
+                PasswordHash = "12345",
+                ConcurrencyStamp = "12345",
+                EmailConfirmed = false,
+            };
+
+            var firstImage = new Image()
+            {
+                Id = 1,
+                URL = "firstImageUrl",
+            };
+            var secondImage = new Image()
+            {
+                Id = 2,
+                URL = "secondImageUrl",
+            };
+
             var product = new Product()
             {
                 Id = 1,
@@ -200,6 +226,7 @@
                 Description = "Test",
                 Price = 1,
                 AmountInStock = 1,
+                Images = new List<Image> { firstImage, secondImage },
             };
 
             var productToAdd = new Product()
@@ -209,6 +236,7 @@
                 Description = "Test",
                 Price = 1,
                 AmountInStock = 1,
+                Images = new List<Image> { firstImage, secondImage },
             };
 
             var productWithoutAmount = new Product()
@@ -218,6 +246,7 @@
                 Description = "Test",
                 Price = 1,
                 AmountInStock = 0,
+                Images = new List<Image> { firstImage, secondImage },
             };
 
             await this.productsRepository.AddAsync(product);
@@ -229,6 +258,7 @@
             {
                 Id = "1",
                 ApplicationUserId = "testUserId",
+                ApplicationUser = applicationUser,
             };
 
             await this.shoppingCartsRepository.AddAsync(cart);

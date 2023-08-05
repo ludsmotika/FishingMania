@@ -1,22 +1,20 @@
-﻿using FishingMania.Data.Common.Repositories;
-using FishingMania.Data.Repositories;
-using FishingMania.Data;
-using FishingMania.Services.Data.Services;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FishingMania.Data.Models;
-using Xunit;
-using FishingMania.Services.Mapping;
-using FishingMania.Web.ViewModels.Comment;
-using System.Reflection;
-using AutoMapper.Configuration.Annotations;
-
-namespace FishingMania.Services.Data.Tests
+﻿namespace FishingMania.Services.Data.Tests
 {
+    using System.Collections.Generic;
+    using System.Reflection;
+    using System.Threading.Tasks;
+
+    using FishingMania.Data;
+    using FishingMania.Data.Common.Repositories;
+    using FishingMania.Data.Models;
+    using FishingMania.Data.Repositories;
+    using FishingMania.Services.Data.Services;
+    using FishingMania.Services.Mapping;
+    using FishingMania.Web.ViewModels.FishingSpot;
+    using FishingMania.Web.ViewModels.FishSpecies;
+    using Microsoft.EntityFrameworkCore;
+    using Xunit;
+
     public class FishingSpotServiceTests
     {
         private ApplicationDbContext applicationDbContext;
@@ -27,7 +25,7 @@ namespace FishingMania.Services.Data.Tests
         public FishingSpotServiceTests()
         {
             var contextOptions = new DbContextOptionsBuilder<ApplicationDbContext>()
-               .UseInMemoryDatabase("FishingMania")
+               .UseInMemoryDatabase("FishingManiaFishingSpots")
                .Options;
 
             this.applicationDbContext = new ApplicationDbContext(contextOptions);
@@ -42,7 +40,7 @@ namespace FishingMania.Services.Data.Tests
         [Fact]
         public async Task GetFishSpeciesForSpotByIdAsync()
         {
-            AutoMapperConfig.RegisterMappings(typeof(CommentViewModel).GetTypeInfo().Assembly);
+            AutoMapperConfig.RegisterMappings(typeof(FishSpeciesDropdownViewModel).GetTypeInfo().Assembly);
 
             this.SeedDataAsync();
 
@@ -69,6 +67,90 @@ namespace FishingMania.Services.Data.Tests
             bool hasFishSpecies = await this.fishingSpotService.FishingSpotHasFishSpeciesAsync(1, 1);
 
             Assert.True(hasFishSpecies);
+        }
+
+        [Fact]
+        public async Task GetCountByTypeAsyncWithValidInput()
+        {
+            this.SeedDataAsync();
+
+            var count = await this.fishingSpotService.GetCountByTypeAsync(FishingSpotType.River);
+
+            Assert.Equal(1, count);
+        }
+
+        [Fact]
+        public async Task GetCountByTypeAsyncWithInvalidInput()
+        {
+            this.SeedDataAsync();
+
+            var count = await this.fishingSpotService.GetCountByTypeAsync(FishingSpotType.Swamp);
+
+            Assert.Equal(0, count);
+        }
+
+        [Fact]
+        public async Task GetSpotForDetailsByIdAsyncWithValidId()
+        {
+            AutoMapperConfig.RegisterMappings(typeof(FishingSpotDetailsViewModel).GetTypeInfo().Assembly);
+
+            this.SeedDataAsync();
+
+            var fishingSpot = await this.fishingSpotService.GetSpotForDetailsByIdAsync(1);
+
+            Assert.NotNull(fishingSpot);
+        }
+
+        [Fact]
+        public async Task GetSpotForDetailsByIdAsyncWithInvalidId()
+        {
+            AutoMapperConfig.RegisterMappings(typeof(FishingSpotDetailsViewModel).GetTypeInfo().Assembly);
+
+            this.SeedDataAsync();
+
+            var fishingSpot = await this.fishingSpotService.GetSpotForDetailsByIdAsync(2);
+
+            Assert.Null(fishingSpot);
+        }
+
+        [Fact]
+        public async Task AllForInputAsyncWorkCorrect()
+        {
+            AutoMapperConfig.RegisterMappings(typeof(FishingSpotDropdownViewModel).GetTypeInfo().Assembly);
+
+            this.SeedDataAsync();
+
+            var fishingSpots = await this.fishingSpotService.AllForInputAsync();
+
+            Assert.NotNull(fishingSpots);
+
+            Assert.Single(fishingSpots);
+        }
+
+        [Fact]
+        public async Task GetAllFishingSpotsAsyncWorksCorrect()
+        {
+            AutoMapperConfig.RegisterMappings(typeof(FishingSpotViewModel).GetTypeInfo().Assembly);
+
+            this.SeedDataAsync();
+
+            var fishingSpots = await this.fishingSpotService.GetAllFishingSpotsAsync(1, 6);
+
+            Assert.NotNull(fishingSpots);
+            Assert.Single(fishingSpots);
+        }
+
+        [Fact]
+        public async Task GetAllFishingSpotsByTypeAsyncWorksCorrect()
+        {
+            AutoMapperConfig.RegisterMappings(typeof(FishingSpotViewModel).GetTypeInfo().Assembly);
+
+            this.SeedDataAsync();
+
+            var fishingSpots = await this.fishingSpotService.GetAllFishingSpotsByTypeAsync(FishingSpotType.River, 1, 6);
+
+            Assert.NotNull(fishingSpots);
+            Assert.Single(fishingSpots);
         }
 
         private async Task SeedDataAsync()
@@ -99,6 +181,7 @@ namespace FishingMania.Services.Data.Tests
                 Description = "Test",
                 Latitude = 11.11m,
                 Longitude = 22.22m,
+                FishingSpotType = FishingSpotType.River,
                 FishSpecies = new List<FishSpecies>() { fishSpecies },
                 ImageId = 1,
                 Image = imageForSpot,

@@ -138,7 +138,7 @@
 
                 if (spotModel == null)
                 {
-                    return this.RedirectToAction("All", "Catches");
+                    return this.RedirectToAction("All", "FishingSpots");
                 }
 
                 spotModel.Comments = await this.commentService.GetAllCommentsForThisEntityAsync(EntityWithCommentsType.Spot, id);
@@ -147,7 +147,7 @@
             }
             catch (Exception)
             {
-                throw;
+                return this.RedirectToAction("All", "FishingSpots");
             }
         }
 

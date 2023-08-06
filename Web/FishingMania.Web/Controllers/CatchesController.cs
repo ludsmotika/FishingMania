@@ -128,7 +128,7 @@
             }
             catch (Exception)
             {
-                throw;
+                return this.RedirectToAction("All", "Catches");
             }
         }
 

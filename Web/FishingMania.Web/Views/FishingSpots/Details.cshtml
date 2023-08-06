@@ -3,7 +3,11 @@
 @model FishingSpotDetailsViewModel
 
 <div class="container text-center">
-    <h2 class="bg-primary text-white rounded-pill mx-auto fs-1 my-5">@Model.Name</h2>
+
+    <div class="my-5 bg-primary rounded-pill offset-3 col-md-6" style="padding:1px;">
+        <p class="text-center text-white my-4 h1">@Model.Name</p>
+    </div>
+
     <div class="d-flex col-md-12 bg-primary text-white rounded-5">
         <div class="col-md-6">
             <img src="@Model.Image.URL" class="col-md-12 my-4 rounded-5" />

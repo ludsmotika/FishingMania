@@ -26,7 +26,7 @@
 
         [IgnoreAntiforgeryToken]
         [HttpPost("AddProductToCartAsync")]
-        [ActionName("AddProductToCartAsync")]
+        [ActionName("AddProductToCartAs`ync")]
         public async Task<IActionResult> AddProductToCartAsync(ProductAddToCartViewModel model)
         {
             try

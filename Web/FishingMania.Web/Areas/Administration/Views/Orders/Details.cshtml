@@ -1,0 +1,88 @@
+﻿@model FishingMania.Data.Models.Order
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Order</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ApplicationUser)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ApplicationUser.UserName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OrderProducts)
+        </dt>
+        <dd class="col-sm-10">
+            <h3>Products in the order</h3>
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Amount</th>
+                        <th>Price for one</th>
+                        <th>Price for all</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.OrderProducts)
+                    {
+                        <tr>
+                            <th>@item.Product.Id</th>
+                            <th>@item.Product.Name</th>
+                            <th>@item.Amount</th>
+                            <th>@Math.Round(item.Product.Price,2) $</th>
+                            <th>@Math.Round(item.Product.Price*item.Amount,2) $</th>
+                        </tr>
+                    }
+                </tbody>
+                <tfoot>
+                    <td colspan="5" class="text-right">Total Order Price: @Math.Round(Model.OrderProducts.Select(op=>op.Product.Price * op.Amount).Sum(),2) $</td>
+                </tfoot>
+            </table>
+
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IsDeleted)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IsDeleted)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DeletedOn)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DeletedOn)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CreatedOn)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CreatedOn)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ModifiedOn)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ModifiedOn)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a class="btn bg-primary text-white" asp-action="Index">Back to List</a>
+</div>

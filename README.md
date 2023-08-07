@@ -1,4 +1,4 @@
-## :soccer: Project Introduction
+## 🎣: Project Introduction
 
 **Fishing Mania** is my graduation project for **C# Web** course at [SoftUni](https://softuni.bg/ "SoftUni") (2023).
 

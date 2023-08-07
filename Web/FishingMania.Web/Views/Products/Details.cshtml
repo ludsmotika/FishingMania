@@ -116,7 +116,6 @@
 
                 var applicationUserId = Boolean(`@User.Identity.IsAuthenticated`) ? `@User.FindFirst(ClaimTypes.NameIdentifier)?.Value` : null;
 
-
                 var prodData = {
                     productId: @Model.Id,
                     amount: amount,
@@ -129,6 +128,10 @@
                     contentType: 'application/json',
                     data: JSON.stringify(prodData),
                     success: function (answer) {
+
+                        if (applicationUserId == '') {
+                            alert("You have to be logged in to use our store!");
+                        }
 
                         if (answer == "addedSuccessfully") {
                             alert("You successfully added this product to your cart!");

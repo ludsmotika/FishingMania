@@ -3,7 +3,7 @@
 **Fishing Mania** is my graduation project for **C# Web** course at [SoftUni](https://softuni.bg/ "SoftUni") (2023).
 
 ## Logo
-![](https://res.cloudinary.com/dubpxleer/image/upload/v1671200039/clubManagerLogo_xppksk.png)
+![](https://res.cloudinary.com/dksccul6u/image/upload/v1691405512/aeneygsqcz3yrj6zx1h4.png)
 
 ## :pencil2: Overview
 

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "DEGm5DO1sS3uTtpAnPbi7ZUGTaR0Hgoc4Y7pKaJb6DsTF+tndljCcKJFacMoLwWh2zNsdroZYixPtCxKIKRUfw==",
+  "dgSpecHash": "OtyxZuOScMSJR3aemvJrkCradHTP3ebT1Rrx43n6pxoOeWN6eYnDIhtBHuYTvs2TJppyn4FN1EFptLXKaH2zcQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\danie\\source\\repos\\FishingMania\\Web\\FishingMania.Web\\FishingMania.Web.csproj",
   "expectedPackageFiles": [
@@ -57,6 +57,7 @@
     "C:\\Users\\danie\\.nuget\\packages\\humanizer.core.zh-cn\\2.14.1\\humanizer.core.zh-cn.2.14.1.nupkg.sha512",
     "C:\\Users\\danie\\.nuget\\packages\\humanizer.core.zh-hans\\2.14.1\\humanizer.core.zh-hans.2.14.1.nupkg.sha512",
     "C:\\Users\\danie\\.nuget\\packages\\humanizer.core.zh-hant\\2.14.1\\humanizer.core.zh-hant.2.14.1.nupkg.sha512",
+    "C:\\Users\\danie\\.nuget\\packages\\mailjet.api\\3.0.0\\mailjet.api.3.0.0.nupkg.sha512",
     "C:\\Users\\danie\\.nuget\\packages\\messagepack\\2.1.152\\messagepack.2.1.152.nupkg.sha512",
     "C:\\Users\\danie\\.nuget\\packages\\messagepack.annotations\\2.1.152\\messagepack.annotations.2.1.152.nupkg.sha512",
     "C:\\Users\\danie\\.nuget\\packages\\messagepackanalyzer\\2.1.152\\messagepackanalyzer.2.1.152.nupkg.sha512",

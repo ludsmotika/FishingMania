@@ -572,3 +572,4 @@ C:\Users\danie\source\repos\FishingMania\Web\FishingMania.Web\bin\Debug\net6.0\a
 C:\Users\danie\source\repos\FishingMania\Web\FishingMania.Web\bin\Debug\net6.0\System.Net.Http.Formatting.dll
 C:\Users\danie\source\repos\FishingMania\Web\FishingMania.Web\bin\Debug\net6.0\System.Web.Http.dll
 C:\Users\danie\source\repos\FishingMania\Web\FishingMania.Web\obj\Debug\net6.0\FishingMania.Web.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\danie\source\repos\FishingMania\Web\FishingMania.Web\bin\Debug\net6.0\Mailjet.Client.dll

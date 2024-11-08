@@ -1,0 +1,19 @@
+# Ignore build directories for .NET projects
+**/bin/
+**/obj/ 
+
+# Ignore node modules
+node_modules/
+
+# Ignore environment files
+.env
+
+# Ignore user secrets
+secrets.json
+
+# Ignore Visual Studio related files
+.vscode/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates

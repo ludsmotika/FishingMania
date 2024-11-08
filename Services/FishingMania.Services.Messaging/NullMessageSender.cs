@@ -5,7 +5,7 @@
 
     public class NullMessageSender : IEmailSender
     {
-        public Task SendEmailAsync(
+        public Task<bool> SendEmailAsync(
             string from,
             string fromName,
             string to,
@@ -13,7 +13,7 @@
             string htmlContent,
             IEnumerable<EmailAttachment> attachments = null)
         {
-            return Task.CompletedTask;
+            return Task.FromResult(true);
         }
     }
 }

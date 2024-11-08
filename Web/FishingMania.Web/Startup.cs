@@ -1,5 +1,6 @@
 ﻿namespace FishingMania.Web
 {
+    using System;
     using System.Configuration;
     using System.Reflection;
     using CloudinaryDotNet;
@@ -28,10 +29,12 @@
     public class Startup
     {
         private readonly IConfiguration configuration;
+        private readonly IWebHostEnvironment env;
 
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IWebHostEnvironment env)
         {
             this.configuration = configuration;
+            this.env = env;
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -68,7 +71,21 @@
             services.AddScoped<IDbQueryRunner, DbQueryRunner>();
 
             // Application services
-            services.AddTransient<IEmailSender>(x => new SendGridEmailSender(this.configuration["SendGrid:ApiKey"]));
+
+            string mailJetApiKey = null, mailJetSecretKey = null;
+
+            if (this.env.IsDevelopment())
+            {
+                mailJetApiKey = this.configuration["Mailjet:ApiKey"];
+                mailJetSecretKey = this.configuration["Mailjet:SecretKey"];
+            }
+            else if (this.env.IsProduction())
+            {
+                mailJetApiKey = Environment.GetEnvironmentVariable("Mailjet:ApiKey");
+                mailJetSecretKey = Environment.GetEnvironmentVariable("Mailjet:SecretKey");
+            }
+
+            services.AddTransient<IEmailSender>(x => new MultiJetEmailSender(mailJetApiKey, mailJetSecretKey));
             services.AddTransient<IFishingSpotService, FishingSpotService>();
             services.AddTransient<ICatchesService, CatchesService>();
             services.AddTransient<IFishSpeciesService, FishSpeciesService>();
@@ -85,7 +102,11 @@
             // Cloudinary service
             var cloudinarySettings = this.configuration.GetSection("CloudinarySettings");
 
-            Account account = new Account(cloudinarySettings["CloudName"], cloudinarySettings["ApiKey"], cloudinarySettings["ApiSecret"]);
+            var cloudinaryCloudName = cloudinarySettings["CloudName"];
+            var cloudinaryApiKey = cloudinarySettings["ApiKey"];
+            var cloudinaryApiSecret = cloudinarySettings["ApiSecret"];
+
+            Account account = new Account(cloudinaryCloudName, cloudinaryApiKey, cloudinaryApiSecret);
 
             Cloudinary cloudinary = new Cloudinary(account);
             services.AddSingleton(cloudinary);

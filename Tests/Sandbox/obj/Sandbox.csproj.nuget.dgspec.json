@@ -485,6 +485,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Mailjet.Api": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
             "Sendgrid": {
               "target": "Package",
               "version": "[9.27.0, )"

@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "OKPFVrKbUKAYtRtq2Y5fxyjIIe+mdYVWXUblj9DE0UxIYZwaZwnwjUSRXpPSA/3a2xeAZo85oe7n0G5ynAwpZw==",
+  "dgSpecHash": "kXxVjM2o0AhsxiPlc/7NoAnR8BhBhZI42Puj2qCSMCadxDp9LUDQN76Dj/ftcAYwwa2vl/as7UVzz8XrKaz3Bg==",
   "success": true,
   "projectFilePath": "C:\\Users\\danie\\source\\repos\\FishingMania\\Tests\\Sandbox\\Sandbox.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\danie\\.nuget\\packages\\automapper\\11.0.1\\automapper.11.0.1.nupkg.sha512",
     "C:\\Users\\danie\\.nuget\\packages\\cloudinarydotnet\\1.20.0\\cloudinarydotnet.1.20.0.nupkg.sha512",
     "C:\\Users\\danie\\.nuget\\packages\\commandlineparser\\2.8.0\\commandlineparser.2.8.0.nupkg.sha512",
+    "C:\\Users\\danie\\.nuget\\packages\\mailjet.api\\3.0.0\\mailjet.api.3.0.0.nupkg.sha512",
     "C:\\Users\\danie\\.nuget\\packages\\microsoft.aspnetcore.antiforgery\\2.2.0\\microsoft.aspnetcore.antiforgery.2.2.0.nupkg.sha512",
     "C:\\Users\\danie\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\danie\\.nuget\\packages\\microsoft.aspnetcore.authentication.core\\2.2.0\\microsoft.aspnetcore.authentication.core.2.2.0.nupkg.sha512",

@@ -44,6 +44,7 @@
           "FishingMania.Services.Messaging": "1.0.0",
           "FishingMania.Web.Infrastructure": "1.0.0",
           "FishingMania.Web.ViewModels": "1.0.0",
+          "Mailjet.Api": "3.0.0",
           "Microsoft.AspNet.WebApi.Core": "5.2.9",
           "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "6.0.3",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.20",
@@ -917,6 +918,21 @@
           "lib/net6.0/zh-Hant/Humanizer.resources.dll": {
             "locale": "zh-Hant"
           }
+        }
+      },
+      "Mailjet.Api/3.0.0": {
+        "dependencies": {
+          "NETStandard.Library": "1.6.1",
+          "Newtonsoft.Json": "13.0.1"
+        },
+        "runtime": {
+          "lib/netstandard1.1/Mailjet.Client.dll": {
+            "assemblyVersion": "3.0.0.0",
+            "fileVersion": "3.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard1.1/Mailjet.Client.dll": {}
         }
       },
       "MessagePack/2.1.152": {
@@ -3714,6 +3730,7 @@
       },
       "FishingMania.Services.Messaging/1.0.0": {
         "dependencies": {
+          "Mailjet.Api": "3.0.0",
           "SendGrid": "9.27.0"
         },
         "runtime": {
@@ -5826,6 +5843,13 @@
       "sha512": "sha512-VIXB7HCUC34OoaGnO3HJVtSv2/wljPhjV7eKH4+TFPgQdJj2lvHNKY41Dtg0Bphu7X5UaXFR4zrYYyo+GNOjbA==",
       "path": "humanizer.core.zh-hant/2.14.1",
       "hashPath": "humanizer.core.zh-hant.2.14.1.nupkg.sha512"
+    },
+    "Mailjet.Api/3.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/VeXC5+Q4e6YKcLm7yQVEJ5rBioJuXR7WVkVUVXgO/wkrd54+kGaB5/4F31iy7N4X07D97Gjxl8NlVNtcgHLsg==",
+      "path": "mailjet.api/3.0.0",
+      "hashPath": "mailjet.api.3.0.0.nupkg.sha512"
     },
     "MessagePack/2.1.152": {
       "type": "package",

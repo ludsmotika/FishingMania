@@ -17,7 +17,7 @@
 * [Bootstrap](https://github.com/twbs/bootstrap)
 * [Bootswatch](https://bootswatch.com/)
 * [MSSQL Server](https://www.microsoft.com/en-us/sql-server)
-* [SendGrid](https://sendgrid.com/)
+* [MailJet](https://app.mailjet.com/)
 * [Cloudinary](https://cloudinary.com/)
 * [OpenStreetMap](https://www.openstreetmap.org/)
 * [xUnit](https://github.com/xunit/xunit)

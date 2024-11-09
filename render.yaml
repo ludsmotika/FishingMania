@@ -1,0 +1,8 @@
+services:
+  - name: my-aspnet-app
+    type: web
+    env: dotnet
+    buildCommand: dotnet publish Web/FishingMania.Web/FishingMania.Web.csproj -c Release -o ./publish
+    startCommand: dotnet ./publish/FishingMania.Web.dll
+    healthCheckPath: /
+    autoDeploy: true
